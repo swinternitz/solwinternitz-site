@@ -1,0 +1,582 @@
+diff --git a/blog/crispy-skin-salmon-with-cauliflower-tabouleh.html b/blog/crispy-skin-salmon-with-cauliflower-tabouleh.html
+new file mode 100644
+index 0000000..c73b873
+--- /dev/null
++++ b/blog/crispy-skin-salmon-with-cauliflower-tabouleh.html
+@@ -0,0 +1,146 @@
++<!doctype html>
++<html lang="en">
++<head>
++  <meta charset="utf-8" />
++  <meta name="viewport" content="width=device-width,initial-scale=1" />
++  <title>Crispy-Skin Salmon with Cauliflower Tabouleh | Solomon Winternitz</title>
++  <meta name="description" content="Crispy-skin salmon with a bright cauliflower tabouleh—fast, clean, and repeatable." />
++  <link rel="stylesheet" href="/assets/site.css" />
++  <script src="/assets/theme.js" defer></script>
++</head>
++
++<body>
++  <div class="wrap">
++    <div class="top">
++      <div>
++        <h1>Crispy-Skin Salmon with Cauliflower Tabouleh</h1>
++        <div class="sub">
++          The weeknight seafood plate I actually repeat: glassy salmon skin, bright lemon-herb tabouleh, and enough crunch to feel like
++          you tried.
++        </div>
++
++        <div class="meta-row">
++          <span class="pill">Seafood</span>
++          <span class="pill">Stovetop</span>
++          <span class="pill">High protein</span>
++          <span class="pill">30 min</span>
++          <span class="pill">Serves 2</span>
++        </div>
++
++        <a class="jump" href="#recipe" aria-label="Jump to recipe">Jump to recipe →</a>
++
++        <nav class="postnav" aria-label="Jump links">
++          <a href="#story">Story</a>
++          <a href="#recipe">Recipe</a>
++          <a href="#faq">FAQ</a>
++        </nav>
++        <a class="jump" href="#" onclick="window.print(); return false;" aria-label="Print recipe">Print</a>
++      </div>
++
++      <nav class="nav" aria-label="Primary navigation">
++        <a href="/">Home</a>
++        <a href="/food/" aria-current="page">Food</a>
++        <a href="/projects/">Projects</a>
++        <a href="/photos/">Photos</a>
++        <a href="https://github.com/swinternitz">GitHub</a>
++        <button class="pill mode" id="theme-toggle" type="button" aria-label="Toggle theme" onclick="window.__toggleTheme && window.__toggleTheme()">Mode</button>
++      </nav>
++    </div>
++
++    <section class="hero">
++      <img src="/assets/images/crispy-skin-salmon-with-tabouleh.jpg" alt="Crispy-skin salmon served with cauliflower tabouleh." />
++      <div class="cap">The trick is pressure: start cold-ish, press, and leave it alone until the skin behaves.</div>
++    </section>
++
++    <section class="card" id="story">
++      <h2>The story</h2>
++      <p>
++        I have a category of meals that I make when I want to feel like I live in a magazine but I also want to eat in under an hour.
++        This is one of them. The tabouleh does most of the heavy lifting: herbs, lemon, olive oil, and enough texture to make the plate
++        feel complete without a ton of cooking.
++      </p>
++
++      <div class="callout"><strong>Food nerd note:</strong> Salmon skin goes crisp when it has (1) surface dryness, (2) steady contact with a hot pan, and (3) time. Moving it early is the fastest way to tear it.</div>
++
++      <h3>Why cauliflower tabouleh works</h3>
++      <ul>
++        <li><strong>It’s fast.</strong> No waiting for grains to cook and cool.</li>
++        <li><strong>It’s bright.</strong> Lemon + herbs + olive oil is a cheat code for freshness.</li>
++        <li><strong>It’s forgiving.</strong> You can swap the add-ins based on what’s in the fridge.</li>
++      </ul>
++
++      <div class="callout small">
++        <strong>Placeholder note:</strong> I’m keeping ingredient amounts intentionally loose on this first pass. When you edit the recipe, you can tighten measurements and add notes about doneness, pan heat, and substitutions.
++      </div>
++    </section>
++
++    <section class="card" id="recipe">
++      <h2>Recipe</h2>
++      <div class="two-col">
++        <aside>
++          <h3 style="margin-top:0;">Ingredients</h3>
++          <ul>
++            <li>2 salmon fillets, skin-on (about 6–8 oz each)</li>
++            <li>Kosher salt + black pepper</li>
++            <li>Neutral oil (for the pan)</li>
++            <li>Lemon wedges (for finishing)</li>
++          </ul>
++
++          <h3>Cauliflower tabouleh</h3>
++          <ul>
++            <li>Cauliflower “rice” (store-bought or pulsed florets)</li>
++            <li>Parsley (big handful), chopped</li>
++            <li>Mint (optional), chopped</li>
++            <li>Cherry tomatoes, diced</li>
++            <li>Cucumber (optional), diced</li>
++            <li>Scallion or red onion, minced</li>
++            <li>Olive oil + lemon juice</li>
++            <li>Salt + pepper</li>
++          </ul>
++
++          <div class="note"><strong>Optional upgrades:</strong> feta, toasted pine nuts, a spoon of Greek yogurt, or a pinch of sumac.</div>
++        </aside>
++
++        <div class="steps">
++          <h3 style="margin-top:0;">Instructions</h3>
++          <ol>
++            <li><strong>Dry + season.</strong> Pat salmon dry, season generously with salt and pepper.</li>
++            <li><strong>Start skin-side down.</strong> Add a thin film of oil to a skillet. Place salmon skin-side down and press gently for 10–15 seconds for full contact.</li>
++            <li><strong>Cook mostly on the skin.</strong> Let it go until the skin is deep golden and the flesh is mostly opaque (usually 6–10 minutes depending on thickness).</li>
++            <li><strong>Finish.</strong> Flip for 30–60 seconds to kiss the flesh side, then remove. Rest 2 minutes.</li>
++            <li><strong>Make tabouleh.</strong> Toss cauliflower rice with herbs, tomatoes, onion, olive oil, and lemon. Season to taste.</li>
++            <li><strong>Serve.</strong> Plate tabouleh, top with salmon, squeeze lemon over everything.</li>
++          </ol>
++
++          <div class="callout small">
++            <strong>Doneness shortcut:</strong> When the thickest part flakes with gentle pressure and the center is just barely translucent, you’re in the sweet spot.
++          </div>
++        </div>
++      </div>
++    </section>
++
++    <section class="card faq" id="faq">
++      <h2>FAQ</h2>
++
++      <details>
++        <summary>How do I keep the skin from sticking?</summary>
++        <div class="ans">Dry the skin well, use enough heat to sizzle, and don’t try to move it early. Once the skin crisps, it naturally releases.</div>
++      </details>
++
++      <details>
++        <summary>Can I make the tabouleh ahead?</summary>
++        <div class="ans">Yes. It’s best within a few hours. If you’re making it early, hold back a little lemon and salt, then adjust right before serving.</div>
++      </details>
++
++      <details>
++        <summary>What else goes well on this plate?</summary>
++        <div class="ans">Roasted tomatoes, quick-pickled onions, or a spoon of yogurt sauce. If you want more carbs: rice pilaf or warm pita.</div>
++      </details>
++    </section>
++
++    <footer>© <span id="y"></span> solwinternitz.com</footer>
++  </div>
++
++  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
++</body>
++</html>
+diff --git a/blog/grilled-swordfish-with-warm-tomato-capers.html b/blog/grilled-swordfish-with-warm-tomato-capers.html
+new file mode 100644
+index 0000000..e744531
+--- /dev/null
++++ b/blog/grilled-swordfish-with-warm-tomato-capers.html
+@@ -0,0 +1,148 @@
++<!doctype html>
++<html lang="en">
++<head>
++  <meta charset="utf-8" />
++  <meta name="viewport" content="width=device-width,initial-scale=1" />
++  <title>Grilled Swordfish with Warm Tomato &amp; Capers | Solomon Winternitz</title>
++  <meta name="description" content="Grilled swordfish with a warm tomato-caper bruschetta topping, plus rice pilaf and Mediterranean red cabbage slaw." />
++  <link rel="stylesheet" href="/assets/site.css" />
++  <script src="/assets/theme.js" defer></script>
++</head>
++
++<body>
++  <div class="wrap">
++    <div class="top">
++      <div>
++        <h1>Grilled Swordfish with Warm Tomato &amp; Capers</h1>
++        <div class="sub">
++          Big, meaty fish with a topping that tastes like summer: warm tomatoes, capers, olive oil, and toast.
++          The goal is contrast—char + acidity + crunch—without drowning the fish.
++        </div>
++
++        <div class="meta-row">
++          <span class="pill">Grill</span>
++          <span class="pill">Mediterranean</span>
++          <span class="pill">Company dinner</span>
++          <span class="pill">35 min</span>
++          <span class="pill">Serves 2–3</span>
++        </div>
++
++        <a class="jump" href="#recipe" aria-label="Jump to recipe">Jump to recipe →</a>
++
++        <nav class="postnav" aria-label="Jump links">
++          <a href="#story">Story</a>
++          <a href="#recipe">Recipe</a>
++          <a href="#faq">FAQ</a>
++        </nav>
++
++        <a class="jump" href="#" onclick="window.print(); return false;" aria-label="Print recipe">Print</a>
++      </div>
++
++      <nav class="nav" aria-label="Primary navigation">
++        <a href="/">Home</a>
++        <a href="/food/" aria-current="page">Food</a>
++        <a href="/projects/">Projects</a>
++        <a href="/photos/">Photos</a>
++        <a href="https://github.com/swinternitz">GitHub</a>
++        <button class="pill mode" id="theme-toggle" type="button" aria-label="Toggle theme" onclick="window.__toggleTheme && window.__toggleTheme()">Mode</button>
++      </nav>
++    </div>
++
++    <section class="hero">
++      <img src="/assets/images/swordfish-finished.jpg" alt="Grilled swordfish steak with warm tomato and capers topping." />
++      <div class="cap">Treat it like a steak: hot grill, clean flip, quick rest.</div>
++    </section>
++
++    <section class="card" id="story">
++      <h2>The story</h2>
++      <p>
++        Swordfish is the easiest “I know what I’m doing” fish. It doesn’t fall apart, it takes grill marks like a champ,
++        and it has enough heft that you can build a whole dinner around it without fussing.
++      </p>
++
++      <div class="callout"><strong>Food nerd note:</strong> Swordfish is lean. The trick is to cook it just to done, then add fat and acid on top. Overcook it and it turns from steak-like to dry and cottony fast.</div>
++
++      <h3>The topping (bruschetta energy)</h3>
++      <p class="small">
++        This is basically warm bruschetta without the precision: tomatoes, capers, garlic, olive oil. Heat just enough to
++        bloom the flavors and slightly soften the tomatoes—no simmering into sauce.
++      </p>
++
++      <h3>What I served it with</h3>
++      <ul>
++        <li><strong>Rice pilaf</strong> (a neutral base that catches the tomato-caper oil)</li>
++        <li><strong>Mediterranean red cabbage slaw</strong> (crunch + acid to balance a rich plate)</li>
++      </ul>
++
++      <div class="callout small">
++        <strong>Make-ahead move:</strong> Make the slaw and pilaf first. The fish is last and fast.
++      </div>
++    </section>
++
++    <section class="card" id="recipe">
++      <h2>Recipe</h2>
++      <div class="two-col">
++        <aside>
++          <h3 style="margin-top:0;">Ingredients</h3>
++          <ul>
++            <li>2 swordfish steaks (about 1–1.5" thick)</li>
++            <li>Olive oil</li>
++            <li>Kosher salt + black pepper</li>
++            <li>Optional: lemon zest, dried oregano</li>
++          </ul>
++
++          <h3>Warm tomato &amp; capers topping</h3>
++          <ul>
++            <li>1–2 cups chopped tomatoes (or halved cherry tomatoes)</li>
++            <li>1–2 tbsp capers, drained</li>
++            <li>1 small garlic clove, minced</li>
++            <li>2–3 tbsp olive oil</li>
++            <li>Optional: splash of red wine vinegar or lemon juice</li>
++            <li>Optional: chopped basil or parsley</li>
++          </ul>
++
++          <div class="note"><strong>Note:</strong> Ingredient amounts are placeholders. Keep the ratios (tomato + capers + olive oil + acid) and tune to taste.</div>
++        </aside>
++
++        <div class="steps">
++          <h3 style="margin-top:0;">Instructions</h3>
++          <ol>
++            <li><strong>Heat the grill.</strong> Medium-high. Clean grates and oil them lightly.</li>
++            <li><strong>Season the fish.</strong> Olive oil + salt + pepper (and oregano if you want).</li>
++            <li><strong>Grill.</strong> 3–5 minutes per side, depending on thickness. You want firm and opaque, not dried out.</li>
++            <li><strong>Make topping.</strong> In a small pan, warm olive oil, add garlic for 15–30 seconds, then tomatoes + capers. Heat until just warmed through. Finish with acid + herbs.</li>
++            <li><strong>Serve.</strong> Rest fish 2 minutes, then spoon warm topping over each steak.</li>
++          </ol>
++
++          <div class="callout small">
++            <strong>Doneness tip:</strong> If the center still has a slight translucence, you’re in the sweet spot. Carryover heat finishes it.
++          </div>
++        </div>
++      </div>
++    </section>
++
++    <section class="card faq" id="faq">
++      <h2>FAQ</h2>
++
++      <details>
++        <summary>Can I cook swordfish in a pan instead of a grill?</summary>
++        <div class="ans">Yes. Use a hot cast iron or stainless pan with oil. Sear 3–4 minutes per side, then rest. The topping covers the “no grill marks” problem.</div>
++      </details>
++
++      <details>
++        <summary>What tomatoes work best?</summary>
++        <div class="ans">Cherry/grape tomatoes are the most reliable. If using large tomatoes, salt them lightly and let them sit a few minutes, then drain excess liquid.</div>
++      </details>
++
++      <details>
++        <summary>How do I keep it from sticking?</summary>
++        <div class="ans">Clean, hot, oiled grates. Also: don’t flip early. When the fish releases, it’s ready.</div>
++      </details>
++    </section>
++
++    <footer>© <span id="y"></span> solwinternitz.com</footer>
++  </div>
++
++  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
++</body>
++</html>
+diff --git a/blog/index.html b/blog/index.html
+index 0001fab..ff47430 100644
+--- a/blog/index.html
++++ b/blog/index.html
+@@ -33,6 +33,39 @@
+     </section>
+ 
+     <div class="grid">
++
++      
++
++      <a class="card" href="/blog/crispy-skin-salmon-with-cauliflower-tabouleh.html">
++        <div class="thumb" style="background-image:url('/assets/images/crispy-skin-salmon-with-tabouleh.jpg');"></div>
++        <div class="body">
++          <div class="kicker">Stovetop</div>
++          <h2>Crispy-Skin Salmon + Cauliflower Tabouleh</h2>
++          <p>Glass-crisp skin, bright herbs and lemon, and a tabouleh that skips the grain-cooking step.</p>
++          <div class="meta">Click for the full post →</div>
++        </div>
++      </a>
++
++      <a class="card" href="/blog/grilled-swordfish-with-warm-tomato-capers.html">
++        <div class="thumb" style="background-image:url('/assets/images/swordfish-finished.jpg');"></div>
++        <div class="body">
++          <div class="kicker">Grill</div>
++          <h2>Grilled Swordfish with Warm Tomato &amp; Capers</h2>
++          <p>Steak-y fish with a warm tomato-capers topping — bruschetta energy, no toast required.</p>
++          <div class="meta">Click for the full post →</div>
++        </div>
++      </a>
++
++      <a class="card" href="/blog/parmesan-crusted-flounder-orzo.html">
++        <div class="thumb" style="background-image:url('/assets/images/flounder-finished.jpg');"></div>
++        <div class="body">
++          <div class="kicker">Stovetop</div>
++          <h2>Parmesan-Crusted Flounder + Orzo</h2>
++          <p>Seasoned panko + parm, pan-fried in butter and olive oil, with spinach-radicchio orzo.</p>
++          <div class="meta">Click for the full post →</div>
++        </div>
++      </a>
++
+       <a class="card" href="/blog/brisket-basics.html">
+         <div class="thumb" style="background-image:url('/assets/images/brisket-closeup.jpeg');"></div>
+         <div class="body">
+@@ -62,6 +95,8 @@
+           <div class="meta">Click for the full post →</div>
+         </div>
+       </a>
++
++    
+     </div>
+ 
+     <div class="small" style="margin-top:16px;">
+diff --git a/blog/parmesan-crusted-flounder-orzo.html b/blog/parmesan-crusted-flounder-orzo.html
+new file mode 100644
+index 0000000..5206ce0
+--- /dev/null
++++ b/blog/parmesan-crusted-flounder-orzo.html
+@@ -0,0 +1,142 @@
++<!doctype html>
++<html lang="en">
++<head>
++  <meta charset="utf-8" />
++  <meta name="viewport" content="width=device-width,initial-scale=1" />
++  <title>Parmesan-Crusted Flounder with Spinach-Radicchio Orzo | Solomon Winternitz</title>
++  <meta name="description" content="Parmesan-crusted flounder (seasoned panko + parm) pan-fried in butter and olive oil, served with spinach and radicchio orzo." />
++  <link rel="stylesheet" href="/assets/site.css" />
++  <script src="/assets/theme.js" defer></script>
++</head>
++
++<body>
++  <div class="wrap">
++    <div class="top">
++      <div>
++        <h1>Parmesan-Crusted Flounder with Spinach-Radicchio Orzo</h1>
++        <div class="sub">
++          Seasoned panko + parmesan, pan-fried in butter and olive oil. Crisp outside, delicate fish inside, and a bitter-green orzo to balance it.
++        </div>
++
++        <div class="meta-row">
++          <span class="pill">Seafood</span>
++          <span class="pill">Stovetop</span>
++          <span class="pill">Comfort-food clean</span>
++          <span class="pill">35 min</span>
++          <span class="pill">Serves 2–3</span>
++        </div>
++
++        <a class="jump" href="#recipe" aria-label="Jump to recipe">Jump to recipe →</a>
++
++        <nav class="postnav" aria-label="Jump links">
++          <a href="#story">Story</a>
++          <a href="#recipe">Recipe</a>
++          <a href="#faq">FAQ</a>
++        </nav>
++        <a class="jump" href="#" onclick="window.print(); return false;" aria-label="Print recipe">Print</a>
++      </div>
++
++      <nav class="nav" aria-label="Primary navigation">
++        <a href="/">Home</a>
++        <a href="/food/" aria-current="page">Food</a>
++        <a href="/projects/">Projects</a>
++        <a href="/photos/">Photos</a>
++        <a href="https://github.com/swinternitz">GitHub</a>
++        <button class="pill mode" id="theme-toggle" type="button" aria-label="Toggle theme" onclick="window.__toggleTheme && window.__toggleTheme()">Mode</button>
++      </nav>
++    </div>
++
++    <section class="hero">
++      <img src="/assets/images/flounder-finished.jpg" alt="Parmesan-crusted flounder served with spinach and radicchio orzo." />
++      <div class="cap">Flounder cooks fast. The crust is your timer: when it’s golden, you’re basically there.</div>
++    </section>
++
++    <section class="card" id="story">
++      <h2>The story</h2>
++      <p>
++        This is my go-to when I want the “crispy cutlet” satisfaction, but lighter. The fish is delicate, so the whole plan is simple:
++        build a crust that browns quickly and protects the fillet, then pair it with something green and slightly bitter so the plate
++        doesn’t feel like beige-on-beige.
++      </p>
++
++      <div class="callout"><strong>Food nerd note:</strong> Panko browns quickly and stays crisp. Parmesan adds umami and helps the crust set. The butter/olive oil combo gives flavor without burning as fast as straight butter.</div>
++
++      <h3>Why radicchio is the move</h3>
++      <p class="small">
++        Radicchio brings a gentle bitterness that plays well with lemon and parmesan. If you don’t have it, arugula or kale works too — just add it at the end so it stays lively.
++      </p>
++
++      <div class="callout small">
++        <strong>Placeholder note:</strong> When you edit, add your seasoning blend for the panko (garlic powder, paprika, lemon zest, etc.) and your exact orzo method.
++      </div>
++    </section>
++
++    <section class="card" id="recipe">
++      <h2>Recipe</h2>
++      <div class="two-col">
++        <aside>
++          <h3 style="margin-top:0;">Ingredients</h3>
++          <ul>
++            <li>Flounder fillets</li>
++            <li>Panko breadcrumbs</li>
++            <li>Grated parmesan</li>
++            <li>Salt + pepper</li>
++            <li>Egg (for dredge) <em>or</em> mayo (thin smear method)</li>
++            <li>Butter + olive oil (for frying)</li>
++            <li>Lemon wedges</li>
++          </ul>
++
++          <h3>Spinach-radicchio orzo</h3>
++          <ul>
++            <li>Orzo</li>
++            <li>Spinach</li>
++            <li>Radicchio</li>
++            <li>Olive oil + garlic</li>
++            <li>Lemon juice or a splash of vinegar</li>
++            <li>Optional: parmesan, herbs</li>
++          </ul>
++
++          <div class="note"><strong>Crispness note:</strong> Drain fish on a rack (not paper towels) so steam doesn’t soften the crust.</div>
++        </aside>
++
++        <div class="steps">
++          <h3 style="margin-top:0;">Instructions</h3>
++          <ol>
++            <li><strong>Season + dredge.</strong> Season fish. Coat with egg (or a thin mayo layer), then press into seasoned panko + parmesan mixture.</li>
++            <li><strong>Pan-fry.</strong> Heat butter + olive oil over medium-high. Cook fillets until golden, flipping carefully (they’re delicate). Total time is usually short.</li>
++            <li><strong>Orzo.</strong> Cook orzo. Sauté garlic, wilt spinach, add radicchio at the end. Toss with lemon and a little oil.</li>
++            <li><strong>Serve.</strong> Plate orzo, top with fish, finish with lemon and extra parmesan.</li>
++          </ol>
++
++          <div class="callout small">
++            <strong>Flip tip:</strong> Use a thin fish spatula and flip with confidence. If the crust resists, give it another 30 seconds.
++          </div>
++        </div>
++      </div>
++    </section>
++
++    <section class="card faq" id="faq">
++      <h2>FAQ</h2>
++
++      <details>
++        <summary>Can I use another white fish?</summary>
++        <div class="ans">Yes: sole, haddock, cod, or tilapia. Adjust cook time to thickness; the crust should be golden as the fish turns opaque.</div>
++      </details>
++
++      <details>
++        <summary>Is there a baked version?</summary>
++        <div class="ans">Yes. Bake on a rack at high heat (425°F) until crisp and opaque. You can spritz with oil to help browning.</div>
++      </details>
++
++      <details>
++        <summary>How do I keep leftovers crisp?</summary>
++        <div class="ans">Reheat on a rack in a hot oven or air fryer. Microwaving steams the crust.</div>
++      </details>
++    </section>
++
++    <footer>© <span id="y"></span> solwinternitz.com</footer>
++  </div>
++
++  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
++</body>
++</html>
+diff --git a/food/index.html b/food/index.html
+index 9e0c220..224d7da 100644
+--- a/food/index.html
++++ b/food/index.html
+@@ -33,6 +33,39 @@
+     </section>
+ 
+     <div class="grid">
++
++      
++
++      <a class="card" href="/blog/crispy-skin-salmon-with-cauliflower-tabouleh.html">
++        <div class="thumb" style="background-image:url('/assets/images/crispy-skin-salmon-with-tabouleh.jpg');"></div>
++        <div class="body">
++          <div class="kicker">Seafood</div>
++          <h2>Crispy-Skin Salmon + Cauliflower Tabouleh</h2>
++          <p>Crisp skin, tender salmon, and a bright cauliflower tabouleh that comes together in minutes.</p>
++          <div class="meta">Click for the full recipe →</div>
++        </div>
++      </a>
++
++      <a class="card" href="/blog/grilled-swordfish-with-warm-tomato-capers.html">
++        <div class="thumb" style="background-image:url('/assets/images/swordfish-grilling.jpg');"></div>
++        <div class="body">
++          <div class="kicker">Grill</div>
++          <h2>Grilled Swordfish with Warm Tomato &amp; Capers</h2>
++          <p>Grilled swordfish topped with warm tomatoes and capers, plus simple sides that make it a full plate.</p>
++          <div class="meta">Click for the full recipe →</div>
++        </div>
++      </a>
++
++      <a class="card" href="/blog/parmesan-crusted-flounder-orzo.html">
++        <div class="thumb" style="background-image:url('/assets/images/flounder-finished.jpg');"></div>
++        <div class="body">
++          <div class="kicker">Stovetop</div>
++          <h2>Parmesan-Crusted Flounder + Orzo</h2>
++          <p>Seasoned panko + parmesan, pan-fried in butter and olive oil—crisp outside, delicate fish inside.</p>
++          <div class="meta">Click for the full recipe →</div>
++        </div>
++      </a>
++
+       <a class="card" href="/blog/brisket-basics.html">
+         <div class="thumb" style="background-image:url('/assets/images/brisket-closeup.jpeg');"></div>
+         <div class="body">
+@@ -62,6 +95,8 @@
+           <div class="meta">Click for the full recipe →</div>
+         </div>
+       </a>
++
++    
+     </div>
+ 
+     <footer>
+diff --git a/index.html b/index.html
+index 42bed71..443f51d 100644
+--- a/index.html
++++ b/index.html
+@@ -51,12 +51,12 @@
+             </div>
+           </a>
+ 
+-          <a class="tile" href="/blog/blackened-grilled-salmon.html">
+-            <div class="thumb" style="background-image:url('/assets/images/salmon.jpeg');"></div>
++          <a class="tile" href="/blog/crispy-skin-salmon-with-cauliflower-tabouleh.html">
++            <div class="thumb" style="background-image:url('/assets/images/crispy-skin-salmon-with-tabouleh.jpg');"></div>
+             <div class="body">
+-              <div class="kicker">Grill</div>
+-              <h3>Blackened Grilled Salmon Feast</h3>
+-              <p>Salmon with creamy dill sauce, rice pilaf, and grilled asparagus.</p>
++              <div class="kicker">Seafood</div>
++              <h3>Crispy-Skin Salmon + Cauliflower Tabouleh</h3>
++              <p>Shatter-crisp skin, bright tabouleh, and a clean weeknight plate that repeats well.</p>
+               <div class="meta">Read the full recipe →</div>
+             </div>
+           </a>
