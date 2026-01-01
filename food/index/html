@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Food — Sol Winternitz</title>
+</head>
+<body style="font-family:system-ui;max-width:920px;margin:48px auto;padding:0 18px;line-height:1.55;">
+  <nav style="margin-bottom:18px;">
+    <a href="/">Home</a> · <a href="/projects/">Projects</a> · <a href="/food/">Food</a>
+  </nav>
+  <h1>Food</h1>
+  <p>Importing older posts from <code>solomonwinternitz.com</code>. This page will become a recipe/blog index.</p>
+</body>
+</html>
