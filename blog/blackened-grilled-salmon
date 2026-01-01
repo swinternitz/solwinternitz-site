@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Blackened Grilled Salmon Feast | Sol Winternitz</title>
+  <meta name="description" content="Blackened salmon with creamy dill sauce, rice pilaf, and grilled asparagus—built for balance and repeatability." />
+  <style>
+    :root { --max: 920px; --muted:#555; --line:#e7e7e7; }
+    body { font-family: system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif; line-height: 1.6; margin: 0; }
+    .wrap { max-width: var(--max); margin: 48px auto; padding: 0 18px; }
+    nav a { text-decoration: none; margin-right: 12px; }
+    header { display:flex; justify-content: space-between; align-items: baseline; gap: 16px; flex-wrap: wrap; }
+    h1 { margin: 0; font-size: 38px; letter-spacing: -0.3px; }
+    .sub { color: var(--muted); margin-top: 8px; }
+    hr { border: none; border-top: 1px solid var(--line); margin: 18px 0 22px; }
+    h2 { margin-top: 28px; }
+    .card { border: 1px solid var(--line); border-radius: 14px; padding: 16px; background: #fff; }
+    .meta { color: var(--muted); font-size: 14px; }
+    .two { display:grid; grid-template-columns: 1fr; gap: 14px; }
+    @media (min-width: 860px){ .two { grid-template-columns: 1fr 1fr; } }
+    ul { margin-top: 8px; }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <header>
+      <div>
+        <h1>Blackened Grilled Salmon Feast</h1>
+        <div class="sub">Blackened salmon + creamy dill sauce + rice pilaf + grilled asparagus. Built for balanced flavor and texture.</div>
+      </div>
+      <nav class="meta">
+        <a href="/">Home</a>
+        <a href="/blog/">Blog</a>
+      </nav>
+    </header>
+
+    <hr />
+
+    <h2>Blackened seasoning</h2>
+    <div class="card">
+      <div class="meta">Mix and keep in a jar. Great on salmon, chicken, and vegetables.</div>
+      <ul>
+        <li>3 tbsp paprika</li>
+        <li>2 tbsp kosher salt</li>
+        <li>2 tbsp garlic powder</li>
+        <li>1 tbsp black pepper</li>
+        <li>1 tbsp white pepper</li>
+        <li>1 tbsp onion powder</li>
+        <li>1 tbsp dried oregano</li>
+        <li>1 tbsp cayenne pepper (adjust to taste)</li>
+        <li>1/2 tbsp dried thyme</li>
+      </ul>
+    </div>
+
+    <h2>Blackened grilled salmon</h2>
+    <div class="card">
+      <ol>
+        <li>Combine the spices to make the seasoning mix.</li>
+        <li>Pat salmon fillets dry and coat with seasoning.</li>
+        <li>Preheat grill to medium-high and cook salmon about 4–5 minutes per side, to medium or medium-well.</li>
+      </ol>
+      <p class="meta" style="margin-bottom:0;">Tip from the draft: a good spray of oil on the grill (and a little on the fish) helps prevent sticking.</p>
+    </div>
+
+    <h2>Creamy dill sauce</h2>
+    <div class="two">
+      <div class="card">
+        <h3 style="margin-top:0;">Ingredients</h3>
+        <ul>
+          <li>1/2 cup sour cream</li>
+          <li>1/3 cup mayonnaise</li>
+          <li>2 tbsp butter</li>
+          <li>2 cloves garlic, minced</li>
+          <li>1/4 cup finely chopped onion</li>
+          <li>2 tbsp chopped fresh dill</li>
+          <li>1 tbsp fresh lemon juice</li>
+          <li>Salt and pepper to taste</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3 style="margin-top:0;">Directions</h3>
+        <ol>
+          <li>Melt butter over medium heat; sauté garlic + onion until onion is translucent.</li>
+          <li>Stir in sour cream and mayo; heat gently to combine (don’t boil).</li>
+          <li>Remove from heat; stir in dill + lemon. Season to taste.</li>
+        </ol>
+      </div>
+    </div>
+
+    <h2>Rice pilaf</h2>
+    <div class="two">
+      <div class="card">
+        <h3 style="margin-top:0;">Ingredients</h3>
+        <ul>
+          <li>1 cup long-grain rice</li>
+          <li>2 tbsp butter</li>
+          <li>2 cloves garlic, minced</li>
+          <li>1/4 cup finely chopped onion</li>
+          <li>1/4 cup finely chopped celery</li>
+          <li>1/4 cup finely chopped carrot</li>
+          <li>2 cups chicken stock</li>
+          <li>2 tbsp chopped fresh dill</li>
+          <li>Salt and pepper to taste</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3 style="margin-top:0;">Directions</h3>
+        <ol>
+          <li>Melt butter; sauté garlic, onion, celery, carrot until softened.</li>
+          <li>Add rice; sauté briefly to coat.</li>
+          <li>Add chicken stock; bring to boil, reduce heat, cover, simmer 15–20 min until absorbed.</li>
+          <li>Stir in dill; season to taste.</li>
+        </ol>
+      </div>
+    </div>
+
+    <h2>Grilled asparagus</h2>
+    <div class="card">
+      <ul>
+        <li><strong>Ingredients:</strong> asparagus, olive oil, salt, pepper</li>
+      </ul>
+      <ol>
+        <li>Blanch briefly in boiling water, then shock in ice water.</li>
+        <li>Drizzle with olive oil; season with salt and pepper.</li>
+        <li>Grill 2–4 minutes per side.</li>
+      </ol>
+    </div>
+
+    <footer style="margin-top:44px;color:#666;font-size:14px;">
+      <a href="/blog/">← Back to Blog</a>
+    </footer>
+  </div>
+</body>
+</html>
