@@ -8,11 +8,12 @@
   <style>
     :root{ --max:980px; --muted:#555; --line:#e7e7e7; --radius:16px; }
     *{ box-sizing:border-box; }
-    body{ margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif; line-height:1.65; color:#111; background:#fafafa; }
+    html{ scroll-behavior:smooth; }
+    body{ margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif; line-height:1.7; color:#111; background:#fafafa; }
     a{ color:inherit; }
     .wrap{ max-width:var(--max); margin:52px auto; padding:0 18px; }
 
-    header{ display:flex; justify-content:space-between; align-items:baseline; gap:16px; flex-wrap:wrap; margin-bottom:14px; }
+    header{ display:flex; justify-content:space-between; align-items:flex-start; gap:16px; flex-wrap:wrap; margin-bottom:14px; }
     h1{ margin:0; font-size:38px; letter-spacing:-.4px; line-height:1.1; }
     .sub{ color:var(--muted); margin-top:10px; max-width:74ch; }
     nav a{ text-decoration:none; margin-right:12px; color:#222; font-size:14px; }
@@ -21,9 +22,9 @@
     .meta-row{ display:flex; gap:8px; flex-wrap:wrap; margin-top:10px; }
     .pill{ display:inline-block; font-size:12px; padding:3px 10px; border-radius:999px; border:1px solid var(--line); background:#fff; color:#333; }
 
+    .jump-row{ display:flex; gap:10px; flex-wrap:wrap; margin-top:12px; }
     .jump{
       display:inline-flex; align-items:center; gap:8px;
-      margin-top:12px;
       padding:8px 12px;
       border:1px solid var(--line);
       border-radius:999px;
@@ -67,8 +68,11 @@
     .steps ol{ margin:0; padding-left:18px; }
     .steps li{ margin:10px 0; }
 
-    .more a{ text-decoration:none; }
-    .more a:hover{ text-decoration:underline; }
+    /* This is the important part: make anchor land with breathing room */
+    #ingredients, #howto, #recipe { scroll-margin-top: 22px; }
+
+    .toc a{ text-decoration:none; border-bottom:1px solid #ddd; }
+    .toc a:hover{ border-bottom-color:#aaa; }
 
     footer{ margin-top:30px; color:#666; font-size:14px; }
   </style>
@@ -79,16 +83,22 @@
       <div>
         <h1>Blackened Grilled Salmon Feast</h1>
         <div class="sub">
-          This is my “looks impressive, cooks fast” salmon: a bold blackened crust, a cold creamy dill sauce, and whatever
-          I have the energy for on the side (usually rice pilaf + grilled asparagus).
+          This is my “looks impressive, cooks fast” salmon: a bold blackened crust, a cold creamy dill yogurt sauce,
+          and whatever sides make me feel like a functional adult (usually rice pilaf + grilled asparagus).
         </div>
         <div class="meta-row">
           <span class="pill">Grill</span>
           <span class="pill">Weeknight</span>
           <span class="pill">Big flavor, low drama</span>
         </div>
-        <a class="jump" href="#recipe" aria-label="Jump to recipe">Jump to recipe →</a>
+
+        <div class="jump-row">
+          <a class="jump" href="#recipe" aria-label="Jump to recipe">Jump to recipe →</a>
+          <a class="jump" href="#ingredients">Ingredients</a>
+          <a class="jump" href="#howto">How to make</a>
+        </div>
       </div>
+
       <nav aria-label="Primary navigation">
         <a href="/">Home</a>
         <a href="/food/">Food</a>
@@ -98,98 +108,146 @@
 
     <section class="hero">
       <img src="/assets/images/salmon.jpeg" alt="Blackened grilled salmon." />
-      <div class="cap">The whole trick is heat + timing. The sauce is the victory lap.</div>
+      <div class="cap">The trick is heat + timing. The sauce is the victory lap.</div>
     </section>
 
-    <section class="card">
-      <h2>Why I love this one</h2>
+    <section class="card toc">
+      <h2>On this page</h2>
+      <ul>
+        <li><a href="#why">Why I love this one</a></li>
+        <li><a href="#ingredients">Ingredients + swaps</a></li>
+        <li><a href="#howto">How to make it</a></li>
+        <li><a href="#serve">Serving ideas</a></li>
+        <li><a href="#faq">FAQ + storage</a></li>
+        <li><a href="#recipe">Recipe card</a></li>
+      </ul>
+      <div class="note">If you’re here for the food and not my monologue, “Jump to recipe” has your back.</div>
+    </section>
+
+    <section class="card" id="why">
+      <h2>Why I keep making this</h2>
       <p>
-        Salmon is one of the rare proteins that can feel “restaurant” on a random Tuesday. The blackened seasoning gives you
-        instant swagger, and the dill yogurt sauce keeps everything bright. It’s salty, smoky, tangy, and just a little extra.
+        Salmon is one of the rare proteins that can feel “restaurant” on a random Tuesday—as long as you respect heat and timing.
+        Blackening seasoning brings instant swagger, and the dill yogurt sauce makes the whole plate feel composed instead of
+        “I grilled a fish and hoped for the best.”
       </p>
 
       <h3>Why it works</h3>
       <ul>
-        <li><strong>Dry fish browns better.</strong> Pat it dry and you’ll actually get crust instead of steamed sadness.</li>
-        <li><strong>Skin-on is forgiving.</strong> It protects the flesh and helps you nail doneness.</li>
-        <li><strong>Cold sauce, hot fish.</strong> The contrast makes it feel intentional, not improvised.</li>
+        <li><strong>Dry fish browns better.</strong> Patting it dry is the difference between crust and steamed regret.</li>
+        <li><strong>Skin-on is forgiving.</strong> It protects the flesh and makes the cook window wider.</li>
+        <li><strong>Cold sauce + hot fish.</strong> Contrast = instant “this was planned.”</li>
+      </ul>
+
+      <h3>My “don’t mess this up” tips</h3>
+      <ul>
+        <li><strong>Oil the grates.</strong> Fish sticks when you skip this. Ask me how I know.</li>
+        <li><strong>Don’t force the flip.</strong> When it’s ready, it releases. When it’s not, it tears.</li>
+        <li><strong>Stop cooking at almost-done.</strong> Rest finishes the job.</li>
       </ul>
     </section>
 
-    <section class="card">
-      <h2>Ingredients</h2>
-      <p class="small">Exact measurements will evolve as you re-cook it. These are the “don’t overthink it” basics.</p>
+    <section class="card" id="ingredients">
+      <h2>Ingredients + swaps</h2>
 
       <h3>For the salmon</h3>
       <ul>
         <li>Salmon fillets (skin-on recommended)</li>
-        <li>Oil (avocado oil is great for high heat; olive oil works too)</li>
+        <li>Oil (avocado oil is great for high heat; olive oil is fine)</li>
         <li>Blackening seasoning (or DIY: paprika + garlic powder + cayenne + salt + pepper)</li>
-        <li>Lemon (for finishing)</li>
+        <li>Lemon (finish with juice + a little zest if you’re feeling fancy)</li>
       </ul>
 
       <h3>For the dill yogurt sauce</h3>
       <ul>
-        <li>Plain yogurt (Greek-style works well)</li>
-        <li>Fresh dill (or parsley if dill is missing-in-action)</li>
-        <li>Lemon juice + a little zest</li>
+        <li>Plain yogurt (Greek-style is ideal)</li>
+        <li>Fresh dill (parsley works if dill is missing-in-action)</li>
+        <li>Lemon juice + zest</li>
         <li>Garlic (microplaned)</li>
         <li>Salt + pepper</li>
       </ul>
 
-      <div class="note">Optional upgrade: if you want it richer, do half yogurt / half mayo.</div>
+      <div class="note">
+        Optional upgrade: if you want it richer, do half yogurt / half mayo.
+      </div>
     </section>
 
-    <section class="card">
+    <section class="card" id="howto">
       <h2>How to make it</h2>
       <ul>
-        <li><strong>Preheat:</strong> medium-high grill, clean and oil the grates.</li>
-        <li><strong>Season:</strong> oil the salmon lightly, then apply blackening spice generously.</li>
+        <li><strong>Preheat:</strong> medium-high grill; clean and oil the grates.</li>
+        <li><strong>Season:</strong> oil salmon lightly, then apply blackening spice generously.</li>
         <li><strong>Cook:</strong> skin-side down first; flip only when it releases easily.</li>
-        <li><strong>Rest:</strong> 2–3 minutes, then sauce and serve.</li>
+        <li><strong>Rest:</strong> 2–3 minutes.</li>
+        <li><strong>Sauce:</strong> spoon on dill yogurt sauce and hit it with lemon.</li>
       </ul>
 
-      <h3>Serving ideas</h3>
+      <h3>Equipment notes</h3>
+      <ul>
+        <li>Tongs + a fish spatula if you have it (not required, but helpful)</li>
+        <li>Instant-read thermometer (optional, but makes you feel invincible)</li>
+      </ul>
+    </section>
+
+    <section class="card" id="serve">
+      <h2>Serving ideas</h2>
       <ul>
         <li>Rice pilaf + grilled asparagus (classic “I planned this” plate)</li>
-        <li>A simple green salad if you want lighter</li>
+        <li>Green salad + roasted potatoes if you want more substance</li>
         <li>Leftovers: flake into a salad or wrap (cold salmon is underrated)</li>
       </ul>
+    </section>
+
+    <section class="card" id="faq">
+      <h2>FAQ + storage</h2>
+
+      <h3>How do I know it’s done?</h3>
+      <p class="small">
+        The salmon should flake easily and look opaque, but still juicy. If you use a thermometer, aim for “just done,” then rest.
+        (We’ll add your preferred target temp once you tell me how you like it.)
+      </p>
+
+      <h3>Can I do this without a grill?</h3>
+      <p class="small">
+        Yes. Cast iron works: sear, then finish in the oven. Same seasoning, same sauce, same attitude.
+      </p>
 
       <h3>Storage</h3>
       <p class="small">
-        Best within 1–2 days. Store sauce separately. Reheat salmon gently (low oven), or eat it cold in a salad so you don’t
-        overcook it on the second pass.
+        Best within 1–2 days. Store sauce separately. Reheat salmon gently (low oven), or eat it cold so you don’t overcook it on the second pass.
       </p>
     </section>
 
-    <div class="grid" id="recipe">
-      <section class="card steps">
-        <h2>Recipe (quick version)</h2>
-        <ol>
-          <li><strong>Prep.</strong> Pat salmon dry. Lightly oil. Season generously with blackening spice.</li>
-          <li><strong>Preheat grill.</strong> Medium-high. Clean grates and oil them well.</li>
-          <li><strong>Grill.</strong> Skin-side down first. Cook until it releases; flip briefly to finish (or don’t flip if thin).</li>
-          <li><strong>Rest.</strong> 2–3 minutes.</li>
-          <li><strong>Sauce + serve.</strong> Spoon on dill yogurt sauce. Finish with lemon.</li>
-        </ol>
-        <div class="note">Next iteration: we’ll add “what to look for” doneness cues and your exact spice blend.</div>
-      </section>
+    <!-- RECIPE ANCHOR: this is what "Jump to recipe" lands on -->
+    <section class="card" id="recipe">
+      <h2>Recipe card (quick version)</h2>
 
-      <aside class="card">
-        <h2>Dill yogurt sauce (quick)</h2>
-        <p class="small">
-          Mix yogurt + lemon + microplaned garlic + chopped dill + salt/pepper.
-          Thin with a splash of water or olive oil if needed.
-        </p>
+      <div class="grid">
+        <div class="steps">
+          <ol>
+            <li><strong>Prep.</strong> Pat salmon dry. Lightly oil. Season generously with blackening spice.</li>
+            <li><strong>Preheat grill.</strong> Medium-high. Clean grates and oil them well.</li>
+            <li><strong>Grill.</strong> Skin-side down first. Cook until it releases; flip briefly to finish (or don’t flip if thin).</li>
+            <li><strong>Rest.</strong> 2–3 minutes.</li>
+            <li><strong>Sauce + serve.</strong> Spoon on dill yogurt sauce. Finish with lemon.</li>
+          </ol>
+          <div class="note">Next iteration: we’ll add exact cook times by thickness and your exact spice blend.</div>
+        </div>
 
-        <h2 style="margin-top:18px;">More recipes</h2>
-        <ul class="more">
-          <li><a href="/blog/italian-chicken-roulade.html">Italian Chicken Roulade</a></li>
-          <li><a href="/blog/brisket-basics.html">The Brisket Basics</a></li>
-        </ul>
-      </aside>
-    </div>
+        <aside>
+          <h3 style="margin-top:0;">Dill yogurt sauce (quick)</h3>
+          <p class="small">
+            Mix yogurt + lemon + microplaned garlic + chopped dill + salt/pepper. Thin with a splash of water or olive oil if needed.
+          </p>
+
+          <h3>More recipes</h3>
+          <ul>
+            <li><a href="/blog/italian-chicken-roulade.html">Italian Chicken Roulade</a></li>
+            <li><a href="/blog/brisket-basics.html">The Brisket Basics</a></li>
+          </ul>
+        </aside>
+      </div>
+    </section>
 
     <footer>
       © <span id="y"></span> solomonwinternitz.com
@@ -199,4 +257,5 @@
   <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
 </body>
 </html>
+
 
