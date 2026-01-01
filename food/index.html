@@ -7,19 +7,37 @@
   <meta name="description" content="Recipes and cooking notes by Solomon Winternitz." />
   <style>
     :root{ --max:980px; --muted:#555; --line:#e7e7e7; --radius:16px; }
-    body{ margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif; line-height:1.55; background:#fafafa; }
+    *{ box-sizing:border-box; }
+    body{ margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif; line-height:1.55; background:#fafafa; color:#111; }
+    a{ color:inherit; }
     .wrap{ max-width:var(--max); margin:52px auto; padding:0 18px; }
     header{ display:flex; justify-content:space-between; align-items:baseline; gap:16px; flex-wrap:wrap; margin-bottom:18px; }
     h1{ margin:0; font-size:38px; letter-spacing:-.4px; }
     .sub{ color:var(--muted); margin-top:8px; }
     nav a{ text-decoration:none; margin-right:12px; color:#222; }
     nav a:hover{ opacity:.85; }
-    .card{ border:1px solid var(--line); border-radius:var(--radius); background:#fff; padding:16px; box-shadow:0 8px 20px rgba(0,0,0,.03); }
-    .grid{ display:grid; grid-template-columns:1fr; gap:14px; }
-    @media (min-width:880px){ .grid{ grid-template-columns:1fr 1fr; } }
-    .meta{ color:var(--muted); font-size:14px; margin-top:6px; }
-    a.post{ text-decoration:none; border-bottom:1px solid #ddd; }
-    a.post:hover{ border-bottom-color:#aaa; }
+    .grid{ display:grid; grid-template-columns:1fr; gap:14px; margin-top:18px; }
+    @media (min-width:900px){ .grid{ grid-template-columns:1fr 1fr; } }
+    .card{
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      background:#fff;
+      overflow:hidden;
+      box-shadow:0 10px 25px rgba(0,0,0,.04);
+      text-decoration:none;
+      display:block;
+    }
+    .thumb{
+      height:190px;
+      background-size:cover;
+      background-position:center;
+      border-bottom:1px solid var(--line);
+    }
+    .body{ padding:14px 16px 16px; }
+    .kicker{ font-size:12px; color:var(--muted); text-transform:uppercase; letter-spacing:.08em; }
+    h2{ margin:6px 0 8px; font-size:20px; letter-spacing:-.2px; }
+    p{ margin:0; color:#333; }
+    .meta{ margin-top:10px; color:var(--muted); font-size:13px; }
   </style>
 </head>
 <body>
@@ -27,40 +45,37 @@
     <header>
       <div>
         <h1>Food</h1>
-        <div class="sub">Recipes, notes, and “what I’d do differently next time.”</div>
+        <div class="sub">A small recipe journal. Stock photos for now—real cooks and real photos as I iterate.</div>
       </div>
       <nav class="meta">
         <a href="/">Home</a>
-        <a href="/blog/">Blog</a>
-        <a href="/projects/">Projects</a>
         <a href="/food/">Food</a>
+        <a href="/projects/">Projects</a>
       </nav>
     </header>
 
     <div class="grid">
-      <section class="card">
-        <h2 style="margin:0 0 10px 0;">Featured</h2>
-        <ul style="margin:0; padding-left:18px;">
-          <li>
-            <a class="post" href="/blog/brisket-basics.html">The Brisket Basics</a>
-            <div class="meta">Selection, trimming, Sol’s special rub, the stall, wrap, rest.</div>
-          </li>
-          <li style="margin-top:10px;">
-            <a class="post" href="/blog/blackened-grilled-salmon.html">Blackened Grilled Salmon Feast</a>
-            <div class="meta">Creamy dill sauce, rice pilaf, grilled asparagus.</div>
-          </li>
-        </ul>
-      </section>
+      <a class="card" href="/blog/brisket-basics.html">
+        <div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1553163147-622ab57be1c7?auto=format&fit=crop&w=1600&q=70');"></div>
+        <div class="body">
+          <div class="kicker">Smoker</div>
+          <h2>The Brisket Basics</h2>
+          <p>A repeatable brisket workflow: selecting the cut, Sol’s special rub, the stall, wrap timing, and resting.</p>
+          <div class="meta">Click for the full recipe →</div>
+        </div>
+      </a>
 
-      <section class="card">
-        <h2 style="margin:0 0 10px 0;">Next additions</h2>
-        <ul style="margin:0; padding-left:18px;">
-          <li>Real photos from real cooks (and the mistakes that improved them).</li>
-          <li>A consistent “recipe card” format (time, servings, equipment, notes).</li>
-          <li>Tags (smoker, weeknight, grill, etc.).</li>
-        </ul>
-      </section>
+      <a class="card" href="/blog/blackened-grilled-salmon.html">
+        <div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&w=1600&q=70');"></div>
+        <div class="body">
+          <div class="kicker">Grill</div>
+          <h2>Blackened Grilled Salmon Feast</h2>
+          <p>Blackened salmon with creamy dill sauce, rice pilaf, and grilled asparagus—balanced and reliable.</p>
+          <div class="meta">Click for the full recipe →</div>
+        </div>
+      </a>
     </div>
   </div>
 </body>
 </html>
+
