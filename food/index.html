@@ -11,13 +11,36 @@
     body{ margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif; line-height:1.55; background:#fafafa; color:#111; }
     a{ color:inherit; }
     .wrap{ max-width:var(--max); margin:52px auto; padding:0 18px; }
-    header{ display:flex; justify-content:space-between; align-items:baseline; gap:16px; flex-wrap:wrap; margin-bottom:18px; }
+
+    header{ display:flex; justify-content:space-between; align-items:baseline; gap:16px; flex-wrap:wrap; margin-bottom:14px; }
     h1{ margin:0; font-size:38px; letter-spacing:-.4px; }
     .sub{ color:var(--muted); margin-top:8px; }
     nav a{ text-decoration:none; margin-right:12px; color:#222; }
     nav a:hover{ opacity:.85; }
+
+    .hero{
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      background:#fff;
+      overflow:hidden;
+      box-shadow:0 10px 25px rgba(0,0,0,.04);
+      margin:16px 0 18px;
+    }
+    .hero .img{
+      height:240px;
+      background-size:cover;
+      background-position:center;
+      border-bottom:1px solid var(--line);
+    }
+    .hero .cap{
+      padding:12px 14px;
+      color:var(--muted);
+      font-size:13px;
+    }
+
     .grid{ display:grid; grid-template-columns:1fr; gap:14px; margin-top:18px; }
     @media (min-width:900px){ .grid{ grid-template-columns:1fr 1fr; } }
+
     .card{
       border:1px solid var(--line);
       border-radius:var(--radius);
@@ -45,7 +68,7 @@
     <header>
       <div>
         <h1>Food</h1>
-        <div class="sub">A small recipe journal. Stock photos for now—real cooks and real photos as I iterate.</div>
+        <div class="sub">A small recipe journal. Real cooks, real notes, real photos (as I iterate).</div>
       </div>
       <nav class="meta">
         <a href="/">Home</a>
@@ -54,23 +77,38 @@
       </nav>
     </header>
 
+    <section class="hero">
+      <div class="img" style="background-image:url('/assets/images/food-main.jpeg');"></div>
+      <div class="cap">Mostly simple, repeatable cooks. I’m gradually replacing placeholders with my own photos and tighter recipes.</div>
+    </section>
+
     <div class="grid">
       <a class="card" href="/blog/brisket-basics.html">
-        <div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1553163147-622ab57be1c7?auto=format&fit=crop&w=1600&q=70');"></div>
+        <div class="thumb" style="background-image:url('/assets/images/brisket-closeup.jpeg');"></div>
         <div class="body">
           <div class="kicker">Smoker</div>
           <h2>The Brisket Basics</h2>
-          <p>A repeatable brisket workflow: selecting the cut, Sol’s special rub, the stall, wrap timing, and resting.</p>
+          <p>A repeatable brisket workflow: selecting the cut, Solomon’s special rub, the stall, wrap timing, and resting.</p>
           <div class="meta">Click for the full recipe →</div>
         </div>
       </a>
 
       <a class="card" href="/blog/blackened-grilled-salmon.html">
-        <div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&w=1600&q=70');"></div>
+        <div class="thumb" style="background-image:url('/assets/images/salmon.jpeg');"></div>
         <div class="body">
           <div class="kicker">Grill</div>
           <h2>Blackened Grilled Salmon Feast</h2>
           <p>Blackened salmon with creamy dill sauce, rice pilaf, and grilled asparagus—balanced and reliable.</p>
+          <div class="meta">Click for the full recipe →</div>
+        </div>
+      </a>
+
+      <a class="card" href="/blog/italian-chicken-roulade.html">
+        <div class="thumb" style="background-image:url('/assets/images/italian-chicken-roulade.jpeg');"></div>
+        <div class="body">
+          <div class="kicker">Italian</div>
+          <h2>Italian Chicken Roulade</h2>
+          <p>Soppressata, capicola, provolone—finished with a roasted tomato yogurt sauce (tzatziki-adjacent, no cucumber).</p>
           <div class="meta">Click for the full recipe →</div>
         </div>
       </a>
