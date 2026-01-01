@@ -28,7 +28,13 @@
         </div>
 
         <a class="jump" href="#recipe" aria-label="Jump to recipe">Jump to recipe →</a>
-        <a class="jump" href="#" onclick="window.print(); return false;" aria-label="Print recipe">Print</a>
+        
+        <nav class="postnav" aria-label="Jump links">
+          <a href="#story">Story</a>
+          <a href="#recipe">Recipe</a>
+          <a href="#faq">FAQ</a>
+        </nav>
+<a class="jump" href="#" onclick="window.print(); return false;" aria-label="Print recipe">Print</a>
       </div>
 
       <nav class="nav" aria-label="Primary navigation">
@@ -46,12 +52,14 @@
       <div class="cap">High heat + short cook. Sauce afterward. Confidence required (but you’ll earn it).</div>
     </section>
 
-    <section class="card">
+    <section class="card" id="story">
       <h2>The story</h2>
       <p>
         Blackened salmon is my go-to when I want dinner to feel like a flex but I also want it to be over quickly.
         It’s the culinary equivalent of wearing a blazer over a t-shirt: minimal effort, maximum effect.
       </p>
+
+      <div class="callout"><strong>Food nerd note:</strong> Salmon is a high-fat fish, so texture is mostly a timing game. Pull it early, rest for a few minutes, and you’ll keep it silky instead of dry and chalky.</div>
       <p>
         “Blackened” is really just a high-heat sear paired with a spice-heavy coating. The goal isn’t bitterness or actual burning;
         it’s a toasted crust that tastes like confidence.
@@ -129,6 +137,26 @@
         </div>
       </div>
     </section>
+
+
+      <section class="card faq" id="faq">
+        <h2>FAQ</h2>
+
+        <details>
+          <summary>Can I use a cast iron pan instead of a grill?</summary>
+          <div class="ans">Yes. Preheat a cast iron skillet over medium-high, oil lightly, and sear the salmon 2–4 minutes per side (depending on thickness). Keep the sauce cold and serve immediately.</div>
+        </details>
+
+        <details>
+          <summary>How do I know when salmon is done?</summary>
+          <div class="ans">Aim for an internal temp around 125–130°F for medium, or cook until it flakes easily and the center is just barely opaque.</div>
+        </details>
+
+        <details>
+          <summary>What’s the best way to reheat leftovers?</summary>
+          <div class="ans">Salmon is best cold or gently rewarmed. Use a low oven (275°F) for 10–15 minutes; avoid microwaving on high, which can dry it out.</div>
+        </details>
+      </section>
 
     <footer>© <span id="y"></span> solwinternitz.com</footer>
   </div>

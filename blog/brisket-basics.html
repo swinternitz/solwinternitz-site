@@ -29,7 +29,13 @@
         </div>
 
         <a class="jump" href="#recipe" aria-label="Jump to recipe">Jump to recipe →</a>
-        <a class="jump" href="#" onclick="window.print(); return false;" aria-label="Print recipe">Print</a>
+        
+        <nav class="postnav" aria-label="Jump links">
+          <a href="#story">Story</a>
+          <a href="#recipe">Workflow</a>
+          <a href="#faq">FAQ</a>
+        </nav>
+<a class="jump" href="#" onclick="window.print(); return false;" aria-label="Print recipe">Print</a>
       </div>
 
       <nav class="nav" aria-label="Primary navigation">
@@ -47,12 +53,14 @@
       <div class="cap">You’re not “making brisket.” You’re supervising time and temperature.</div>
     </section>
 
-    <section class="card">
+    <section class="card" id="story">
       <h2>The story</h2>
       <p>
         The first brisket cook feels like you’re signing up for a marathon. You start early, you watch the thermometer like it’s a heart monitor,
         and you tell everyone “it’ll be ready when it’s ready” while quietly wondering if you ruined it.
       </p>
+
+      <div class="callout"><strong>Food nerd note:</strong> Brisket feels like a spice problem, but it’s really a heat-management problem. Most “bad brisket” is either rushed through the rest or sliced before it has time to settle.</div>
       <p>
         And then you do it a few more times and realize brisket is mostly a mindset: set yourself up with the right prep,
         run steady heat, don’t panic at the stall, and treat resting like a real step instead of an afterthought.
@@ -130,6 +138,26 @@
         </div>
       </div>
     </section>
+
+
+      <section class="card faq" id="faq">
+        <h2>FAQ</h2>
+
+        <details>
+          <summary>What if my brisket stalls for hours?</summary>
+          <div class="ans">Totally normal. The stall is evaporative cooling. If you want to push through, wrap once bark is set (butcher paper for better bark, foil for speed).</div>
+        </details>
+
+        <details>
+          <summary>Flat vs point: which should I buy?</summary>
+          <div class="ans">Whole packer is ideal. If you can only pick one, the point is more forgiving (fattier). The flat slices beautifully but dries faster if overcooked.</div>
+        </details>
+
+        <details>
+          <summary>How do I reheat brisket without drying it out?</summary>
+          <div class="ans">Slice only what you’ll eat. Reheat gently with a splash of beef stock (covered) at ~275°F until warmed through.</div>
+        </details>
+      </section>
 
     <footer>© <span id="y"></span> solwinternitz.com</footer>
   </div>

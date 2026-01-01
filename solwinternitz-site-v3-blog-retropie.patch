@@ -1,0 +1,304 @@
+diff --git a/assets/site.css b/assets/site.css
+index 5998c03..ffd0158 100644
+--- a/assets/site.css
++++ b/assets/site.css
+@@ -329,6 +329,73 @@ a.card .thumb{
+ }
+ 
+ 
++
++
++/* Post navigation + FAQ */
++.postnav{
++  display:flex;
++  gap: 8px;
++  flex-wrap: wrap;
++  margin-top: 12px;
++}
++.postnav a{
++  display:inline-block;
++  font-size: 12px;
++  padding: 6px 10px;
++  border-radius: 999px;
++  border: 1px solid var(--line);
++  background: color-mix(in srgb, var(--card2) 72%, transparent);
++  color: var(--muted);
++}
++.postnav a:hover{
++  border-color: color-mix(in srgb, var(--accent) 40%, var(--line));
++  color: var(--accent);
++}
++
++.faq details{
++  border: 1px solid var(--line);
++  border-radius: 14px;
++  background: color-mix(in srgb, var(--card2) 72%, transparent);
++  padding: 10px 12px;
++  margin: 10px 0;
++}
++.faq summary{
++  cursor: pointer;
++  font-weight: 650;
++  color: color-mix(in srgb, var(--text) 92%, var(--muted));
++  list-style: none;
++}
++.faq summary::-webkit-details-marker{ display:none; }
++.faq summary::after{
++  content: "▾";
++  float:right;
++  opacity: .7;
++}
++.faq details[open] summary::after{ content: "▴"; }
++.faq .ans{ color: var(--muted); margin-top: 8px; }
++
++.share-row{
++  display:flex;
++  gap: 10px;
++  flex-wrap: wrap;
++  align-items:center;
++  margin-top: 12px;
++}
++.btn{
++  display:inline-block;
++  font-size: 12px;
++  padding: 6px 10px;
++  border-radius: 999px;
++  border: 1px solid var(--line);
++  background: color-mix(in srgb, var(--card) 78%, transparent);
++  color: var(--text);
++  cursor:pointer;
++}
++.btn:hover{
++  border-color: color-mix(in srgb, var(--accent) 40%, var(--line));
++  color: var(--accent);
++}
++
+ /* Print: keep recipe readable */
+ @media print{
+   .top, .nav, .mode { display:none !important; }
+diff --git a/blog/blackened-grilled-salmon.html b/blog/blackened-grilled-salmon.html
+index a321727..ee52ea8 100644
+--- a/blog/blackened-grilled-salmon.html
++++ b/blog/blackened-grilled-salmon.html
+@@ -28,7 +28,13 @@
+         </div>
+ 
+         <a class="jump" href="#recipe" aria-label="Jump to recipe">Jump to recipe →</a>
+-        <a class="jump" href="#" onclick="window.print(); return false;" aria-label="Print recipe">Print</a>
++        
++        <nav class="postnav" aria-label="Jump links">
++          <a href="#story">Story</a>
++          <a href="#recipe">Recipe</a>
++          <a href="#faq">FAQ</a>
++        </nav>
++<a class="jump" href="#" onclick="window.print(); return false;" aria-label="Print recipe">Print</a>
+       </div>
+ 
+       <nav class="nav" aria-label="Primary navigation">
+@@ -46,12 +52,14 @@
+       <div class="cap">High heat + short cook. Sauce afterward. Confidence required (but you’ll earn it).</div>
+     </section>
+ 
+-    <section class="card">
++    <section class="card" id="story">
+       <h2>The story</h2>
+       <p>
+         Blackened salmon is my go-to when I want dinner to feel like a flex but I also want it to be over quickly.
+         It’s the culinary equivalent of wearing a blazer over a t-shirt: minimal effort, maximum effect.
+       </p>
++
++      <div class="callout"><strong>Food nerd note:</strong> Salmon is a high-fat fish, so texture is mostly a timing game. Pull it early, rest for a few minutes, and you’ll keep it silky instead of dry and chalky.</div>
+       <p>
+         “Blackened” is really just a high-heat sear paired with a spice-heavy coating. The goal isn’t bitterness or actual burning;
+         it’s a toasted crust that tastes like confidence.
+@@ -130,6 +138,26 @@
+       </div>
+     </section>
+ 
++
++      <section class="card faq" id="faq">
++        <h2>FAQ</h2>
++
++        <details>
++          <summary>Can I use a cast iron pan instead of a grill?</summary>
++          <div class="ans">Yes. Preheat a cast iron skillet over medium-high, oil lightly, and sear the salmon 2–4 minutes per side (depending on thickness). Keep the sauce cold and serve immediately.</div>
++        </details>
++
++        <details>
++          <summary>How do I know when salmon is done?</summary>
++          <div class="ans">Aim for an internal temp around 125–130°F for medium, or cook until it flakes easily and the center is just barely opaque.</div>
++        </details>
++
++        <details>
++          <summary>What’s the best way to reheat leftovers?</summary>
++          <div class="ans">Salmon is best cold or gently rewarmed. Use a low oven (275°F) for 10–15 minutes; avoid microwaving on high, which can dry it out.</div>
++        </details>
++      </section>
++
+     <footer>© <span id="y"></span> solwinternitz.com</footer>
+   </div>
+ 
+diff --git a/blog/brisket-basics.html b/blog/brisket-basics.html
+index d9e0c08..1a7cfed 100644
+--- a/blog/brisket-basics.html
++++ b/blog/brisket-basics.html
+@@ -29,7 +29,13 @@
+         </div>
+ 
+         <a class="jump" href="#recipe" aria-label="Jump to recipe">Jump to recipe →</a>
+-        <a class="jump" href="#" onclick="window.print(); return false;" aria-label="Print recipe">Print</a>
++        
++        <nav class="postnav" aria-label="Jump links">
++          <a href="#story">Story</a>
++          <a href="#recipe">Workflow</a>
++          <a href="#faq">FAQ</a>
++        </nav>
++<a class="jump" href="#" onclick="window.print(); return false;" aria-label="Print recipe">Print</a>
+       </div>
+ 
+       <nav class="nav" aria-label="Primary navigation">
+@@ -47,12 +53,14 @@
+       <div class="cap">You’re not “making brisket.” You’re supervising time and temperature.</div>
+     </section>
+ 
+-    <section class="card">
++    <section class="card" id="story">
+       <h2>The story</h2>
+       <p>
+         The first brisket cook feels like you’re signing up for a marathon. You start early, you watch the thermometer like it’s a heart monitor,
+         and you tell everyone “it’ll be ready when it’s ready” while quietly wondering if you ruined it.
+       </p>
++
++      <div class="callout"><strong>Food nerd note:</strong> Brisket feels like a spice problem, but it’s really a heat-management problem. Most “bad brisket” is either rushed through the rest or sliced before it has time to settle.</div>
+       <p>
+         And then you do it a few more times and realize brisket is mostly a mindset: set yourself up with the right prep,
+         run steady heat, don’t panic at the stall, and treat resting like a real step instead of an afterthought.
+@@ -131,6 +139,26 @@
+       </div>
+     </section>
+ 
++
++      <section class="card faq" id="faq">
++        <h2>FAQ</h2>
++
++        <details>
++          <summary>What if my brisket stalls for hours?</summary>
++          <div class="ans">Totally normal. The stall is evaporative cooling. If you want to push through, wrap once bark is set (butcher paper for better bark, foil for speed).</div>
++        </details>
++
++        <details>
++          <summary>Flat vs point: which should I buy?</summary>
++          <div class="ans">Whole packer is ideal. If you can only pick one, the point is more forgiving (fattier). The flat slices beautifully but dries faster if overcooked.</div>
++        </details>
++
++        <details>
++          <summary>How do I reheat brisket without drying it out?</summary>
++          <div class="ans">Slice only what you’ll eat. Reheat gently with a splash of beef stock (covered) at ~275°F until warmed through.</div>
++        </details>
++      </section>
++
+     <footer>© <span id="y"></span> solwinternitz.com</footer>
+   </div>
+ 
+diff --git a/blog/italian-chicken-roulade.html b/blog/italian-chicken-roulade.html
+index bd09bbb..11878c5 100644
+--- a/blog/italian-chicken-roulade.html
++++ b/blog/italian-chicken-roulade.html
+@@ -29,7 +29,13 @@
+         </div>
+ 
+         <a class="jump" href="#recipe" aria-label="Jump to recipe">Jump to recipe →</a>
+-        <a class="jump" href="#" onclick="window.print(); return false;" aria-label="Print recipe">Print</a>
++        
++        <nav class="postnav" aria-label="Jump links">
++          <a href="#story">Story</a>
++          <a href="#recipe">Recipe</a>
++          <a href="#faq">FAQ</a>
++        </nav>
++<a class="jump" href="#" onclick="window.print(); return false;" aria-label="Print recipe">Print</a>
+       </div>
+ 
+       <nav class="nav" aria-label="Primary navigation">
+@@ -47,13 +53,15 @@
+       <div class="cap">Rolled, seared, finished gently — then sliced like you’re on a cooking show.</div>
+     </section>
+ 
+-    <section class="card">
++    <section class="card" id="story">
+       <h2>The story</h2>
+       <p>
+         The first time I made this, my dog had just had surgery and was wearing the cone. He wasn’t eating, so I did the responsible
+         thing and made him boiled chicken. He wanted none of it. But this roulade? Suddenly he was a food critic—he’d only eat it if I
+         fed him by hand. I don’t know what that says about him, but it says a lot about roulade.
+       </p>
++
++      <div class="callout"><strong>Food nerd note:</strong> Roulade is basically controlled stuffing. The tighter the roll and the more even the thickness, the more predictable the cook—and the better the slices look.</div>
+       <p>
+         I keep coming back to this dish because it’s the best kind of “fancy”: it looks like a restaurant plate, but the technique is
+         basically “roll something delicious inside chicken and don’t overcook it.”
+@@ -147,6 +155,26 @@
+       </div>
+     </section>
+ 
++
++      <section class="card faq" id="faq">
++        <h2>FAQ</h2>
++
++        <details>
++          <summary>Can I assemble the roulade ahead of time?</summary>
++          <div class="ans">Yes. Roll and tie it, then refrigerate (covered) up to 24 hours. Let it sit at room temp 20–30 minutes before roasting for more even cooking.</div>
++        </details>
++
++        <details>
++          <summary>Can I swap the deli meats/cheese?</summary>
++          <div class="ans">Absolutely. Keep the same idea: something fatty/salty + something melty. Prosciutto, mortadella, or mozzarella work well; just avoid overstuffing.</div>
++        </details>
++
++        <details>
++          <summary>What’s the best way to reheat leftovers?</summary>
++          <div class="ans">Slice and rewarm in a low oven (275°F) until hot. Reheating gently keeps the filling from separating and preserves the crust.</div>
++        </details>
++      </section>
++
+     <footer>© <span id="y"></span> solwinternitz.com</footer>
+   </div>
+ 
+diff --git a/index.html b/index.html
+index 4357247..42bed71 100644
+--- a/index.html
++++ b/index.html
+@@ -32,7 +32,7 @@
+         Current focus: tightening site structure (clean navigation, consistent styling), then expanding the recipe journal and projects log.
+       </div>
+       <div class="meta">
+-        Domains in play: <span class="pill">solwinternitz.com</span> <span class="pill">solwinternitz.com</span>
++        Domains in play: <span class="pill">solwinternitz.com</span> <span class="pill">solomonwinternitz.com</span>
+       </div>
+     </div>
+ 
+@@ -80,7 +80,7 @@
+         <ul>
+           <li><strong>Food</strong> — consistent “story + recipe card” format for every post</li>
+           <li><strong>Photos</strong> — safe hosting from my home machine with restricted access</li>
+-          <li><strong>Projects</strong> — RetroPie / Jumpbox notes and build log</li>
++          <li><strong>Projects</strong> — <a href="/projects/retropie-jumpbox.html">RetroPie / Jumpbox</a> notes and build log</li>
+         </ul>
+         <div class="note">Next: align navigation + styling across Food and Projects index pages.</div>
+       </section>
+diff --git a/projects/index.html b/projects/index.html
+index da2622c..d523b63 100644
+--- a/projects/index.html
++++ b/projects/index.html
+@@ -38,10 +38,10 @@
+       <section class="card">
+         <h2>Active</h2>
+         <ul>
+-          <li><strong>RetroPie / Jumpbox</strong> — build + configuration notes (we can publish a dedicated page next)</li>
++          <li><strong><a href="/projects/retropie-jumpbox.html">RetroPie / Jumpbox</a></strong> — Raspberry Pi arcade build + configuration notes (fan control, networking, PS1 library pipeline)</li>
+           <li><strong>Photo calendar workflow</strong> — curation + print pipeline for the Europe trip</li>
+         </ul>
+-        <div class="muted" style="margin-top:10px;">Next: add a “RetroPie / Jumpbox” detail page with links, parts, and a build log.</div>
++        <div class="muted" style="margin-top:10px;">Now live: a dedicated RetroPie / Jumpbox page with build notes, commands, and a living checklist.</div>
+       </section>
+ 
+       <section class="card">

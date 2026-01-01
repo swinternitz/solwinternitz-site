@@ -329,6 +329,73 @@ a.card .thumb{
 }
 
 
+
+
+/* Post navigation + FAQ */
+.postnav{
+  display:flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 12px;
+}
+.postnav a{
+  display:inline-block;
+  font-size: 12px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: color-mix(in srgb, var(--card2) 72%, transparent);
+  color: var(--muted);
+}
+.postnav a:hover{
+  border-color: color-mix(in srgb, var(--accent) 40%, var(--line));
+  color: var(--accent);
+}
+
+.faq details{
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: color-mix(in srgb, var(--card2) 72%, transparent);
+  padding: 10px 12px;
+  margin: 10px 0;
+}
+.faq summary{
+  cursor: pointer;
+  font-weight: 650;
+  color: color-mix(in srgb, var(--text) 92%, var(--muted));
+  list-style: none;
+}
+.faq summary::-webkit-details-marker{ display:none; }
+.faq summary::after{
+  content: "▾";
+  float:right;
+  opacity: .7;
+}
+.faq details[open] summary::after{ content: "▴"; }
+.faq .ans{ color: var(--muted); margin-top: 8px; }
+
+.share-row{
+  display:flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items:center;
+  margin-top: 12px;
+}
+.btn{
+  display:inline-block;
+  font-size: 12px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: color-mix(in srgb, var(--card) 78%, transparent);
+  color: var(--text);
+  cursor:pointer;
+}
+.btn:hover{
+  border-color: color-mix(in srgb, var(--accent) 40%, var(--line));
+  color: var(--accent);
+}
+
 /* Print: keep recipe readable */
 @media print{
   .top, .nav, .mode { display:none !important; }
