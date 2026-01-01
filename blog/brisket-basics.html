@@ -15,7 +15,7 @@
 
     header{ display:flex; justify-content:space-between; align-items:flex-start; gap:16px; flex-wrap:wrap; margin-bottom:14px; }
     h1{ margin:0; font-size:38px; letter-spacing:-.4px; line-height:1.1; }
-    .sub{ color:var(--muted); margin-top:10px; max-width:76ch; }
+    .sub{ color:var(--muted); margin-top:10px; max-width:78ch; }
     nav a{ text-decoration:none; margin-right:12px; color:#222; font-size:14px; }
     nav a:hover{ opacity:.85; }
 
@@ -87,8 +87,8 @@
       <div>
         <h1>The Brisket Basics</h1>
         <div class="sub">
-          This is my repeatable brisket workflow: trim, season, manage the stall, decide when to wrap, then rest like you mean it.
-          Brisket is mostly patience plus a handful of decisions that matter.
+          Brisket is the long game: you take a tough cut, apply smoke and patience, and eventually it turns into something absurdly tender.
+          The hardest part is not cooking it—it’s not messing with it.
         </div>
         <div class="meta-row">
           <span class="pill">Smoker</span>
@@ -108,39 +108,46 @@
 
     <section class="hero">
       <img src="/assets/images/brisket.jpeg" alt="Smoked brisket." />
-      <div class="cap">Brisket is a vibe: smoke, time, and a rest that feels longer than it should.</div>
+      <div class="cap">You’re not “making brisket.” You’re supervising time and temperature.</div>
     </section>
 
     <section class="card">
-      <h2>The vibe</h2>
+      <h2>The story</h2>
       <p>
-        Brisket looks intimidating because it takes all day, but the actual work is a short checklist.
-        The goal is simple: build bark, render fat, keep it juicy, then don’t ruin it by slicing too early.
+        The first brisket cook feels like you’re signing up for a marathon. You start early, you watch the thermometer like it’s a heart monitor,
+        and you tell everyone “it’ll be ready when it’s ready” while quietly wondering if you ruined it.
+      </p>
+      <p>
+        And then you do it a few more times and realize brisket is mostly a mindset: set yourself up with the right prep,
+        run steady heat, don’t panic at the stall, and treat resting like a real step instead of an afterthought.
       </p>
 
-      <h3>What matters (and what doesn’t)</h3>
+      <h3>A tiny bit of history (because brisket has lore)</h3>
+      <p class="small">
+        Texas smoked brisket has a well-documented history tied to immigrant communities (including Jewish, Czech, and German Texans) and
+        the evolution of smokehouses and delis into what we now call Texas barbecue. :contentReference[oaicite:5]{index=5}
+      </p>
+
+      <h3>The big decisions (the ones that actually move the needle)</h3>
       <ul>
-        <li><strong>Trim:</strong> keep enough fat for protection, remove the weird hard stuff that won’t render.</li>
-        <li><strong>Rub:</strong> salt + pepper gets you 80%. The rest is personal style.</li>
-        <li><strong>Heat management:</strong> stable temps beat fancy gadgets.</li>
-        <li><strong>Wrap timing:</strong> choose bark vs speed; don’t panic at the stall.</li>
+        <li><strong>Trim:</strong> remove hard fat that won’t render; keep enough fat to protect the meat.</li>
+        <li><strong>Rub:</strong> salt + pepper gets you most of the way; everything else is signature.</li>
+        <li><strong>Wrap or not:</strong> wrap for speed and moisture; stay naked for bark.</li>
+        <li><strong>When to pull:</strong> “probe tender” beats chasing a single number.</li>
         <li><strong>Rest:</strong> this is where brisket becomes brisket.</li>
       </ul>
 
       <div class="callout small">
-        <strong>Brisket truth:</strong> there’s no prize for finishing early. If you’re “on time,” you probably didn’t rest long enough.
+        <strong>Brisket truth:</strong> if you slice early because you’re excited, brisket will punish you.
+        Rest is not optional—it’s the final step.
       </div>
 
-      <h3>Serving ideas</h3>
+      <h3>Leftovers are the reward</h3>
       <ul>
-        <li>Simple: sliced brisket + pickles + onions + white bread</li>
-        <li>Not simple (but fun): brisket tacos, brisket grilled cheese, brisket breakfast hash</li>
+        <li>Breakfast hash (brisket + potatoes + onions)</li>
+        <li>Tacos (brisket + onions + lime + something spicy)</li>
+        <li>Grilled cheese (dangerous in the best way)</li>
       </ul>
-
-      <h3>Storage</h3>
-      <p class="small">
-        Brisket keeps well. Slice only what you’re eating and keep the rest as a whole piece if possible. Reheat gently (wrapped, low oven).
-      </p>
     </section>
 
     <div id="recipe" class="anchor"></div>
@@ -154,9 +161,9 @@
             <li>Whole brisket (packer, if possible)</li>
             <li>Kosher salt</li>
             <li>Coarse black pepper</li>
-            <li>Optional: garlic powder, paprika (for color), a little cayenne</li>
+            <li>Optional: garlic powder, paprika (color), a little cayenne</li>
             <li>Yellow mustard (optional binder)</li>
-            <li>Wood (oak/hickory/pecan; whatever you like)</li>
+            <li>Wood (oak/hickory/pecan—your preference)</li>
           </ul>
 
           <h3>Solomon’s special rub (directional)</h3>
@@ -167,36 +174,31 @@
             <li>Optional heat if you want it</li>
           </ul>
 
-          <div class="note">Next iteration: we’ll lock exact ratios once you confirm your preferred blend.</div>
+          <div class="note">Next iteration: we’ll lock ratios + smoker temp based on your setup.</div>
         </aside>
 
         <div class="steps">
           <h3 style="margin-top:0;">Instructions</h3>
           <ol>
             <li><strong>Trim.</strong> Shape the brisket. Leave a reasonable fat cap; remove hard fat that won’t render.</li>
-            <li><strong>Season.</strong> Optional mustard binder. Apply rub generously. Let it sit while the smoker comes up to temp.</li>
-            <li><strong>Smoke.</strong> Run steady “low & slow.” Put brisket on, fat orientation based on your heat source (fat toward the heat).</li>
-            <li><strong>Ride the stall.</strong> Expect a stall. Don’t panic. Decide: wrap for speed/moisture or keep unwrapped for bark.</li>
-            <li><strong>Wrap (optional).</strong> Butcher paper keeps bark better; foil pushes speed and softness.</li>
+            <li><strong>Season.</strong> Optional mustard binder. Apply rub generously.</li>
+            <li><strong>Smoke.</strong> Run steady low heat. Place brisket with fat toward your heat source.</li>
+            <li><strong>Ride the stall.</strong> Expect it. Decide: wrap for speed/moisture or stay unwrapped for bark.</li>
+            <li><strong>Wrap (optional).</strong> Butcher paper preserves bark better; foil pushes speed/softness.</li>
             <li><strong>Cook until tender.</strong> The goal is “probe tender,” not a magic number.</li>
-            <li><strong>Rest.</strong> Rest a long time (wrapped). Then slice against the grain.</li>
+            <li><strong>Rest.</strong> Rest a long time (wrapped). Slice against the grain.</li>
           </ol>
 
           <div class="callout small">
-            <strong>Probe tender cue:</strong> when a probe slides in with little resistance (like warm butter), you’re there.
+            <strong>Probe tender cue:</strong> when a probe slides in with little resistance (warm butter), you’re there.
             If it still feels tight, keep going.
           </div>
-
-          <div class="note">Next iteration: we’ll add your smoker temp, wrap threshold, and a tighter finish/rest plan.</div>
         </div>
       </div>
     </section>
 
-    <footer>
-      © <span id="y"></span> solomonwinternitz.com
-    </footer>
+    <footer>© <span id="y"></span> solomonwinternitz.com</footer>
   </div>
-
   <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
 </body>
 </html>
