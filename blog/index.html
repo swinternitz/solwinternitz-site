@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Blog | Sol Winternitz</title>
+  <meta name="description" content="Recipes, notes, and experiments." />
+  <style>
+    :root { --max: 920px; --muted:#555; --line:#e7e7e7; }
+    body { font-family: system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif; line-height: 1.6; margin: 0; }
+    .wrap { max-width: var(--max); margin: 48px auto; padding: 0 18px; }
+    header { display:flex; justify-content: space-between; align-items: baseline; gap: 16px; flex-wrap: wrap; }
+    h1 { margin: 0; font-size: 38px; letter-spacing: -0.3px; }
+    .sub { color: var(--muted); margin-top: 8px; }
+    nav a { text-decoration: none; margin-right: 12px; }
+    hr { border: none; border-top: 1px solid var(--line); margin: 18px 0 22px; }
+    .card { border: 1px solid var(--line); border-radius: 14px; padding: 16px; }
+    .meta { color: var(--muted); font-size: 14px; margin-top: 6px; }
+    ul { padding-left: 18px; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div>
+        <h1>Blog</h1>
+        <div class="sub">Recipes, notes, and experiments.</div>
+      </div>
+      <nav class="meta">
+        <a href="/">Home</a>
+        <a href="/blog/">Blog</a>
+      </nav>
+    </header>
+
+    <hr />
+
+    <div class="card">
+      <h2 style="margin:0 0 10px 0;">Posts</h2>
+      <ul>
+        <li>
+          <a href="/blog/brisket-basics.html">The Brisket Basics</a>
+          <div class="meta">A simple, repeatable brisket workflow: selection, rub, stall, wrap, rest.</div>
+        </li>
+        <li style="margin-top:10px;">
+          <a href="/blog/blackened-grilled-salmon.html">Blackened Grilled Salmon Feast</a>
+          <div class="meta">Salmon with creamy dill sauce, rice pilaf, and grilled asparagus.</div>
+        </li>
+      </ul>
+    </div>
+
+    <footer style="margin-top:44px;color:#666;font-size:14px;">
+      <div>Tip: I’ll add real photos as I re-cook these and refine the writeups.</div>
+    </footer>
+  </div>
+</body>
+</html>
