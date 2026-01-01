@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Photos | Solomon Winternitz</title>
-  <meta name="description" content="Photo galleries and notes." />
+  <meta name="description" content="Galleries and photo projects." />
   <link rel="stylesheet" href="/assets/site.css" />
   <script src="/assets/theme.js" defer></script>
 </head>
@@ -15,7 +15,7 @@
       <div class="brand">
         <h1>Photos</h1>
         <div class="tag">
-          Galleries and photo projects. Some links may require authentication or only be online when a home service is running.
+          A mix of public highlights and private galleries. Some links may only be online when a home service is awake.
         </div>
       </div>
 
@@ -23,50 +23,35 @@
         <a href="/">Home</a>
         <a href="/food/">Food</a>
         <a href="/projects/">Projects</a>
-        <a href="/photos/" aria-current="page">Photos</a>
+        <a href="/photos/">Photos</a>
         <a href="https://github.com/swinternitz">GitHub</a>
-              <button class="pill mode" id="theme-toggle" type="button" aria-label="Toggle theme" onclick="window.__toggleTheme && window.__toggleTheme()">Mode</button>
-</nav>
+        <button class="pill mode" id="theme-toggle" type="button" aria-label="Toggle theme" onclick="window.__toggleTheme && window.__toggleTheme()">Mode</button>
+      </nav>
     </div>
 
     <section class="card">
-      <h2>Photos (work in progress)</h2>
-      <div class="muted">
-        This tab is intentionally minimal for now. The long‑term plan is a locally-hosted folder on my PC exposed through a Cloudflare Tunnel, gated behind authentication, and only online when my machine is awake.
+      <h2>How this will work</h2>
+      <p>
+        I’m aiming for two tiers:
+      </p>
+      <ul>
+        <li><strong>Public highlights</strong> — curated albums that are safe to share.</li>
+        <li><strong>Private vault</strong> — originals hosted from my home machine behind Cloudflare Zero Trust access controls.</li>
+      </ul>
+      <div class="note">
+        The private vault is intentionally gated. No open ports, no “public directory listing,” and access will be restricted by identity (or at least a strong auth layer).
       </div>
-
-      <div style="margin-top:12px;">
-        <span class="pill">Local vault (planned)</span>
-        <span class="pill">Food process shots</span>
-        <span class="pill">Family</span>
-      </div>
-
-      <a class="photo-collage" href="/" aria-label="Back to Home">
-  <span class="snap" style="--x:8%;--y:18%;--rot:-7deg;">
-    <img src="/assets/images/cyrus.jpg" alt="Cyrus" loading="lazy" decoding="async" />
-  </span>
-  <span class="snap" style="--x:30%;--y:56%;--rot:5deg;">
-    <img src="/assets/images/sol-and-alex-russian-mob.jpg" alt="Sol and Alex" loading="lazy" decoding="async" />
-  </span>
-  <span class="snap" style="--x:56%;--y:14%;--rot:6deg;">
-    <img src="/assets/images/dad-with-cyrus.jpg" alt="Dad with Cyrus" loading="lazy" decoding="async" />
-  </span>
-  <span class="snap" style="--x:70%;--y:56%;--rot:-4deg;">
-    <img src="/assets/images/cyrus-belly.jpg" alt="Cyrus belly rub" loading="lazy" decoding="async" />
-  </span>
-  <span class="label">More coming soon</span>
-</a>
     </section>
 
     <section class="card">
-      <h2>Plan</h2>
-      <div class="muted">Current approach: Cloudflare Tunnel + a small local file server bound to localhost, gated by Cloudflare Access. The public-facing site stays static on GitHub Pages.</div>
-      <ul>
-        <li><strong>Option A (easy):</strong> link to Google Photos shared albums (public or unlisted)</li>
-        <li><strong>Option B (controlled):</strong> serve a local folder via Cloudflare Tunnel + Cloudflare Access (authenticated), with the origin bound to localhost</li>
-        <li><strong>Option C (hybrid):</strong> best-of albums on Google Photos + originals at home</li>
+      <h2>Galleries</h2>
+      <div class="muted">
+        Coming soon: a handful of stable public albums. Until then, the best photos live inside the recipe posts and the project write‑ups.
+      </div>
+      <ul style="margin-top:12px;">
+        <li><strong>Food cooks</strong> — process shots + final plates (linked from each recipe post)</li>
+        <li><strong>Europe trip picks</strong> — curated shots for the calendar project (publish later)</li>
       </ul>
-      <div class="muted">Next housekeeping step: align the Projects index navigation and styling to match Home/Food/Photos.</div>
     </section>
 
     <footer>

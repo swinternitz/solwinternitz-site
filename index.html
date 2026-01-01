@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Solomon Winternitz</title>
-  <meta name="description" content="Projects, notes, and a growing recipe journal." />
+  <meta name="description" content="Food, builds, and photo projects—kept simple, written clearly, and updated as I go." />
   <link rel="stylesheet" href="/assets/site.css" />
   <script src="/assets/theme.js" defer></script>
 </head>
@@ -14,7 +14,7 @@
     <div class="top">
       <div class="brand">
         <h1>Solomon Winternitz</h1>
-        <div class="tag">A small personal hub for projects, notes, and a growing recipe journal—real cooks and photos as I iterate.</div>
+        <div class="tag">Food, builds, and photos—kept simple, written clearly, and updated as I go.</div>
       </div>
 
       <nav class="nav" aria-label="Primary navigation">
@@ -23,131 +23,106 @@
         <a href="/projects/">Projects</a>
         <a href="/photos/">Photos</a>
         <a href="https://github.com/swinternitz">GitHub</a>
-              <button class="pill mode" id="theme-toggle" type="button" aria-label="Toggle theme" onclick="window.__toggleTheme && window.__toggleTheme()">Mode</button>
-</nav>
+        <button class="pill mode" id="theme-toggle" type="button" aria-label="Toggle theme" onclick="window.__toggleTheme && window.__toggleTheme()">Mode</button>
+      </nav>
     </div>
 
-    <div class="hero">
-      <div class="lead">
-        I build things, I cook a lot, and I like keeping notes that are actually useful later.
-        This site is a small personal hub: recipes written like a cooking log, project write-ups that include the commands that matter,
-        and a slowly-growing photo vault.
+    <section class="card">
+      <h2>Welcome</h2>
+      <p>
+        This site is my personal “hub”: a growing recipe journal (real cooks, real photos) plus the occasional deep‑dive project write‑up.
+        I’m building it in public and keeping it intentionally lightweight—fast pages, clean navigation, no gimmicks.
+      </p>
+      <p class="muted">
+        If you’re here for food: start with the featured recipes below. If you’re here for builds: the RetroPie Jumpbox write‑up is the current flagship.
+      </p>
+
+      <a class="photo-collage" href="/photos/" aria-label="Open Photos">
+        <span class="snap" style="--x:10%;--y:18%;--rot:-6deg;">
+          <img src="/assets/images/cyrus.jpg" alt="Cyrus lounging" />
+        </span>
+        <span class="snap" style="--x:58%;--y:14%;--rot:7deg;">
+          <img src="/assets/images/sol-and-alex-russian-mob.jpg" alt="Sol and Alex dressed up" />
+        </span>
+        <span class="snap" style="--x:34%;--y:52%;--rot:-3deg;">
+          <img src="/assets/images/tamales-with-pazole.jpg" alt="Jerk chicken tamales with pozole" />
+        </span>
+        <span class="snap" style="--x:74%;--y:52%;--rot:4deg;">
+          <img src="/assets/images/swordfish-grilling.jpg" alt="Swordfish on the grill" />
+        </span>
+        <span class="snap" style="--x:18%;--y:64%;--rot:6deg;">
+          <img src="/assets/images/crispy-skin-salmon-with-tabouleh.jpg" alt="Crispy-skin salmon with tabouleh" />
+        </span>
+      </a>
+    </section>
+
+    <section class="card">
+      <h2>Featured recipes</h2>
+
+      <div class="tiles">
+        <a class="tile" href="/blog/jerk-chicken-tamales-with-shrimp-pozole.html">
+          <div class="thumb" style="background-image:url('/assets/images/tamales-with-pazole.jpg');"></div>
+          <div class="body">
+            <div class="kicker">Mexican‑adjacent</div>
+            <h3>Jerk Chicken Tamales + Shrimp Pozole</h3>
+            <p>Tamales with queso Oaxaca, avocado pico, crema—plus a bowl of pozole you’ll think about all week.</p>
+            <div class="meta">Read the full post →</div>
+          </div>
+        </a>
+
+        <a class="tile" href="/blog/crispy-skin-salmon-with-cauliflower-tabouleh.html">
+          <div class="thumb" style="background-image:url('/assets/images/crispy-skin-salmon-with-tabouleh.jpg');"></div>
+          <div class="body">
+            <div class="kicker">Seafood</div>
+            <h3>Crispy‑Skin Salmon + Cauliflower Tabouleh</h3>
+            <p>Shatter‑crisp skin, bright tabouleh, and a clean weeknight plate that repeats well.</p>
+            <div class="meta">Read the full post →</div>
+          </div>
+        </a>
+
+        <a class="tile" href="/blog/grilled-swordfish-with-warm-tomato-capers.html">
+          <div class="thumb" style="background-image:url('/assets/images/swordfish-finished.jpg');"></div>
+          <div class="body">
+            <div class="kicker">Grill</div>
+            <h3>Grilled Swordfish + Warm Tomato &amp; Capers</h3>
+            <p>Big‑boy fish, sharp capers, warm tomatoes—served with rice pilaf and a crisp slaw.</p>
+            <div class="meta">Read the full post →</div>
+          </div>
+        </a>
+
+        <a class="tile" href="/blog/parmesan-crusted-flounder-orzo.html">
+          <div class="thumb" style="background-image:url('/assets/images/flounder-finished.jpg');"></div>
+          <div class="body">
+            <div class="kicker">Weeknight</div>
+            <h3>Parmesan‑Crusted Flounder + Orzo</h3>
+            <p>Seasoned panko + parm, pan‑fried in butter/olive oil, finished with lemon beurre blanc.</p>
+            <div class="meta">Read the full post →</div>
+          </div>
+        </a>
       </div>
-      <div class="meta">
-        <span class="pill">Food journal</span>
-        <span class="pill">Build logs</span>
-        <span class="pill">Photos</span>
+    </section>
+
+    <section class="card">
+      <h2>Projects</h2>
+      <p>
+        I write up builds the same way I write recipes: what worked, what didn’t, and how to repeat it without drama.
+      </p>
+      <div class="tiles" style="margin-top:12px;">
+        <a class="tile" href="/projects/retropie-jumpbox.html">
+          <div class="thumb" style="background-image:url('/assets/images/cyrus-belly.jpg');"></div>
+          <div class="body">
+            <div class="kicker">Homelab</div>
+            <h3>RetroPie Jumpbox</h3>
+            <p>A full build article: stable cooling, SSH/networking, library discipline, and a PS1 CHD + M3U pipeline that keeps things clean.</p>
+            <div class="meta">Read the build →</div>
+          </div>
+        </a>
       </div>
-    </div>
 
-    <div class="grid">
-      <section class="card">
-        <h2>Featured recipes</h2>
-
-        <div class="tiles">
-  <a class="tile" href="/blog/crispy-skin-salmon-with-cauliflower-tabouleh.html">
-    <div class="thumb" style="background-image:url('/assets/images/crispy-skin-salmon-with-tabouleh.jpg');"></div>
-    <div class="body">
-      <div class="kicker">Seafood</div>
-      <h3>Crispy-Skin Salmon + Cauliflower Tabouleh</h3>
-      <p>Shatter-crisp skin, bright tabouleh, and a clean weeknight plate that repeats well.</p>
-      <div class="meta">Read the full post →</div>
-    </div>
-  </a>
-
-  <a class="tile" href="/blog/grilled-swordfish-with-warm-tomato-capers.html">
-    <div class="thumb" style="background-image:url('/assets/images/swordfish-finished.jpg');"></div>
-    <div class="body">
-      <div class="kicker">Grill</div>
-      <h3>Grilled Swordfish + Warm Tomato &amp; Capers</h3>
-      <p>A steak-like fish with a bright, salty topping—built for rice pilaf and summer slaws.</p>
-      <div class="meta">Read the full post →</div>
-    </div>
-  </a>
-
-  <a class="tile" href="/blog/parmesan-crusted-flounder-orzo.html">
-    <div class="thumb" style="background-image:url('/assets/images/flounder-finished.jpg');"></div>
-    <div class="body">
-      <div class="kicker">Weeknight</div>
-      <h3>Parmesan-Crusted Flounder + Orzo with Lemon Beurre Blanc</h3>
-      <p>Crisp panko-parm fish, spinach–radicchio orzo, and a glossy sauce that ties the whole plate together.</p>
-      <div class="meta">Read the full post →</div>
-    </div>
-  </a>
-
-  <a class="tile" href="/blog/jerk-chicken-tamales-with-shrimp-pozole.html">
-    <div class="thumb" style="background-image:url('/assets/images/tamales-with-pazole.jpg');"></div>
-    <div class="body">
-      <div class="kicker">Mexican</div>
-      <h3>Jerk Chicken Tamales + Shrimp Pozole</h3>
-      <p>One big, satisfying meal: tamales with Oaxaca cheese, avocado pico, crema—and a soup you’ll want on repeat.</p>
-      <div class="meta">Read the full post →</div>
-    </div>
-  </a>
-</div><div class="body">
-              <div class="kicker">Smoker</div>
-              <h3>The Brisket Basics</h3>
-              <p>Selection, trimming, Solomon’s special rub, the stall, wrap timing, and resting.</p>
-              <div class="meta">Read the full recipe →</div>
-            </div>
-          </a>
-
-          <a class="tile" href="/blog/crispy-skin-salmon-with-cauliflower-tabouleh.html">
-            <div class="thumb" style="background-image:url('/assets/images/crispy-skin-salmon-with-tabouleh.jpg');"></div>
-            <div class="body">
-              <div class="kicker">Seafood</div>
-              <h3>Crispy-Skin Salmon + Cauliflower Tabouleh</h3>
-              <p>Shatter-crisp skin, bright tabouleh, and a clean weeknight plate that repeats well.</p>
-              <div class="meta">Read the full recipe →</div>
-            </div>
-          </a>
-
-          <a class="tile" href="/blog/italian-chicken-roulade.html">
-            <div class="thumb" style="background-image:url('/assets/images/italian-chicken-roulade.jpeg');"></div>
-            <div class="body">
-              <div class="kicker">Italian</div>
-              <h3>Italian Chicken Roulade</h3>
-              <p>Soppressata, capicola, provolone—finished with a roasted tomato yogurt sauce.</p>
-              <div class="meta">Read the full recipe →</div>
-            </div>
-          </a>
-        </div>
-</section>
-
-      <section class="card">
-        <h2>What I’m working on</h2>
-        <ul>
-          <li><strong>Food</strong> — consistent “story + recipe card” format for every post</li>
-          <li><strong>Photos</strong> — safe hosting from my home machine with restricted access</li>
-          <li><strong>Projects</strong> — <a href="/projects/retropie-jumpbox.html">RetroPie / Jumpbox</a> notes and build log</li>
-        </ul>
-</section>
-
-      <section class="card">
-  <h2>Off the clock</h2>
-  <div class="muted">A few snapshots while the photo vault is still getting built.</div>
-
-  <a class="photo-collage" href="/photos/" aria-label="Open Photos">
-    <span class="snap" style="--x:6%;--y:14%;--rot:-6deg;">
-      <img src="/assets/images/cyrus.jpg" alt="Cyrus" loading="lazy" decoding="async" />
-    </span>
-    <span class="snap" style="--x:34%;--y:52%;--rot:5deg;">
-      <img src="/assets/images/sol-and-alex-russian-mob.jpg" alt="Sol and Alex" loading="lazy" decoding="async" />
-    </span>
-    <span class="snap" style="--x:58%;--y:18%;--rot:7deg;">
-      <img src="/assets/images/dad-with-cyrus.jpg" alt="Dad with Cyrus" loading="lazy" decoding="async" />
-    </span>
-    <span class="snap" style="--x:70%;--y:58%;--rot:-4deg;">
-      <img src="/assets/images/cyrus-belly.jpg" alt="Cyrus belly rub pose" loading="lazy" decoding="async" />
-    </span>
-    <span class="snap" style="--x:18%;--y:58%;--rot:3deg;">
-      <img src="/assets/images/tamales-with-pazole.jpg" alt="Tamales and pozole night" loading="lazy" decoding="async" />
-    </span>
-
-    <span class="label">Open Photos →</span>
-  </a>
-</section>
-    </div>
+      <div class="note" style="margin-top:14px;">
+        If you want the “photo vault” idea: the plan is private hosting from my home machine behind Cloudflare access controls. Public galleries will be curated.
+      </div>
+    </section>
 
     <footer>
       © <span id="y"></span> Solomon Winternitz

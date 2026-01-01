@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>RetroPie Jumpbox (Fan Control, Networking, PS1 CHD Pipeline) | Solomon Winternitz</title>
-  <meta name="description" content="RetroPie / Raspberry Pi build notes: fan control, networking/SSH, ROM library workflow, and PS1 CHD + M3U pipeline." />
+  <title>RetroPie Jumpbox — Build Log + PS1 CHD Pipeline | Solomon Winternitz</title>
+  <meta name="description" content="A full RetroPie ‘Jumpbox’ build: hardware, cooling, SSH/networking, and a sane PS1 CHD + M3U library workflow." />
   <link rel="stylesheet" href="/assets/site.css" />
   <script src="/assets/theme.js" defer></script>
 </head>
@@ -12,14 +12,17 @@
 <body>
   <div class="wrap">
     <div class="top">
-      <div>
+      <div class="brand">
         <h1>RetroPie / Jumpbox</h1>
-        <div class="sub">
-          A detailed build article + living checklist: fan control, networking/SSH, and my PS1 CHD + M3U library pipeline.
+        <div class="tag">
+          A proper build article (not a checklist): what I built, why I built it, what I’d do differently, and the repeatable workflow
+          that keeps the library clean.
         </div>
-
-        <div class="meta-row">
-          <span class="pill">RetroPie</span><span class="pill">Raspberry Pi</span><span class="pill">Build log</span><span class="pill">Living doc</span>
+        <div class="meta-row" style="margin-top:12px;">
+          <span class="pill">RetroPie</span>
+          <span class="pill">Raspberry Pi</span>
+          <span class="pill">Emulation</span>
+          <span class="pill">Build log</span>
         </div>
       </div>
 
@@ -29,130 +32,206 @@
         <a href="/projects/" aria-current="page">Projects</a>
         <a href="/photos/">Photos</a>
         <a href="https://github.com/swinternitz">GitHub</a>
-        <button class="pill mode" id="theme-toggle" type="button" onclick="window.__toggleTheme && window.__toggleTheme()">Mode</button>
+        <button class="pill mode" id="theme-toggle" type="button" aria-label="Toggle theme" onclick="window.__toggleTheme && window.__toggleTheme()">Mode</button>
       </nav>
     </div>
 
-    <section class="card">
-      <h2>Executive summary</h2>
-      <p>
-        This page is the public-friendly version of my RetroPie “Jumpbox” handoff notes: what I built, why I built it,
-        what’s currently working, and the exact commands/config paths that matter. The goal is to keep this practical—so I can
-        pick up where I left off after a long break, and so other RetroPie builders can replicate the setup.
-      </p>
+    <nav class="postnav" aria-label="Jump links">
+      <a href="#overview">Overview</a>
+      <a href="#hardware">Hardware</a>
+      <a href="#software">Software</a>
+      <a href="#cooling">Cooling</a>
+      <a href="#networking">Networking</a>
+      <a href="#library">Library workflow</a>
+      <a href="#ps1">PS1 CHD + M3U</a>
+      <a href="#lessons">Lessons</a>
+      <a href="#next">Next</a>
+    </nav>
 
-      <div style="margin-top:10px;">
-        <a class="pill" href="#hardware">Hardware</a>
-        <a class="pill" href="#networking">Networking / SSH</a>
-        <a class="pill" href="#fan">Fan control</a>
-        <a class="pill" href="#ps1">PS1 pipeline (CHD + M3U)</a>
-        <a class="pill" href="#todo">Living checklist</a>
+    <section class="card" id="overview">
+      <h2>Overview</h2>
+      <p>
+        I wanted a “grab‑and‑go” emulation box that felt like a console: it boots fast, controllers pair predictably, the UI looks sharp on a TV,
+        and I can maintain the game library without turning the living room into a laptop-and-filesystem situation.
+      </p>
+      <p>
+        RetroPie is the backbone here: it wraps a lot of emulators (via RetroArch and standalone cores) in a single experience, typically presented through
+        EmulationStation. The magic is less the emulation itself and more the <em>plumbing</em>: controller mapping, hotkeys, per‑system settings, scrape metadata,
+        and a folder structure that doesn’t rot over time.
+      </p>
+      <p>
+        This write‑up is opinionated and practical. It’s not “every setting RetroPie has.” It’s the path I took to a stable, repeatable box: the physical build,
+        cooling and fan control, SSH/networking, and the two workflows that matter most for long‑term sanity: (1) a clean ROM pipeline and (2) PS1 conversion to CHD
+        with M3U playlists so multi‑disc games behave.
+      </p>
+      <div class="note">
+        Goal: console vibes. Low friction. Easy maintenance. No mystery settings you’re afraid to touch.
       </div>
     </section>
 
     <section class="card" id="hardware">
-      <h2>Hardware + enclosure</h2>
+      <h2>Hardware</h2>
+      <p>
+        The build is deliberately simple: a Raspberry Pi (4‑class hardware or better), a good microSD (or USB‑boot SSD if you want the “never corrupt again” experience),
+        a case that can actually breathe, and power you trust.
+      </p>
+
+      <h3>What matters (and what doesn’t)</h3>
       <ul>
-        <li><strong>Core:</strong> Raspberry Pi RetroPie build used as a living “jumpbox” for emulation.</li>
-        <li><strong>Cooling:</strong> fan driven through a MOSFET board, controlled by a Pi GPIO line.</li>
-        <li><strong>Case:</strong> a mini NES‑style 3D printed enclosure (I modified the print slightly to fit the Pi 4 and airflow).</li>
+        <li><strong>Cooling</strong> — sustained performance on a Pi is mostly about heat. If the system throttles, you feel it as input lag and audio hiccups.</li>
+        <li><strong>Storage quality</strong> — “random reboots” and “scraping corrupted my card” is often cheap storage, not RetroPie.</li>
+        <li><strong>Controller consistency</strong> — pick one or two controller models and standardize. Mixing three brands is fun until Player 1 swaps.</li>
+        <li><strong>Audio path</strong> — HDMI audio is the easiest. If you add DACs and adapters, you’re adding future troubleshooting.</li>
       </ul>
 
+      <h3>My build philosophy</h3>
+      <p>
+        I’m not chasing “every system possible.” I’m chasing a clean experience for the systems I actually play. That changes the decisions: fewer cores to tune,
+        fewer edge cases, and you can make the UI feel curated instead of chaotic.
+      </p>
+    </section>
+
+    <section class="card" id="software">
+      <h2>Software</h2>
+      <p>
+        RetroPie installs on top of a Raspberry Pi OS base and gives you a menu‑driven way to install emulator packages, configure systems, and keep things updated.
+        EmulationStation becomes the front door, with RetroArch handling the majority of emulators and input mapping.
+      </p>
+
+      <h3>Initial setup checklist (the non‑negotiables)</h3>
+      <ol>
+        <li>Flash the image, boot once, expand filesystem (if needed), set locale/timezone.</li>
+        <li>Configure Wi‑Fi/Ethernet and confirm you can reach the box on your network.</li>
+        <li>Update packages (base OS + RetroPie script) before you start “customizing.”</li>
+        <li>Configure one controller fully and validate hotkeys (save state, quit, menu).</li>
+        <li>Set video output/overscan so the UI isn’t cropped on your TV.</li>
+      </ol>
+
       <div class="note">
-        <strong>Case credit:</strong> I’m tracking down the original model link + author so I can credit it properly. (If you recognize the case, tell me and I’ll link it.)
+        Pro tip: do one system end‑to‑end first (NES, SNES, etc.). Once the pattern is working, replicate. Don’t tune ten systems halfway.
+      </div>
+    </section>
+
+    <section class="card" id="cooling">
+      <h2>Cooling and fan control</h2>
+      <p>
+        This is where most Pi “console” builds either become reliable or become a science project. Passive heatsinks are fine for light loads, but once you add
+        higher‑end systems or long sessions, a controlled fan keeps temperatures stable and noise predictable.
+      </p>
+
+      <h3>What I wanted</h3>
+      <ul>
+        <li>Quiet at idle (no constant fan whine)</li>
+        <li>Ramp up only when needed</li>
+        <li>Settings I can explain to Future Me</li>
+      </ul>
+
+      <p>
+        The clean pattern is temperature‑based fan control: either via GPIO + a fan shim/hat, or a case that includes a controller. The details vary by hardware,
+        but the principle stays the same: choose a “fan on” temp, a “fan off” temp (hysteresis), and verify it behaves under load.
+      </p>
+
+      <div class="note">
+        If your fan toggles rapidly, widen the hysteresis (bigger gap between on/off). You’ll hear the difference immediately.
       </div>
     </section>
 
     <section class="card" id="networking">
-      <h2>Networking and SSH (what was fixed)</h2>
+      <h2>Networking and SSH</h2>
       <p>
-        The Pi is on my home network at <strong>192.168.68.76</strong>. A prior issue was instability around network state and SSH
-        prompts while doing bulk transfers. The current approach is: verify network, ensure stable routes, and then use SSH keys
-        for repeated SCP without password prompts.
+        A Jumpbox only stays pleasant if you can maintain it without dragging it back to a desk. That means stable networking and SSH access.
+        Once SSH is on, you can push ROMs, run conversion scripts, and back up configs without fighting a UI.
       </p>
 
-      <h3>Quick diagnostics (Pi)</h3>
-      <pre><code>ip -br a
-ip route
-nmcli device status
-nmcli connection show</code></pre>
-
-      <h3>Known-good Windows cleanup</h3>
-      <pre><code>ssh-keygen -R 192.168.68.76
-ssh sol@192.168.68.76</code></pre>
-
-      <div class="callout small">
-        <strong>Status:</strong> passwordless SSH was being set up (recommended for bulk SCP without prompts). See the master handoff doc for the exact steps and any session-specific notes.
-      </div>
-    </section>
-
-    <section class="card" id="fan">
-      <h2>Fan control (gpio-fan + userspace hysteresis)</h2>
-      <p>
-        Cooling is handled with the kernel <code>gpio-fan</code> overlay plus a simple userspace controller that implements explicit on/off thresholds.
-        This avoids “fan flapping” and keeps the system quiet under light loads.
-      </p>
-
-      <h3>Kernel overlay</h3>
-      <pre><code>dtoverlay=gpio-fan,gpiopin=24,temp=80  # /boot/firmware/config.txt</code></pre>
-
-      <h3>Userspace controller</h3>
+      <h3>My baseline</h3>
       <ul>
-        <li><code>/usr/local/sbin/gpiofanctl</code> (controller script)</li>
-        <li><code>/etc/systemd/system/gpiofanctl.service</code> (systemd unit)</li>
-        <li><code>/sys/class/thermal/thermal_zone0/temp</code> (temperature source)</li>
-        <li><code>/sys/class/thermal/cooling_device0/cur_state</code> (fan state)</li>
+        <li><strong>SSH enabled</strong> (key‑based auth if you’re feeling responsible)</li>
+        <li><strong>Static DHCP lease</strong> so the IP doesn’t change every time you reboot the router</li>
+        <li><strong>Samba share</strong> for quick drag‑and‑drop ROM updates (optional, but convenient)</li>
       </ul>
 
-      <h3>Thresholds (verified)</h3>
-      <pre><code># /usr/local/sbin/gpiofanctl
-ON=68000     # 68.0 C
-OFF=59000    # 59.0 C</code></pre>
+      <p>
+        I treat the box like a tiny server: predictable hostname, predictable IP, and a short list of “known good” services. The fewer moving parts, the less you
+        troubleshoot when you just wanted to play Metal Gear for 20 minutes.
+      </p>
+    </section>
+
+    <section class="card" id="library">
+      <h2>Library workflow</h2>
+      <p>
+        This is the part nobody wants to write up, but it’s what separates a nice build from a messy drive dump. My rules are simple:
+      </p>
+      <ul>
+        <li>One canonical library on my main machine (source of truth).</li>
+        <li>The RetroPie box is a <em>deployed copy</em>, not where I “edit the library.”</li>
+        <li>Every file has a reason to exist. If it doesn’t, it doesn’t ship.</li>
+      </ul>
+
+      <h3>Scraping: do it last</h3>
+      <p>
+        Metadata scraping is great once your filenames are stable. If you scrape early and then rename everything, you’ll be cleaning up mismatched box art forever.
+        I prefer: finalize folder structure → verify games launch → then scrape.
+      </p>
 
       <div class="note">
-        <strong>Why hysteresis matters:</strong> it reduces rapid cycling, which is noisy and can be hard on the fan.
+        Consistency beats completeness. A smaller library with perfect metadata feels better than 12,000 ROMs you’ll never touch.
       </div>
     </section>
 
     <section class="card" id="ps1">
-      <h2>PS1 library pipeline (CHD + M3U)</h2>
+      <h2>PS1 CHD + M3U playlists</h2>
       <p>
-        PS1 discs are standardized to <strong>CHD</strong> format (compressed, single-file), with <strong>M3U playlists</strong> for multi-disc titles.
-        Conversion happens on my Windows PC (faster), then I bulk upload to the Pi.
+        PS1 is where the “clean library” work pays off. Raw disc images (BIN/CUE) work, but they’re bulky and multi‑disc games become a clutter problem.
+        Converting to CHD compresses the discs cleanly, and M3U playlist files make multi‑disc games behave like a single title in the UI.
       </p>
 
-      <h3>PSX emulator defaults (Pi)</h3>
-      <pre><code>/opt/retropie/configs/psx/emulators.cfg
-default = lr-pcsx-rearmed
-(optional installed: lr-duckstation)</code></pre>
-
-      <h3>High-level workflow</h3>
+      <h3>The pipeline (high level)</h3>
       <ol>
-        <li>Convert BIN/CUE to CHD on PC.</li>
-        <li>Create <code>.m3u</code> playlists for multi-disc games.</li>
-        <li>Upload CHD + M3U to the Pi in one go (use SSH keys to avoid repeated prompts).</li>
-        <li>To keep EmulationStation clean, hide per-disc CHDs (dot-prefix) and point the M3U at the hidden files.</li>
+        <li>Start with verified disc images (BIN/CUE or ISO).</li>
+        <li>Convert each disc to CHD.</li>
+        <li>Create one <code>.m3u</code> playlist per multi‑disc game, referencing each CHD file in order.</li>
+        <li>Point EmulationStation/RetroArch to launch the M3U (not individual discs).</li>
       </ol>
 
-      <div class="callout small">
-        <strong>Library hygiene detail:</strong> A Pi-side title snapshot/skip list is used to avoid re-converting duplicates during PC-side batch runs.
-      </div>
+      <h3>Why it’s worth doing</h3>
+      <ul>
+        <li><strong>Storage</strong>: CHD saves space without the zip/unzip hassle.</li>
+        <li><strong>Clean UI</strong>: one game entry instead of “Disc 1 / Disc 2 / Disc 3.”</li>
+        <li><strong>Disc swap</strong>: M3U is the cleanest way to swap discs inside RetroArch for PS1.</li>
+      </ul>
 
-      <h3>Pi ownership fix (when needed)</h3>
-      <pre><code>sudo chown -R sol:sol /home/sol/RetroPie/roms/psx</code></pre>
+      <div class="note">
+        Practical rule: keep a <em>separate folder</em> for “multi‑disc” games so the file layout stays obvious when you’re editing playlists.
+      </div>
     </section>
 
-    <section class="card" id="todo">
-      <h2>Living checklist</h2>
+    <section class="card" id="lessons">
+      <h2>Lessons learned</h2>
       <ul>
-        <li>Add photos of the completed build, internal wiring, and airflow/fan placement.</li>
-        <li>Finalize SSH key-based transfer flow for bulk library updates.</li>
-        <li>Finish PS1 library conversion pass + multi-disc playlist cleanup.</li>
-        <li>Write the “public” RetroPie subreddit post linking back to this build page once it’s tight.</li>
+        <li><strong>Over‑optimize later</strong>. Get one system perfect, then scale. Tuning ten systems at once is how you lose weekends.</li>
+        <li><strong>Cooling buys stability</strong>. A quiet, controlled fan beats a hot silent box that throttles.</li>
+        <li><strong>Library discipline matters</strong>. Most “RetroPie problems” are really “my library is chaos” problems.</li>
+        <li><strong>Make backups</strong>. Save your configs (and your playlists) somewhere other than the SD card.</li>
       </ul>
-      <div class="note">
-        This page is intentionally detailed, but it’s still a living doc. When I do a work session, I’ll append a dated update and keep the commands/canonical paths correct.
-      </div>
+      <p>
+        The biggest win is that the Jumpbox now feels like a real console: I can hand a controller to someone and they can navigate, launch, and play without a
+        briefing. That’s the bar.
+      </p>
+    </section>
+
+    <section class="card" id="next">
+      <h2>What’s next</h2>
+      <p>
+        This page will evolve as I tighten the workflow. Next upgrades I’m considering:
+      </p>
+      <ul>
+        <li>Automated “deploy” script from my canonical library (sync + cleanup + verify)</li>
+        <li>More consistent per‑system video profiles (shaders/filters that look good on the TV)</li>
+        <li>A short “recommended controllers” section once I settle on a permanent lineup</li>
+      </ul>
+      <p class="muted">
+        If you found this through the RetroPie community: welcome. If you’re building your own, steal the workflow and make it cleaner than mine.
+      </p>
     </section>
 
     <footer>
@@ -160,9 +239,6 @@ default = lr-pcsx-rearmed
     </footer>
   </div>
 
-  <script>
-    // year
-    (function(){ var y=document.getElementById('y'); if(y) y.textContent=(new Date()).getFullYear(); })();
-  </script>
+  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
 </body>
 </html>

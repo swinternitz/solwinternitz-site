@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Projects | Solomon Winternitz</title>
-  <meta name="description" content="Projects, build notes, and experiments." />
+  <meta name="description" content="Build notes, experiments, and occasional deep dives." />
   <link rel="stylesheet" href="/assets/site.css" />
   <script src="/assets/theme.js" defer></script>
 </head>
@@ -15,12 +15,7 @@
       <div class="brand">
         <h1>Projects</h1>
         <div class="tag">
-          Build notes, experiments, and side quests. When something gets serious, it graduates into a proper write-up.
-        </div>
-        <div style="margin-top:10px;">
-          <span class="pill">Homelab</span>
-          <span class="pill">RetroPie</span>
-          <span class="pill">Automation</span>
+          Build notes, experiments, and side quests. When something gets serious, it graduates into a real write‑up.
         </div>
       </div>
 
@@ -30,28 +25,32 @@
         <a href="/projects/" aria-current="page">Projects</a>
         <a href="/photos/">Photos</a>
         <a href="https://github.com/swinternitz">GitHub</a>
-              <button class="pill mode" id="theme-toggle" type="button" aria-label="Toggle theme" onclick="window.__toggleTheme && window.__toggleTheme()">Mode</button>
-</nav>
+        <button class="pill mode" id="theme-toggle" type="button" aria-label="Toggle theme" onclick="window.__toggleTheme && window.__toggleTheme()">Mode</button>
+      </nav>
     </div>
 
-    <div class="grid">
-      <section class="card">
-        <h2>Active</h2>
-        <ul>
-          <li><strong><a href="/projects/retropie-jumpbox.html">RetroPie / Jumpbox</a></strong> — Raspberry Pi arcade build + configuration notes (fan control, networking, PS1 library pipeline)</li>
-                  </ul>
-        <div class="muted" style="margin-top:10px;">Now live: a dedicated RetroPie / Jumpbox page with build notes, commands, and a living checklist.</div>
-      </section>
+    <section class="card">
+      <h2>Featured</h2>
+      <div class="tiles">
+        <a class="tile" href="/projects/retropie-jumpbox.html">
+          <div class="thumb" style="background-image:url('/assets/images/swordfish-prep.jpg');"></div>
+          <div class="body">
+            <div class="kicker">Homelab</div>
+            <h3>RetroPie / Jumpbox</h3>
+            <p>A full build article: cooling, networking/SSH, and a clean PS1 CHD + M3U library pipeline.</p>
+            <div class="meta">Read the write‑up →</div>
+          </div>
+        </a>
+      </div>
+    </section>
 
-      <section class="card">
-        <h2>Backlog</h2>
-        <ul>
-          <li><strong>Home photo gallery</strong> — private hosting behind Cloudflare Access</li>
-          <li><strong>Site polish</strong> — unify headers/footers across all recipe pages (single shared snippet)</li>
-        </ul>
-        <div class="muted" style="margin-top:10px;">Once the structure is stable, we can add pages without breaking navigation.</div>
-      </section>
-    </div>
+    <section class="card">
+      <h2>Backlog</h2>
+      <ul>
+        <li><strong>Home photo vault</strong> — private hosting behind Cloudflare Zero Trust (no open ports)</li>
+        <li><strong>Site polish</strong> — add more recipe posts, keep the format consistent, and keep pages fast</li>
+      </ul>
+    </section>
 
     <footer>
       © <span id="y"></span> Solomon Winternitz
