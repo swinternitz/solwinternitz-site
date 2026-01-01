@@ -8,7 +8,7 @@
   <style>
     :root{ --max:980px; --muted:#555; --line:#e7e7e7; --radius:16px; }
     *{ box-sizing:border-box; }
-    body{ margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif; line-height:1.6; color:#111; background:#fafafa; }
+    body{ margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif; line-height:1.65; color:#111; background:#fafafa; }
     a{ color:inherit; }
     .wrap{ max-width:var(--max); margin:52px auto; padding:0 18px; }
 
@@ -43,12 +43,27 @@
       box-shadow:0 8px 20px rgba(0,0,0,.03);
     }
     h2{ margin:0 0 10px; font-size:18px; letter-spacing:-.2px; }
+    h3{ margin:18px 0 8px; font-size:16px; letter-spacing:-.1px; }
     ul{ margin:0; padding-left:18px; }
     li{ margin:8px 0; }
+    p{ margin:10px 0; color:#222; }
     .note{ color:var(--muted); font-size:13px; margin-top:10px; }
     .steps ol{ margin:0; padding-left:18px; }
     .steps li{ margin:10px 0; }
     .small{ font-size:14px; color:#333; }
+
+    .jump{
+      display:inline-flex; align-items:center; gap:8px;
+      margin-top:12px;
+      padding:8px 12px;
+      border:1px solid var(--line);
+      border-radius:999px;
+      background:#fff;
+      text-decoration:none;
+      font-size:14px;
+    }
+    .jump:hover{ background:#f3f3f3; }
+
     footer{ margin-top:30px; color:#666; font-size:14px; }
   </style>
 </head>
@@ -59,13 +74,17 @@
         <h1>Blackened Grilled Salmon Feast</h1>
         <div class="sub">
           Crispy-edged blackened salmon with a creamy dill yogurt sauce, rice pilaf, and grilled asparagus.
-          This is one of those “looks impressive, cooks fast” meals.
+          It’s my favorite kind of dinner: fast, reliable, and it looks like you tried harder than you did.
         </div>
         <div class="meta-row">
           <span class="pill">Grill</span>
           <span class="pill">Weeknight</span>
           <span class="pill">High-protein</span>
         </div>
+
+        <a class="jump" href="#recipe" aria-label="Jump to recipe">
+          Jump to recipe →
+        </a>
       </div>
       <nav aria-label="Primary navigation">
         <a href="/">Home</a>
@@ -76,20 +95,54 @@
 
     <section class="hero">
       <img src="/assets/images/salmon.jpeg" alt="Blackened grilled salmon." />
-      <div class="cap">Blackened salmon: high heat, short cook, rest briefly, then sauce.</div>
+      <div class="cap">High heat, short cook, rest briefly, then sauce. Don’t overthink it.</div>
     </section>
 
-    <div class="grid">
+    <section class="card">
+      <h2>Why I keep making this</h2>
+      <p>
+        Salmon is one of the few proteins that can feel “restaurant” with almost no effort—as long as you respect heat and timing.
+        The blackened seasoning gives you a punchy crust, and the dill yogurt sauce keeps it bright and balanced.
+      </p>
+
+      <h3>Why it works</h3>
+      <ul>
+        <li><strong>Dry fish + hot grill = better browning.</strong> Patting dry matters more than people think.</li>
+        <li><strong>Skin-on is forgiving.</strong> It protects the flesh and buys you a little extra time.</li>
+        <li><strong>Cold sauce, hot fish.</strong> The contrast makes it feel composed, not thrown together.</li>
+      </ul>
+
+      <h3>Tips (the stuff that prevents sadness)</h3>
+      <ul>
+        <li><strong>Oil the grates, not the fish.</strong> I still do both, but grates first is the “no-stick” lever.</li>
+        <li><strong>Don’t force the flip.</strong> When it’s ready, it releases. When it’s not, it tears.</li>
+        <li><strong>Stop cooking at “almost done.”</strong> Rest finishes the job.</li>
+      </ul>
+
+      <h3>Variations</h3>
+      <ul>
+        <li><strong>No dill?</strong> Parsley + lemon still works.</li>
+        <li><strong>Want richer?</strong> Do half yogurt / half mayo.</li>
+        <li><strong>No grill?</strong> Cast iron works: sear, then finish in oven.</li>
+      </ul>
+
+      <h3>Storage</h3>
+      <p class="small">
+        Leftovers keep 1–2 days. Reheat gently (low oven) or eat cold in a salad. The sauce keeps separately and gets better after a few hours.
+      </p>
+    </section>
+
+    <div class="grid" id="recipe" style="margin-top:14px;">
       <section class="card steps">
-        <h2>Method</h2>
+        <h2>Recipe</h2>
         <ol>
           <li><strong>Prep.</strong> Pat salmon dry. Lightly oil, then season generously with blackening spice (or paprika + garlic + cayenne + salt + pepper).</li>
-          <li><strong>Preheat grill.</strong> Medium-high. Clean grates well and oil them (fish sticks when you get lazy here).</li>
-          <li><strong>Grill.</strong> Skin-side down first. Close lid. Cook until it releases easily, then flip briefly to finish (or don’t flip if it’s thin).</li>
-          <li><strong>Rest.</strong> 2–3 minutes so juices settle.</li>
-          <li><strong>Sauce + sides.</strong> Spoon on dill sauce. Serve with rice pilaf and grilled asparagus.</li>
+          <li><strong>Preheat grill.</strong> Medium-high. Clean grates and oil them well.</li>
+          <li><strong>Grill.</strong> Skin-side down first. Close lid. Cook until it releases easily, then flip briefly to finish (or don’t flip if thin).</li>
+          <li><strong>Rest.</strong> 2–3 minutes.</li>
+          <li><strong>Sauce + sides.</strong> Spoon on dill yogurt sauce. Serve with rice pilaf and grilled asparagus.</li>
         </ol>
-        <div class="note">Next iteration: we’ll lock exact temps/times and your preferred spice blend.</div>
+        <div class="note">Next iteration: lock exact grill temp/time per thickness and your preferred spice blend.</div>
       </section>
 
       <aside class="card">
@@ -98,8 +151,8 @@
           <li>Salmon fillets (skin-on recommended)</li>
           <li>Oil (avocado or olive)</li>
           <li>Blackening seasoning (or paprika + garlic + cayenne + salt + pepper)</li>
-          <li>Fresh dill</li>
           <li>Plain yogurt (or mayo/yogurt blend)</li>
+          <li>Fresh dill</li>
           <li>Lemon (juice + zest)</li>
           <li>Garlic (microplaned)</li>
           <li>Rice pilaf + asparagus (to serve)</li>
