@@ -7,80 +7,151 @@
   <meta name="description" content="Projects, notes, and links." />
   <style>
     :root{
-      --bg: #fafafa;
-      --card: #ffffff;
-      --text: #111;
-      --muted: #555;
-      --line: #e7e7e7;
-      --max: 980px;
-      --radius: 16px;
+      --bg:#fafafa;
+      --card:#ffffff;
+      --text:#111;
+      --muted:#555;
+      --line:#e7e7e7;
+      --max:980px;
+      --radius:16px;
     }
-    *{ box-sizing: border-box; }
+    *{ box-sizing:border-box; }
     body{
-      margin: 0;
-      font-family: system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-      color: var(--text);
-      background: radial-gradient(1200px 600px at 20% -10%, #f0f7ff 0%, rgba(240,247,255,0) 60%),
-                  radial-gradient(900px 500px at 90% 0%, #fff3f0 0%, rgba(255,243,240,0) 55%),
-                  var(--bg);
-      line-height: 1.55;
+      margin:0;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(1200px 600px at 20% -10%, #f0f7ff 0%, rgba(240,247,255,0) 60%),
+        radial-gradient(900px 500px at 90% 0%, #fff3f0 0%, rgba(255,243,240,0) 55%),
+        var(--bg);
+      line-height:1.55;
     }
-    a{ color: inherit; }
-    a:hover{ opacity: 0.85; }
-    .wrap{
-      max-width: var(--max);
-      margin: 52px auto;
-      padding: 0 18px;
-    }
+    a{ color:inherit; }
+    a:hover{ opacity:.85; }
+    .wrap{ max-width:var(--max); margin:52px auto; padding:0 18px; }
     .top{
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 18px;
-      flex-wrap: wrap;
-      margin-bottom: 18px;
+      display:flex; justify-content:space-between; align-items:center;
+      gap:18px; flex-wrap:wrap; margin-bottom:18px;
     }
-    .brand h1{
-      margin: 0;
-      font-size: 42px;
-      letter-spacing: -0.6px;
-      line-height: 1.1;
-    }
-    .brand .tag{
-      margin-top: 8px;
-      color: var(--muted);
-      font-size: 16px;
-    }
+    .brand h1{ margin:0; font-size:42px; letter-spacing:-.6px; line-height:1.1; }
+    .brand .tag{ margin-top:8px; color:var(--muted); font-size:16px; }
+
     .nav{
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-      align-items: center;
-      padding: 10px 12px;
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      background: rgba(255,255,255,0.7);
-      backdrop-filter: blur(6px);
+      display:flex; gap:14px; flex-wrap:wrap; align-items:center;
+      padding:10px 12px; border:1px solid var(--line); border-radius:999px;
+      background:rgba(255,255,255,.7); backdrop-filter:blur(6px);
     }
     .nav a{
-      text-decoration: none;
-      font-size: 14px;
-      color: #222;
-      padding: 6px 10px;
-      border-radius: 999px;
+      text-decoration:none; font-size:14px; color:#222;
+      padding:6px 10px; border-radius:999px;
     }
-    .nav a:hover{
-      background: #f3f3f3;
-    }
+    .nav a:hover{ background:#f3f3f3; }
+
     .hero{
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      background: linear-gradient(180deg, rgba(255,255,255,0.9), #fff);
-      padding: 18px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.04);
-      margin: 18px 0 22px;
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      background:linear-gradient(180deg, rgba(255,255,255,.9), #fff);
+      padding:18px;
+      box-shadow:0 10px 25px rgba(0,0,0,.04);
+      margin:18px 0 22px;
     }
-    .hero .m
+    .hero .meta{ color:var(--muted); font-size:14px; margin-top:8px; }
 
+    .grid{ display:grid; grid-template-columns:1fr; gap:14px; }
+    @media (min-width:880px){ .grid{ grid-template-columns:1fr 1fr; } }
 
+    .card{
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      background:var(--card);
+      padding:16px;
+      box-shadow:0 8px 20px rgba(0,0,0,.03);
+    }
+    .card h2{ margin:0 0 10px 0; font-size:18px; letter-spacing:-.2px; }
+    ul{ margin:0; padding-left:18px; }
+    li{ margin:8px 0; }
+    .note{ color:var(--muted); font-size:13px; margin-top:10px; }
+
+    .pill{
+      display:inline-block;
+      font-size:12px;
+      padding:3px 10px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      color:#333;
+      background:#fff;
+      margin-left:8px;
+      vertical-align:middle;
+    }
+    footer{ margin-top:26px; color:#666; font-size:14px; padding:18px 2px; }
+    .small-links a{ text-decoration:none; border-bottom:1px solid #ddd; }
+    .small-links a:hover{ border-bottom-color:#aaa; }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="top">
+      <div class="brand">
+        <h1>Sol Winternitz</h1>
+        <div class="tag">Projects, notes, and links.</div>
+      </div>
+
+      <nav class="nav" aria-label="Primary navigation">
+        <a href="/">Home</a>
+        <a href="/blog/">Blog</a>
+        <a href="/projects/">Projects</a>
+        <a href="/food/">Food</a>
+        <a href="https://github.com/swinternitz">GitHub</a>
+      </nav>
+    </div>
+
+    <div class="hero">
+      <div style="font-size:16px;">
+        Building a small personal hub that ties together projects (home lab, retro builds, automation) and a growing recipe journal.
+      </div>
+      <div class="meta">
+        Canonical: <span class="pill">solwinternitz.com</span>
+        &nbsp;|&nbsp;
+        Alias: <span class="pill">solomonwinternitz.com → redirects</span>
+      </div>
+    </div>
+
+    <div class="grid">
+      <section class="card">
+        <h2>Quick links</h2>
+        <ul>
+          <li class="small-links">
+            <a href="https://europepics.solwinternitz.com/">Europe pics</a>
+            <span class="pill">when online</span>
+          </li>
+          <li class="small-links">
+            <a href="/blog/">Blog</a>
+            <span class="pill">2 posts</span>
+          </li>
+        </ul>
+        <div class="note">
+          Some links (like Europe pics) may be offline when I’m not running the local service.
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>What I’m working on</h2>
+        <ul>
+          <li><strong>Photo calendar</strong> — Europe trip curation workflow</li>
+          <li><strong>RetroPie / Jumpbox</strong> — build notes and configuration</li>
+          <li><strong>Food / recipes</strong> — migrating older posts and adding real cooks/photos</li>
+        </ul>
+      </section>
+    </div>
+
+    <footer>
+      © <span id="y"></span> solwinternitz.com
+      <!-- branch: main -->
+    </footer>
+  </div>
+
+  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+</body>
+</html>
 
