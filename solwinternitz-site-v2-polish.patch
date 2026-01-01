@@ -1,0 +1,199 @@
+diff --git a/blog/blackened-grilled-salmon.html b/blog/blackened-grilled-salmon.html
+index ea185d7..a321727 100644
+--- a/blog/blackened-grilled-salmon.html
++++ b/blog/blackened-grilled-salmon.html
+@@ -22,9 +22,13 @@
+           <span class="pill">Grill</span>
+           <span class="pill">Weeknight</span>
+           <span class="pill">Big flavor, low drama</span>
++          <span class="pill">25 min</span>
++          <span class="pill">Serves 2–4</span>
++
+         </div>
+ 
+         <a class="jump" href="#recipe" aria-label="Jump to recipe">Jump to recipe →</a>
++        <a class="jump" href="#" onclick="window.print(); return false;" aria-label="Print recipe">Print</a>
+       </div>
+ 
+       <nav class="nav" aria-label="Primary navigation">
+@@ -126,7 +130,7 @@
+       </div>
+     </section>
+ 
+-    <footer>© <span id="y"></span> solomonwinternitz.com</footer>
++    <footer>© <span id="y"></span> solwinternitz.com</footer>
+   </div>
+ 
+   <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+diff --git a/blog/brisket-basics.html b/blog/brisket-basics.html
+index 1dbb303..d9e0c08 100644
+--- a/blog/brisket-basics.html
++++ b/blog/brisket-basics.html
+@@ -23,9 +23,13 @@
+           <span class="pill">Smoker</span>
+           <span class="pill">Low &amp; slow</span>
+           <span class="pill">Weekend project</span>
++          <span class="pill">12–14 hr</span>
++          <span class="pill">Feeds a crowd</span>
++
+         </div>
+ 
+         <a class="jump" href="#recipe" aria-label="Jump to recipe">Jump to recipe →</a>
++        <a class="jump" href="#" onclick="window.print(); return false;" aria-label="Print recipe">Print</a>
+       </div>
+ 
+       <nav class="nav" aria-label="Primary navigation">
+@@ -127,7 +131,7 @@
+       </div>
+     </section>
+ 
+-    <footer>© <span id="y"></span> solomonwinternitz.com</footer>
++    <footer>© <span id="y"></span> solwinternitz.com</footer>
+   </div>
+ 
+   <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+diff --git a/blog/italian-chicken-roulade.html b/blog/italian-chicken-roulade.html
+index cccf9f1..bd09bbb 100644
+--- a/blog/italian-chicken-roulade.html
++++ b/blog/italian-chicken-roulade.html
+@@ -23,9 +23,13 @@
+           <span class="pill">Italian-inspired</span>
+           <span class="pill">Dinner-party capable</span>
+           <span class="pill">Actually not hard</span>
++          <span class="pill">45 min</span>
++          <span class="pill">Serves 2–3</span>
++
+         </div>
+ 
+         <a class="jump" href="#recipe" aria-label="Jump to recipe">Jump to recipe →</a>
++        <a class="jump" href="#" onclick="window.print(); return false;" aria-label="Print recipe">Print</a>
+       </div>
+ 
+       <nav class="nav" aria-label="Primary navigation">
+@@ -96,27 +100,32 @@
+         <aside>
+           <h3 style="margin-top:0;">Ingredients</h3>
+           <ul>
+-            <li>Chicken breast (butterflied) or chicken cutlets</li>
+-            <li>Soppressata</li>
+-            <li>Capicola</li>
+-            <li>Provolone</li>
+-            <li>Salt + pepper</li>
+-            <li>Garlic powder + Italian seasoning</li>
+-            <li>Neutral oil (for searing)</li>
+-            <li>Optional: Dijon (thin smear helps everything stick)</li>
++                        <li>2 large chicken breasts (butterflied) <em>or</em> 4 thin chicken cutlets</li>
++            <li>8 slices soppressata (or enough to cover the chicken in a single layer)</li>
++            <li>6–8 slices capicola</li>
++            <li>4 slices provolone</li>
++            <li>1 tsp kosher salt</li>
++            <li>1/2 tsp black pepper</li>
++            <li>1 tsp garlic powder</li>
++            <li>1 tsp Italian seasoning</li>
++            <li>1 tbsp neutral oil (for searing)</li>
++            <li>Optional: 1 tbsp Dijon (thin smear helps everything stick)</li>
++    
+           </ul>
+ 
+           <h3>Roasted tomato yogurt sauce</h3>
+           <ul>
+-            <li>Plain yogurt (Greek-style; you used Fage 0%)</li>
+-            <li>Roasted tomatoes (or blistered cherry tomatoes)</li>
+-            <li>Lemon (juice + zest)</li>
+-            <li>Garlic (microplaned)</li>
+-            <li>Olive oil, salt, pepper</li>
+-            <li>Optional herbs: dill or parsley</li>
++                        <li>1 cup Greek yogurt</li>
++            <li>1 cup roasted cherry tomatoes (see note)</li>
++            <li>1 tbsp lemon juice + 1 tsp zest</li>
++            <li>1 small garlic clove (microplaned)</li>
++            <li>1 tbsp olive oil</li>
++            <li>1/2 tsp kosher salt, plus black pepper to taste</li>
++            <li>Optional herbs: 1 tbsp chopped dill or parsley</li>
++    
+           </ul>
+ 
+-          <div class="note">Next iteration: we’ll lock exact amounts and your preferred tomato method.</div>
++          <div class="note"><strong>Roasted tomato note:</strong> Roast 1 pint cherry tomatoes at 425°F with a drizzle of olive oil + salt until blistered and jammy (20–25 min). Cool, then chop or mash into the yogurt.</div>
+         </aside>
+ 
+         <div class="steps">
+@@ -127,7 +136,7 @@
+             <li><strong>Fill.</strong> Soppressata + capicola + provolone, leaving a small border.</li>
+             <li><strong>Roll + secure.</strong> Roll tight. Tie with twine every 1–1.5 inches (or use toothpicks).</li>
+             <li><strong>Sear.</strong> Hot pan + oil. Brown all sides.</li>
+-            <li><strong>Finish gently.</strong> 375°F oven until cooked through, then rest 10 minutes.</li>
++            <li><strong>Finish gently.</strong> 375°F oven until cooked through (160–165°F internal), then rest 10 minutes.</li>
+             <li><strong>Slice + sauce.</strong> Slice thick. Spoon sauce over top.</li>
+           </ol>
+ 
+@@ -138,7 +147,7 @@
+       </div>
+     </section>
+ 
+-    <footer>© <span id="y"></span> solomonwinternitz.com</footer>
++    <footer>© <span id="y"></span> solwinternitz.com</footer>
+   </div>
+ 
+   <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+diff --git a/food/index.html b/food/index.html
+index 71f23c5..9e0c220 100644
+--- a/food/index.html
++++ b/food/index.html
+@@ -65,7 +65,7 @@
+     </div>
+ 
+     <footer>
+-      © <span id="y"></span> solomonwinternitz.com
++      © <span id="y"></span> solwinternitz.com
+     </footer>
+   </div>
+ 
+diff --git a/index.html b/index.html
+index 5ded5ac..4357247 100644
+--- a/index.html
++++ b/index.html
+@@ -32,7 +32,7 @@
+         Current focus: tightening site structure (clean navigation, consistent styling), then expanding the recipe journal and projects log.
+       </div>
+       <div class="meta">
+-        Domains in play: <span class="pill">solomonwinternitz.com</span> <span class="pill">solwinternitz.com</span>
++        Domains in play: <span class="pill">solwinternitz.com</span> <span class="pill">solwinternitz.com</span>
+       </div>
+     </div>
+ 
+@@ -87,7 +87,7 @@
+     </div>
+ 
+     <footer>
+-      © <span id="y"></span> solomonwinternitz.com
++      © <span id="y"></span> solwinternitz.com
+     </footer>
+   </div>
+ 
+diff --git a/photos/index.html b/photos/index.html
+index 52d48be..f93e06a 100644
+--- a/photos/index.html
++++ b/photos/index.html
+@@ -56,7 +56,7 @@
+     </section>
+ 
+     <footer>
+-      © <span id="y"></span> solomonwinternitz.com
++      © <span id="y"></span> solwinternitz.com
+     </footer>
+   </div>
+ 
+diff --git a/projects/index.html b/projects/index.html
+index aa67717..da2622c 100644
+--- a/projects/index.html
++++ b/projects/index.html
+@@ -55,7 +55,7 @@
+     </div>
+ 
+     <footer>
+-      © <span id="y"></span> solomonwinternitz.com
++      © <span id="y"></span> solwinternitz.com
+     </footer>
+   </div>
+ 
