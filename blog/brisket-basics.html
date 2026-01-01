@@ -3,117 +3,200 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>The Brisket Basics | Sol Winternitz</title>
-  <meta name="description" content="A practical brisket workflow: selecting the cut, trimming, a simple dry rub, low-and-slow smoking, the stall, and resting." />
+  <title>The Brisket Basics | Solomon Winternitz</title>
+  <meta name="description" content="A repeatable brisket workflow: trimming, Solomon’s special rub, the stall, wrapping, and resting." />
   <style>
-    :root { --max: 920px; --muted:#555; --line:#e7e7e7; }
-    body { font-family: system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif; line-height: 1.6; margin: 0; }
-    .wrap { max-width: var(--max); margin: 48px auto; padding: 0 18px; }
-    nav a { text-decoration: none; margin-right: 12px; }
-    header { display:flex; justify-content: space-between; align-items: baseline; gap: 16px; flex-wrap: wrap; }
-    h1 { margin: 0; font-size: 40px; letter-spacing: -0.3px; }
-    .sub { color: var(--muted); margin-top: 8px; }
-    hr { border: none; border-top: 1px solid var(--line); margin: 18px 0 22px; }
-    h2 { margin-top: 28px; }
-    .card { border: 1px solid var(--line); border-radius: 14px; padding: 16px; background: #fff; }
-    ul { margin-top: 8px; }
-    .meta { color: var(--muted); font-size: 14px; }
-    .two { display:grid; grid-template-columns: 1fr; gap: 14px; }
-    @media (min-width: 860px){ .two { grid-template-columns: 1fr 1fr; } }
-    code { background:#f6f6f6; padding: 2px 6px; border-radius: 6px; }
-    footer { margin-top: 44px; color: #666; font-size: 14px; }
+    :root{ --max:980px; --muted:#555; --line:#e7e7e7; --radius:16px; }
+    *{ box-sizing:border-box; }
+    html{ scroll-behavior:smooth; }
+    body{ margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif; line-height:1.7; color:#111; background:#fafafa; }
+    a{ color:inherit; }
+    .wrap{ max-width:var(--max); margin:52px auto; padding:0 18px; }
+
+    header{ display:flex; justify-content:space-between; align-items:flex-start; gap:16px; flex-wrap:wrap; margin-bottom:14px; }
+    h1{ margin:0; font-size:38px; letter-spacing:-.4px; line-height:1.1; }
+    .sub{ color:var(--muted); margin-top:10px; max-width:76ch; }
+    nav a{ text-decoration:none; margin-right:12px; color:#222; font-size:14px; }
+    nav a:hover{ opacity:.85; }
+
+    .meta-row{ display:flex; gap:8px; flex-wrap:wrap; margin-top:10px; }
+    .pill{ display:inline-block; font-size:12px; padding:3px 10px; border-radius:999px; border:1px solid var(--line); background:#fff; color:#333; }
+
+    .jump{
+      display:inline-flex; align-items:center; gap:8px;
+      margin-top:12px;
+      padding:8px 12px;
+      border:1px solid var(--line);
+      border-radius:999px;
+      background:#fff;
+      text-decoration:none;
+      font-size:14px;
+    }
+    .jump:hover{ background:#f3f3f3; }
+
+    .anchor{ position:relative; top:-14px; height:0; }
+    #recipe{ scroll-margin-top: 24px; }
+
+    .hero{
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      background:#fff;
+      overflow:hidden;
+      box-shadow:0 10px 25px rgba(0,0,0,.04);
+      margin:16px 0 18px;
+    }
+    .hero img{ width:100%; height:auto; display:block; }
+    .hero .cap{ padding:12px 14px; color:var(--muted); font-size:13px; border-top:1px solid var(--line); }
+
+    .card{
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      background:#fff;
+      padding:16px;
+      box-shadow:0 8px 20px rgba(0,0,0,.03);
+      margin-top:14px;
+    }
+
+    .two-col{ display:grid; grid-template-columns:1fr; gap:14px; }
+    @media (min-width: 900px){ .two-col{ grid-template-columns: .9fr 1.1fr; } }
+
+    h2{ margin:0 0 10px; font-size:18px; letter-spacing:-.2px; }
+    h3{ margin:18px 0 8px; font-size:16px; letter-spacing:-.1px; }
+    p{ margin:10px 0; color:#222; }
+    ul{ margin:0; padding-left:18px; }
+    li{ margin:8px 0; }
+    .note{ color:var(--muted); font-size:13px; margin-top:10px; }
+    .small{ font-size:14px; color:#333; }
+    .steps ol{ margin:0; padding-left:18px; }
+    .steps li{ margin:10px 0; }
+
+    .callout{
+      border:1px dashed #d9d9d9;
+      border-radius:12px;
+      padding:12px 12px;
+      background:#fcfcfc;
+      margin-top:12px;
+    }
+
+    footer{ margin-top:30px; color:#666; font-size:14px; }
   </style>
 </head>
-
 <body>
   <div class="wrap">
     <header>
       <div>
         <h1>The Brisket Basics</h1>
-        <div class="sub">A simple, repeatable brisket workflow: pick the right cut, season well, go low-and-slow, be patient through the stall, then rest and slice.</div>
+        <div class="sub">
+          This is my repeatable brisket workflow: trim, season, manage the stall, decide when to wrap, then rest like you mean it.
+          Brisket is mostly patience plus a handful of decisions that matter.
+        </div>
+        <div class="meta-row">
+          <span class="pill">Smoker</span>
+          <span class="pill">Low & slow</span>
+          <span class="pill">Weekend project</span>
+        </div>
+
+        <a class="jump" href="#recipe" aria-label="Jump to recipe">Jump to recipe →</a>
       </div>
-      <nav class="meta">
+
+      <nav aria-label="Primary navigation">
         <a href="/">Home</a>
-        <a href="/blog/">Blog</a>
+        <a href="/food/">Food</a>
+        <a href="/projects/">Projects</a>
       </nav>
     </header>
 
-    <hr />
+    <section class="hero">
+      <img src="/assets/images/brisket.jpeg" alt="Smoked brisket." />
+      <div class="cap">Brisket is a vibe: smoke, time, and a rest that feels longer than it should.</div>
+    </section>
 
-    <p class="meta">If you only remember three things: <strong>225°F and steady</strong>, <strong>don’t panic during the stall</strong>, and <strong>rest before slicing</strong>.</p>
-
-    <h2>Picking the brisket</h2>
-    <div class="card">
-      <ul>
-        <li>Look for a well-marbled brisket (USDA Prime or Choice), ideally with a thicker fat cap.</li>
-        <li>Brisket is two muscles (flat + point), which is why low-and-slow works so well.</li>
-      </ul>
-    </div>
-
-    <h2>Trim + season</h2>
-    <div class="two">
-      <div class="card">
-        <h3 style="margin-top:0;">Trim</h3>
-        <ul>
-          <li>Trim excess fat and silverskin, leaving enough fat to protect during the smoke.</li>
-          <li>Keep it simple: clean shape, no huge hard fat chunks.</li>
-        </ul>
-      </div>
-
-      <div class="card">
-        <h3 style="margin-top:0;">Sol’s Special Dry Rub</h3>
-        <div class="meta">Mix in a bowl, then coat generously.</div>
-        <ul>
-          <li>2 tbsp kosher salt</li>
-          <li>2 tbsp coarse black pepper</li>
-          <li>1 tbsp paprika</li>
-          <li>1 tbsp garlic powder</li>
-          <li>1 tbsp onion powder</li>
-          <li>1 tbsp brown sugar</li>
-          <li>1 tsp cayenne pepper (adjust to taste)</li>
-        </ul>
-      </div>
-    </div>
-
-    <h2>Smoke (low and slow)</h2>
-    <div class="card">
-      <ul>
-        <li>Set smoker to <strong>~225°F (107°C)</strong> and hold it steady.</li>
-        <li>Use a smoking wood you like (hickory, oak, or mesquite are classic choices).</li>
-        <li>Smoke until you approach the stall; focus on consistency more than the clock.</li>
-      </ul>
-      <p class="meta" style="margin-bottom:0;">
-        Practical note: if you want to add your “house style” later, we can standardize spritzing, wrap timing, and slice thickness into a repeatable checklist.
+    <section class="card">
+      <h2>The vibe</h2>
+      <p>
+        Brisket looks intimidating because it takes all day, but the actual work is a short checklist.
+        The goal is simple: build bark, render fat, keep it juicy, then don’t ruin it by slicing too early.
       </p>
-    </div>
 
-    <h2>The stall (where patience wins)</h2>
-    <div class="card">
+      <h3>What matters (and what doesn’t)</h3>
       <ul>
-        <li>The stall happens when internal temp plateaus. Don’t rush it.</li>
-        <li>When you’re ready, wrap in <strong>butcher paper</strong> or <strong>foil</strong> (“Texas crutch”) to retain moisture and push through.</li>
+        <li><strong>Trim:</strong> keep enough fat for protection, remove the weird hard stuff that won’t render.</li>
+        <li><strong>Rub:</strong> salt + pepper gets you 80%. The rest is personal style.</li>
+        <li><strong>Heat management:</strong> stable temps beat fancy gadgets.</li>
+        <li><strong>Wrap timing:</strong> choose bark vs speed; don’t panic at the stall.</li>
+        <li><strong>Rest:</strong> this is where brisket becomes brisket.</li>
       </ul>
-    </div>
 
-    <h2>Finish + rest</h2>
-    <div class="card">
-      <ul>
-        <li>Finish when internal temp is around <strong>200°F (93°C)</strong> and the probe feel is tender.</li>
-        <li>Rest at least <strong>30 minutes</strong> before slicing so juices redistribute.</li>
-      </ul>
-    </div>
+      <div class="callout small">
+        <strong>Brisket truth:</strong> there’s no prize for finishing early. If you’re “on time,” you probably didn’t rest long enough.
+      </div>
 
-    <h2>Serve</h2>
-    <div class="card">
+      <h3>Serving ideas</h3>
       <ul>
-        <li>Serve simply and let the brisket speak for itself.</li>
-        <li>Optional sides: barbecue sauce, pickles, and white bread (classic Texas-style).</li>
+        <li>Simple: sliced brisket + pickles + onions + white bread</li>
+        <li>Not simple (but fun): brisket tacos, brisket grilled cheese, brisket breakfast hash</li>
       </ul>
-    </div>
+
+      <h3>Storage</h3>
+      <p class="small">
+        Brisket keeps well. Slice only what you’re eating and keep the rest as a whole piece if possible. Reheat gently (wrapped, low oven).
+      </p>
+    </section>
+
+    <div id="recipe" class="anchor"></div>
+
+    <section class="card">
+      <h2>Recipe</h2>
+      <div class="two-col">
+        <aside>
+          <h3 style="margin-top:0;">Ingredients</h3>
+          <ul>
+            <li>Whole brisket (packer, if possible)</li>
+            <li>Kosher salt</li>
+            <li>Coarse black pepper</li>
+            <li>Optional: garlic powder, paprika (for color), a little cayenne</li>
+            <li>Yellow mustard (optional binder)</li>
+            <li>Wood (oak/hickory/pecan; whatever you like)</li>
+          </ul>
+
+          <h3>Solomon’s special rub (directional)</h3>
+          <ul>
+            <li>Salt + pepper base</li>
+            <li>Garlic powder for depth</li>
+            <li>Paprika for color</li>
+            <li>Optional heat if you want it</li>
+          </ul>
+
+          <div class="note">Next iteration: we’ll lock exact ratios once you confirm your preferred blend.</div>
+        </aside>
+
+        <div class="steps">
+          <h3 style="margin-top:0;">Instructions</h3>
+          <ol>
+            <li><strong>Trim.</strong> Shape the brisket. Leave a reasonable fat cap; remove hard fat that won’t render.</li>
+            <li><strong>Season.</strong> Optional mustard binder. Apply rub generously. Let it sit while the smoker comes up to temp.</li>
+            <li><strong>Smoke.</strong> Run steady “low & slow.” Put brisket on, fat orientation based on your heat source (fat toward the heat).</li>
+            <li><strong>Ride the stall.</strong> Expect a stall. Don’t panic. Decide: wrap for speed/moisture or keep unwrapped for bark.</li>
+            <li><strong>Wrap (optional).</strong> Butcher paper keeps bark better; foil pushes speed and softness.</li>
+            <li><strong>Cook until tender.</strong> The goal is “probe tender,” not a magic number.</li>
+            <li><strong>Rest.</strong> Rest a long time (wrapped). Then slice against the grain.</li>
+          </ol>
+
+          <div class="callout small">
+            <strong>Probe tender cue:</strong> when a probe slides in with little resistance (like warm butter), you’re there.
+            If it still feels tight, keep going.
+          </div>
+
+          <div class="note">Next iteration: we’ll add your smoker temp, wrap threshold, and a tighter finish/rest plan.</div>
+        </div>
+      </div>
+    </section>
 
     <footer>
-      <a href="/blog/">← Back to Blog</a>
+      © <span id="y"></span> solomonwinternitz.com
     </footer>
   </div>
+
+  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
 </body>
 </html>
