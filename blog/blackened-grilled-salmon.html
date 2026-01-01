@@ -15,7 +15,7 @@
 
     header{ display:flex; justify-content:space-between; align-items:flex-start; gap:16px; flex-wrap:wrap; margin-bottom:14px; }
     h1{ margin:0; font-size:38px; letter-spacing:-.4px; line-height:1.1; }
-    .sub{ color:var(--muted); margin-top:10px; max-width:74ch; }
+    .sub{ color:var(--muted); margin-top:10px; max-width:76ch; }
     nav a{ text-decoration:none; margin-right:12px; color:#222; font-size:14px; }
     nav a:hover{ opacity:.85; }
 
@@ -34,7 +34,6 @@
     }
     .jump:hover{ background:#f3f3f3; }
 
-    /* Anchor that scrolls to a comfortable spot */
     .anchor{ position:relative; top:-14px; height:0; }
     #recipe{ scroll-margin-top: 24px; }
 
@@ -68,7 +67,6 @@
     li{ margin:8px 0; }
     .note{ color:var(--muted); font-size:13px; margin-top:10px; }
     .small{ font-size:14px; color:#333; }
-
     .steps ol{ margin:0; padding-left:18px; }
     .steps li{ margin:10px 0; }
 
@@ -89,8 +87,8 @@
       <div>
         <h1>Blackened Grilled Salmon Feast</h1>
         <div class="sub">
-          This is my “I want something that tastes like I tried” salmon: bold blackened crust, cold creamy dill sauce,
-          and sides that require minimal emotional commitment (rice pilaf + grilled asparagus is my default).
+          This is my “looks impressive, cooks fast” salmon: bold seasoning, a crisp edge, and a cold creamy dill sauce.
+          Add rice pilaf and asparagus and suddenly it’s not just dinner—it’s a statement.
         </div>
         <div class="meta-row">
           <span class="pill">Grill</span>
@@ -110,54 +108,55 @@
 
     <section class="hero">
       <img src="/assets/images/salmon.jpeg" alt="Blackened grilled salmon." />
-      <div class="cap">Heat + timing. Then sauce. That’s the whole philosophy.</div>
+      <div class="cap">High heat + short cook. Sauce afterward. Confidence required (but you’ll earn it).</div>
     </section>
 
     <section class="card">
-      <h2>The vibe</h2>
+      <h2>The story</h2>
       <p>
-        If salmon has a superpower, it’s that it can taste “restaurant” with almost no prep—as long as you don’t overcook it.
-        Blackening seasoning gives you instant crust and attitude; the dill yogurt sauce keeps everything bright and balanced.
+        I make this when I want a dinner that feels like it came from a menu, but also I don’t want to do a lot of things.
+        Blackened salmon is basically “season aggressively and apply heat responsibly.” The sauce is my favorite part because it
+        makes the whole plate feel intentional—like I planned it—and not like I sprinted through the kitchen on fumes.
       </p>
 
-      <h3>Why it works</h3>
+      <h3>What “blackened” actually means (in human terms)</h3>
+      <p class="small">
+        It’s not burnt. It’s a spice crust that gets dark and toasty from high heat. The goal is flavor and contrast:
+        crisp outside, juicy inside.
+      </p>
+
+      <h3>Why this works</h3>
       <ul>
-        <li><strong>Dry fish browns better.</strong> Patting it dry is the difference between crust and steamed regret.</li>
-        <li><strong>Skin-on buys you forgiveness.</strong> It protects the flesh and helps you nail doneness.</li>
-        <li><strong>Cold sauce + hot fish feels intentional.</strong> Like a real plate, not a “whatever was in the fridge” situation.</li>
+        <li><strong>Dry fish browns.</strong> Patting it dry is the difference between crust and steamed regret.</li>
+        <li><strong>Skin-on buys you forgiveness.</strong> It protects the flesh and widens the “perfect” window.</li>
+        <li><strong>Cold sauce + hot fish.</strong> Contrast makes it taste more “done,” even if it was easy.</li>
       </ul>
 
-      <h3>Pro tips (the stuff that prevents sadness)</h3>
+      <h3>Variations you’ll actually use</h3>
       <ul>
-        <li><strong>Oil the grates.</strong> Fish sticks when you skip this. It’s not personal.</li>
-        <li><strong>Don’t force the flip.</strong> When it’s ready, it releases. When it’s not, it tears.</li>
-        <li><strong>Pull early, rest briefly.</strong> Residual heat finishes the job.</li>
+        <li><strong>Richer sauce:</strong> half yogurt / half mayo.</li>
+        <li><strong>No dill?</strong> parsley + lemon still slaps.</li>
+        <li><strong>No grill?</strong> cast iron: sear, then finish in the oven.</li>
+        <li><strong>More heat:</strong> add extra cayenne, but keep lemon in the mix so it stays bright.</li>
       </ul>
 
       <div class="callout small">
-        <strong>Seasoning note:</strong> If you’re using a store blend, taste it first. Some are salt bombs. If it’s salty, go lighter and finish with lemon instead.
+        <strong>Serving note:</strong> This is a “side-friendly” main. Rice pilaf, asparagus, potatoes, salad—anything works.
+        The sauce plays peacemaker with all of it.
       </div>
-
-      <h3>What to serve with it</h3>
-      <ul>
-        <li>Rice pilaf + grilled asparagus (the “I planned this” combo)</li>
-        <li>Big salad + roasted potatoes (if you want it more filling)</li>
-        <li>Leftovers: flake cold salmon into a salad or wrap</li>
-      </ul>
 
       <h3>Storage</h3>
       <p class="small">
-        Best in 1–2 days. Store sauce separately. Reheat salmon gently (low oven) or eat it cold—reheating fish aggressively is how you end up with salmon jerky.
+        Best within 1–2 days. Store sauce separately. Reheat salmon gently (low oven) or eat it cold in a salad so you don’t
+        overcook it on the second pass.
       </p>
     </section>
 
-    <!-- Anchor placed immediately before the recipe card -->
     <div id="recipe" class="anchor"></div>
 
     <section class="card">
       <h2>Recipe</h2>
       <div class="two-col">
-        <!-- INGREDIENTS FIRST: so Jump lands on ingredients on mobile -->
         <aside>
           <h3 style="margin-top:0;">Ingredients</h3>
           <ul>
@@ -190,11 +189,10 @@
           </ol>
 
           <div class="callout small">
-            <strong>Doneness cue:</strong> Look for opaque edges with a slightly translucent center that flakes with gentle pressure. Rest finishes it.
-            (We’ll lock a temperature target once you tell me how you like it.)
+            <strong>Doneness cue:</strong> Opaque edges with a slightly softer center that flakes with gentle pressure. Rest finishes it.
           </div>
 
-          <div class="note">Next iteration: exact cook time by thickness + your preferred spice blend.</div>
+          <div class="note">Next iteration: exact cook-time guidance by thickness and your preferred spice blend ratios.</div>
         </div>
       </div>
     </section>
