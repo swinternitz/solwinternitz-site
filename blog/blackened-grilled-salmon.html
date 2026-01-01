@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Blackened Grilled Salmon | Solomon Winternitz</title>
-  <meta name="description" content="Blackened grilled salmon with creamy dill sauce, rice pilaf, and grilled asparagus." />
+  <meta name="description" content="Blackened grilled salmon with creamy dill yogurt sauce, rice pilaf, and grilled asparagus." />
   <style>
     :root{ --max:980px; --muted:#555; --line:#e7e7e7; --radius:16px; }
     *{ box-sizing:border-box; }
@@ -14,43 +14,12 @@
 
     header{ display:flex; justify-content:space-between; align-items:baseline; gap:16px; flex-wrap:wrap; margin-bottom:14px; }
     h1{ margin:0; font-size:38px; letter-spacing:-.4px; line-height:1.1; }
-    .sub{ color:var(--muted); margin-top:10px; max-width:72ch; }
+    .sub{ color:var(--muted); margin-top:10px; max-width:74ch; }
     nav a{ text-decoration:none; margin-right:12px; color:#222; font-size:14px; }
     nav a:hover{ opacity:.85; }
 
     .meta-row{ display:flex; gap:8px; flex-wrap:wrap; margin-top:10px; }
     .pill{ display:inline-block; font-size:12px; padding:3px 10px; border-radius:999px; border:1px solid var(--line); background:#fff; color:#333; }
-
-    .hero{
-      border:1px solid var(--line);
-      border-radius:var(--radius);
-      background:#fff;
-      overflow:hidden;
-      box-shadow:0 10px 25px rgba(0,0,0,.04);
-      margin:16px 0 18px;
-    }
-    .hero img{ width:100%; height:auto; display:block; }
-    .hero .cap{ padding:12px 14px; color:var(--muted); font-size:13px; border-top:1px solid var(--line); }
-
-    .grid{ display:grid; grid-template-columns:1fr; gap:14px; }
-    @media (min-width: 900px){ .grid{ grid-template-columns: 1.2fr .8fr; } }
-
-    .card{
-      border:1px solid var(--line);
-      border-radius:var(--radius);
-      background:#fff;
-      padding:16px;
-      box-shadow:0 8px 20px rgba(0,0,0,.03);
-    }
-    h2{ margin:0 0 10px; font-size:18px; letter-spacing:-.2px; }
-    h3{ margin:18px 0 8px; font-size:16px; letter-spacing:-.1px; }
-    ul{ margin:0; padding-left:18px; }
-    li{ margin:8px 0; }
-    p{ margin:10px 0; color:#222; }
-    .note{ color:var(--muted); font-size:13px; margin-top:10px; }
-    .steps ol{ margin:0; padding-left:18px; }
-    .steps li{ margin:10px 0; }
-    .small{ font-size:14px; color:#333; }
 
     .jump{
       display:inline-flex; align-items:center; gap:8px;
@@ -64,6 +33,43 @@
     }
     .jump:hover{ background:#f3f3f3; }
 
+    .hero{
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      background:#fff;
+      overflow:hidden;
+      box-shadow:0 10px 25px rgba(0,0,0,.04);
+      margin:16px 0 18px;
+    }
+    .hero img{ width:100%; height:auto; display:block; }
+    .hero .cap{ padding:12px 14px; color:var(--muted); font-size:13px; border-top:1px solid var(--line); }
+
+    .card{
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      background:#fff;
+      padding:16px;
+      box-shadow:0 8px 20px rgba(0,0,0,.03);
+      margin-top:14px;
+    }
+
+    .grid{ display:grid; grid-template-columns:1fr; gap:14px; margin-top:14px; }
+    @media (min-width: 900px){ .grid{ grid-template-columns: 1.2fr .8fr; } }
+
+    h2{ margin:0 0 10px; font-size:18px; letter-spacing:-.2px; }
+    h3{ margin:18px 0 8px; font-size:16px; letter-spacing:-.1px; }
+    p{ margin:10px 0; color:#222; }
+    ul{ margin:0; padding-left:18px; }
+    li{ margin:8px 0; }
+    .note{ color:var(--muted); font-size:13px; margin-top:10px; }
+    .small{ font-size:14px; color:#333; }
+
+    .steps ol{ margin:0; padding-left:18px; }
+    .steps li{ margin:10px 0; }
+
+    .more a{ text-decoration:none; }
+    .more a:hover{ text-decoration:underline; }
+
     footer{ margin-top:30px; color:#666; font-size:14px; }
   </style>
 </head>
@@ -73,18 +79,15 @@
       <div>
         <h1>Blackened Grilled Salmon Feast</h1>
         <div class="sub">
-          Crispy-edged blackened salmon with a creamy dill yogurt sauce, rice pilaf, and grilled asparagus.
-          It’s my favorite kind of dinner: fast, reliable, and it looks like you tried harder than you did.
+          This is my “looks impressive, cooks fast” salmon: a bold blackened crust, a cold creamy dill sauce, and whatever
+          I have the energy for on the side (usually rice pilaf + grilled asparagus).
         </div>
         <div class="meta-row">
           <span class="pill">Grill</span>
           <span class="pill">Weeknight</span>
-          <span class="pill">High-protein</span>
+          <span class="pill">Big flavor, low drama</span>
         </div>
-
-        <a class="jump" href="#recipe" aria-label="Jump to recipe">
-          Jump to recipe →
-        </a>
+        <a class="jump" href="#recipe" aria-label="Jump to recipe">Jump to recipe →</a>
       </div>
       <nav aria-label="Primary navigation">
         <a href="/">Home</a>
@@ -95,75 +98,96 @@
 
     <section class="hero">
       <img src="/assets/images/salmon.jpeg" alt="Blackened grilled salmon." />
-      <div class="cap">High heat, short cook, rest briefly, then sauce. Don’t overthink it.</div>
+      <div class="cap">The whole trick is heat + timing. The sauce is the victory lap.</div>
     </section>
 
     <section class="card">
-      <h2>Why I keep making this</h2>
+      <h2>Why I love this one</h2>
       <p>
-        Salmon is one of the few proteins that can feel “restaurant” with almost no effort—as long as you respect heat and timing.
-        The blackened seasoning gives you a punchy crust, and the dill yogurt sauce keeps it bright and balanced.
+        Salmon is one of the rare proteins that can feel “restaurant” on a random Tuesday. The blackened seasoning gives you
+        instant swagger, and the dill yogurt sauce keeps everything bright. It’s salty, smoky, tangy, and just a little extra.
       </p>
 
       <h3>Why it works</h3>
       <ul>
-        <li><strong>Dry fish + hot grill = better browning.</strong> Patting dry matters more than people think.</li>
-        <li><strong>Skin-on is forgiving.</strong> It protects the flesh and buys you a little extra time.</li>
-        <li><strong>Cold sauce, hot fish.</strong> The contrast makes it feel composed, not thrown together.</li>
+        <li><strong>Dry fish browns better.</strong> Pat it dry and you’ll actually get crust instead of steamed sadness.</li>
+        <li><strong>Skin-on is forgiving.</strong> It protects the flesh and helps you nail doneness.</li>
+        <li><strong>Cold sauce, hot fish.</strong> The contrast makes it feel intentional, not improvised.</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>Ingredients</h2>
+      <p class="small">Exact measurements will evolve as you re-cook it. These are the “don’t overthink it” basics.</p>
+
+      <h3>For the salmon</h3>
+      <ul>
+        <li>Salmon fillets (skin-on recommended)</li>
+        <li>Oil (avocado oil is great for high heat; olive oil works too)</li>
+        <li>Blackening seasoning (or DIY: paprika + garlic powder + cayenne + salt + pepper)</li>
+        <li>Lemon (for finishing)</li>
       </ul>
 
-      <h3>Tips (the stuff that prevents sadness)</h3>
+      <h3>For the dill yogurt sauce</h3>
       <ul>
-        <li><strong>Oil the grates, not the fish.</strong> I still do both, but grates first is the “no-stick” lever.</li>
-        <li><strong>Don’t force the flip.</strong> When it’s ready, it releases. When it’s not, it tears.</li>
-        <li><strong>Stop cooking at “almost done.”</strong> Rest finishes the job.</li>
+        <li>Plain yogurt (Greek-style works well)</li>
+        <li>Fresh dill (or parsley if dill is missing-in-action)</li>
+        <li>Lemon juice + a little zest</li>
+        <li>Garlic (microplaned)</li>
+        <li>Salt + pepper</li>
       </ul>
 
-      <h3>Variations</h3>
+      <div class="note">Optional upgrade: if you want it richer, do half yogurt / half mayo.</div>
+    </section>
+
+    <section class="card">
+      <h2>How to make it</h2>
       <ul>
-        <li><strong>No dill?</strong> Parsley + lemon still works.</li>
-        <li><strong>Want richer?</strong> Do half yogurt / half mayo.</li>
-        <li><strong>No grill?</strong> Cast iron works: sear, then finish in oven.</li>
+        <li><strong>Preheat:</strong> medium-high grill, clean and oil the grates.</li>
+        <li><strong>Season:</strong> oil the salmon lightly, then apply blackening spice generously.</li>
+        <li><strong>Cook:</strong> skin-side down first; flip only when it releases easily.</li>
+        <li><strong>Rest:</strong> 2–3 minutes, then sauce and serve.</li>
+      </ul>
+
+      <h3>Serving ideas</h3>
+      <ul>
+        <li>Rice pilaf + grilled asparagus (classic “I planned this” plate)</li>
+        <li>A simple green salad if you want lighter</li>
+        <li>Leftovers: flake into a salad or wrap (cold salmon is underrated)</li>
       </ul>
 
       <h3>Storage</h3>
       <p class="small">
-        Leftovers keep 1–2 days. Reheat gently (low oven) or eat cold in a salad. The sauce keeps separately and gets better after a few hours.
+        Best within 1–2 days. Store sauce separately. Reheat salmon gently (low oven), or eat it cold in a salad so you don’t
+        overcook it on the second pass.
       </p>
     </section>
 
-    <div class="grid" id="recipe" style="margin-top:14px;">
+    <div class="grid" id="recipe">
       <section class="card steps">
-        <h2>Recipe</h2>
+        <h2>Recipe (quick version)</h2>
         <ol>
-          <li><strong>Prep.</strong> Pat salmon dry. Lightly oil, then season generously with blackening spice (or paprika + garlic + cayenne + salt + pepper).</li>
+          <li><strong>Prep.</strong> Pat salmon dry. Lightly oil. Season generously with blackening spice.</li>
           <li><strong>Preheat grill.</strong> Medium-high. Clean grates and oil them well.</li>
-          <li><strong>Grill.</strong> Skin-side down first. Close lid. Cook until it releases easily, then flip briefly to finish (or don’t flip if thin).</li>
+          <li><strong>Grill.</strong> Skin-side down first. Cook until it releases; flip briefly to finish (or don’t flip if thin).</li>
           <li><strong>Rest.</strong> 2–3 minutes.</li>
-          <li><strong>Sauce + sides.</strong> Spoon on dill yogurt sauce. Serve with rice pilaf and grilled asparagus.</li>
+          <li><strong>Sauce + serve.</strong> Spoon on dill yogurt sauce. Finish with lemon.</li>
         </ol>
-        <div class="note">Next iteration: lock exact grill temp/time per thickness and your preferred spice blend.</div>
+        <div class="note">Next iteration: we’ll add “what to look for” doneness cues and your exact spice blend.</div>
       </section>
 
       <aside class="card">
-        <h2>Ingredients</h2>
-        <ul>
-          <li>Salmon fillets (skin-on recommended)</li>
-          <li>Oil (avocado or olive)</li>
-          <li>Blackening seasoning (or paprika + garlic + cayenne + salt + pepper)</li>
-          <li>Plain yogurt (or mayo/yogurt blend)</li>
-          <li>Fresh dill</li>
-          <li>Lemon (juice + zest)</li>
-          <li>Garlic (microplaned)</li>
-          <li>Rice pilaf + asparagus (to serve)</li>
+        <h2>Dill yogurt sauce (quick)</h2>
+        <p class="small">
+          Mix yogurt + lemon + microplaned garlic + chopped dill + salt/pepper.
+          Thin with a splash of water or olive oil if needed.
+        </p>
+
+        <h2 style="margin-top:18px;">More recipes</h2>
+        <ul class="more">
+          <li><a href="/blog/italian-chicken-roulade.html">Italian Chicken Roulade</a></li>
+          <li><a href="/blog/brisket-basics.html">The Brisket Basics</a></li>
         </ul>
-
-        <h2 style="margin-top:18px;">Dill yogurt sauce</h2>
-        <div class="small">
-          Mix yogurt + lemon + garlic + chopped dill + salt/pepper. Thin with a splash of water or olive oil if needed.
-        </div>
-
-        <div class="note">If you want it richer, do half yogurt / half mayo.</div>
       </aside>
     </div>
 
@@ -175,3 +199,4 @@
   <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
 </body>
 </html>
+
