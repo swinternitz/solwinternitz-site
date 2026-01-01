@@ -422,3 +422,54 @@ a.card .thumb{
   color:var(--muted);
   margin-top:8px;
 }
+/* --- Photo collage (homepage / photos preview) --- */
+.photo-collage{
+  position: relative;
+  height: 240px;
+  margin-top: 14px;
+  border: 1px dashed color-mix(in srgb, var(--line) 70%, transparent);
+  border-radius: calc(var(--radius) + 6px);
+  overflow: hidden;
+  background:
+    radial-gradient(800px 280px at 15% 0%, rgba(125,211,252,.10), transparent 60%),
+    radial-gradient(700px 260px at 85% 10%, rgba(167,139,250,.10), transparent 60%),
+    color-mix(in srgb, var(--card) 75%, transparent);
+}
+.photo-collage .snap{
+  position:absolute;
+  width: clamp(110px, 18vw, 170px);
+  height: clamp(76px, 12vw, 120px);
+  border-radius: 16px;
+  overflow:hidden;
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow2);
+  transform: rotate(var(--rot, 0deg));
+  left: var(--x, 0%);
+  top: var(--y, 0%);
+  background: var(--card2);
+}
+.photo-collage .snap img{
+  width:100%;
+  height:100%;
+  object-fit: cover;
+  display:block;
+  filter: saturate(1.02) contrast(1.02);
+}
+.photo-collage .snap:hover{
+  border-color: color-mix(in srgb, var(--accent) 45%, var(--line));
+}
+.photo-collage .label{
+  position:absolute;
+  right: 12px;
+  bottom: 10px;
+  font-size: 12px;
+  color: var(--muted);
+  background: color-mix(in srgb, var(--card) 80%, transparent);
+  border: 1px solid var(--line);
+  padding: 6px 10px;
+  border-radius: 999px;
+  backdrop-filter: blur(8px);
+}
+@media (max-width: 520px){
+  .photo-collage{ height: 200px; }
+}

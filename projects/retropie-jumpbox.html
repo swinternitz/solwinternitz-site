@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>RetroPie / Jumpbox | Solomon Winternitz</title>
-  <meta name="description" content="RetroPie Jumpbox build log: fan control, networking, ROM library hygiene, and a PS1 CHD + M3U workflow." />
+  <title>RetroPie Jumpbox (Fan Control, Networking, PS1 CHD Pipeline) | Solomon Winternitz</title>
+  <meta name="description" content="RetroPie / Raspberry Pi build notes: fan control, networking/SSH, ROM library workflow, and PS1 CHD + M3U pipeline." />
   <link rel="stylesheet" href="/assets/site.css" />
   <script src="/assets/theme.js" defer></script>
 </head>
@@ -12,18 +12,14 @@
 <body>
   <div class="wrap">
     <div class="top">
-      <div class="brand">
+      <div>
         <h1>RetroPie / Jumpbox</h1>
         <div class="sub">
-          A compact RetroPie build with sane fan control, reliable networking, and a clean PS1 library pipeline (CHD + M3U).
-          This page is the public-friendly version of my handoff notes—written so I can share it with r/RetroPie when it’s photo-complete.
+          A detailed build article + living checklist: fan control, networking/SSH, and my PS1 CHD + M3U library pipeline.
         </div>
 
         <div class="meta-row">
-          <span class="pill">Raspberry Pi</span>
-          <span class="pill">RetroPie</span>
-          <span class="pill">Build log</span>
-          <span class="pill">Updated 2026-01-01</span>
+          <span class="pill">RetroPie</span><span class="pill">Raspberry Pi</span><span class="pill">Build log</span><span class="pill">Living doc</span>
         </div>
       </div>
 
@@ -37,85 +33,136 @@
       </nav>
     </div>
 
-    <section class="hero">
-      <img src="/assets/images/food-main.jpeg" alt="RetroPie Jumpbox placeholder image" />
-      <div class="cap">Photo set coming: case exterior, wiring, fan controller close-up, and EmulationStation screenshots.</div>
-    </section>
-
-    <section class="card" id="overview">
-      <h2>Why I built it</h2>
+    <section class="card">
+      <h2>Executive summary</h2>
       <p>
-        I wanted a living-room friendly box that’s quiet, stable on the network, and doesn’t become a mess the moment you add a few hundred titles.
-        The goal is “works every time” more than “tweak forever.”
+        This page is the public-friendly version of my RetroPie “Jumpbox” handoff notes: what I built, why I built it,
+        what’s currently working, and the exact commands/config paths that matter. The goal is to keep this practical—so I can
+        pick up where I left off after a long break, and so other RetroPie builders can replicate the setup.
       </p>
 
-      <h3>Current status</h3>
-      <ul>
-        <li><strong>Networking:</strong> wired Ethernet for bulk transfers; Wi‑Fi configured for stable remote access.</li>
-        <li><strong>Fan control:</strong> MOSFET-driven GPIO fan with temperature thresholds (no constant fan chatter).</li>
-        <li><strong>PS1:</strong> standardized to CHD; multi-disc handled via M3U with disc files hidden to keep the UI clean.</li>
-      </ul>
+      <div style="margin-top:10px;">
+        <a class="pill" href="#hardware">Hardware</a>
+        <a class="pill" href="#networking">Networking / SSH</a>
+        <a class="pill" href="#fan">Fan control</a>
+        <a class="pill" href="#ps1">PS1 pipeline (CHD + M3U)</a>
+        <a class="pill" href="#todo">Living checklist</a>
+      </div>
     </section>
 
-    <section class="card" id="network">
-      <h2>Networking &amp; SSH (what was fixed)</h2>
-      <p class="small">
-        Verified in the handoff notes (2025-12-27): wired Ethernet is preferred for bulk SCP transfers; Wi‑Fi IP stability is managed Pi-side.
-        If Windows SSH warns that the host identification changed, clear the old known_hosts entry and re-accept.
-      </p>
+    <section class="card" id="hardware">
+      <h2>Hardware + enclosure</h2>
+      <ul>
+        <li><strong>Core:</strong> Raspberry Pi RetroPie build used as a living “jumpbox” for emulation.</li>
+        <li><strong>Cooling:</strong> fan driven through a MOSFET board, controlled by a Pi GPIO line.</li>
+        <li><strong>Case:</strong> a mini NES‑style 3D printed enclosure (I modified the print slightly to fit the Pi 4 and airflow).</li>
+      </ul>
 
       <div class="note">
-        <strong>Transfer workflow:</strong> use wired when moving lots of ROMs/CHDs; use Wi‑Fi for convenience once stable.
+        <strong>Case credit:</strong> I’m tracking down the original model link + author so I can credit it properly. (If you recognize the case, tell me and I’ll link it.)
+      </div>
+    </section>
+
+    <section class="card" id="networking">
+      <h2>Networking and SSH (what was fixed)</h2>
+      <p>
+        The Pi is on my home network at <strong>192.168.68.76</strong>. A prior issue was instability around network state and SSH
+        prompts while doing bulk transfers. The current approach is: verify network, ensure stable routes, and then use SSH keys
+        for repeated SCP without password prompts.
+      </p>
+
+      <h3>Quick diagnostics (Pi)</h3>
+      <pre><code>ip -br a
+ip route
+nmcli device status
+nmcli connection show</code></pre>
+
+      <h3>Known-good Windows cleanup</h3>
+      <pre><code>ssh-keygen -R 192.168.68.76
+ssh sol@192.168.68.76</code></pre>
+
+      <div class="callout small">
+        <strong>Status:</strong> passwordless SSH was being set up (recommended for bulk SCP without prompts). See the master handoff doc for the exact steps and any session-specific notes.
       </div>
     </section>
 
     <section class="card" id="fan">
-      <h2>Fan control</h2>
+      <h2>Fan control (gpio-fan + userspace hysteresis)</h2>
       <p>
-        The fan is controlled by GPIO through a MOSFET rather than directly off a header. The practical win is simple:
-        the fan only ramps when it needs to, and it doesn’t oscillate on/off around a single threshold.
+        Cooling is handled with the kernel <code>gpio-fan</code> overlay plus a simple userspace controller that implements explicit on/off thresholds.
+        This avoids “fan flapping” and keeps the system quiet under light loads.
       </p>
 
-      <h3>What I’m aiming for</h3>
+      <h3>Kernel overlay</h3>
+      <pre><code>dtoverlay=gpio-fan,gpiopin=24,temp=80  # /boot/firmware/config.txt</code></pre>
+
+      <h3>Userspace controller</h3>
       <ul>
-        <li>Quiet at idle</li>
-        <li>No rapid on/off cycling</li>
-        <li>Predictable temperature bands</li>
+        <li><code>/usr/local/sbin/gpiofanctl</code> (controller script)</li>
+        <li><code>/etc/systemd/system/gpiofanctl.service</code> (systemd unit)</li>
+        <li><code>/sys/class/thermal/thermal_zone0/temp</code> (temperature source)</li>
+        <li><code>/sys/class/thermal/cooling_device0/cur_state</code> (fan state)</li>
       </ul>
-    </section>
 
-    <section class="card" id="ps1">
-      <h2>PS1 library hygiene: CHD + M3U</h2>
-      <p>
-        I’m standardizing PS1 to CHD. For multi-disc games, I use an M3U file as the visible entry,
-        while disc CHDs are stored in a hidden folder so EmulationStation stays clean.
-      </p>
-
-      <h3>Folder pattern</h3>
-      <pre class="code small">psx/
-  Game Title (Region).m3u
-  .multidisc/
-    Game Title (Disc 1).chd
-    Game Title (Disc 2).chd</pre>
+      <h3>Thresholds (verified)</h3>
+      <pre><code># /usr/local/sbin/gpiofanctl
+ON=68000     # 68.0 C
+OFF=59000    # 59.0 C</code></pre>
 
       <div class="note">
-        <strong>Why this matters:</strong> you get one visible game entry, correct disc switching, and no duplicate clutter.
+        <strong>Why hysteresis matters:</strong> it reduces rapid cycling, which is noisy and can be hard on the fan.
       </div>
     </section>
 
-    <section class="card" id="next">
-      <h2>Next steps</h2>
+    <section class="card" id="ps1">
+      <h2>PS1 library pipeline (CHD + M3U)</h2>
+      <p>
+        PS1 discs are standardized to <strong>CHD</strong> format (compressed, single-file), with <strong>M3U playlists</strong> for multi-disc titles.
+        Conversion happens on my Windows PC (faster), then I bulk upload to the Pi.
+      </p>
+
+      <h3>PSX emulator defaults (Pi)</h3>
+      <pre><code>/opt/retropie/configs/psx/emulators.cfg
+default = lr-pcsx-rearmed
+(optional installed: lr-duckstation)</code></pre>
+
+      <h3>High-level workflow</h3>
+      <ol>
+        <li>Convert BIN/CUE to CHD on PC.</li>
+        <li>Create <code>.m3u</code> playlists for multi-disc games.</li>
+        <li>Upload CHD + M3U to the Pi in one go (use SSH keys to avoid repeated prompts).</li>
+        <li>To keep EmulationStation clean, hide per-disc CHDs (dot-prefix) and point the M3U at the hidden files.</li>
+      </ol>
+
+      <div class="callout small">
+        <strong>Library hygiene detail:</strong> A Pi-side title snapshot/skip list is used to avoid re-converting duplicates during PC-side batch runs.
+      </div>
+
+      <h3>Pi ownership fix (when needed)</h3>
+      <pre><code>sudo chown -R sol:sol /home/sol/RetroPie/roms/psx</code></pre>
+    </section>
+
+    <section class="card" id="todo">
+      <h2>Living checklist</h2>
       <ul>
-        <li>Add photos + wiring diagram snapshots (for the Reddit post)</li>
-        <li>Write a “known issues” section: what broke, how I fixed it</li>
-        <li>Publish a small script/snippet collection once cleaned up</li>
+        <li>Add photos of the completed build, internal wiring, and airflow/fan placement.</li>
+        <li>Finalize SSH key-based transfer flow for bulk library updates.</li>
+        <li>Finish PS1 library conversion pass + multi-disc playlist cleanup.</li>
+        <li>Write the “public” RetroPie subreddit post linking back to this build page once it’s tight.</li>
       </ul>
+      <div class="note">
+        This page is intentionally detailed, but it’s still a living doc. When I do a work session, I’ll append a dated update and keep the commands/canonical paths correct.
+      </div>
     </section>
 
     <footer>
-      © <span id="y"></span> solwinternitz.com
+      © <span id="y"></span> Solomon Winternitz
     </footer>
-    <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
   </div>
+
+  <script>
+    // year
+    (function(){ var y=document.getElementById('y'); if(y) y.textContent=(new Date()).getFullYear(); })();
+  </script>
 </body>
 </html>
