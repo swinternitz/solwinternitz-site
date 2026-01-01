@@ -3,54 +3,70 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Blog | Sol Winternitz</title>
-  <meta name="description" content="Recipes, notes, and experiments." />
-  <style>
-    :root { --max: 920px; --muted:#555; --line:#e7e7e7; }
-    body { font-family: system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif; line-height: 1.6; margin: 0; }
-    .wrap { max-width: var(--max); margin: 48px auto; padding: 0 18px; }
-    header { display:flex; justify-content: space-between; align-items: baseline; gap: 16px; flex-wrap: wrap; }
-    h1 { margin: 0; font-size: 38px; letter-spacing: -0.3px; }
-    .sub { color: var(--muted); margin-top: 8px; }
-    nav a { text-decoration: none; margin-right: 12px; }
-    hr { border: none; border-top: 1px solid var(--line); margin: 18px 0 22px; }
-    .card { border: 1px solid var(--line); border-radius: 14px; padding: 16px; }
-    .meta { color: var(--muted); font-size: 14px; margin-top: 6px; }
-    ul { padding-left: 18px; }
-  </style>
+  <title>Blog | Solomon Winternitz</title>
+  <meta name="description" content="Recipes, notes, and experiments by Solomon Winternitz." />
+  <link rel="stylesheet" href="/assets/site.css" />
+  <script src="/assets/theme.js" defer></script>
 </head>
+
 <body>
   <div class="wrap">
-    <header>
-      <div>
+    <div class="top">
+      <div class="brand">
         <h1>Blog</h1>
-        <div class="sub">Recipes, notes, and experiments.</div>
+        <div class="tag">Recipes, notes, and experiments. For the full recipe archive, see <a href="/food/">Food</a>.</div>
       </div>
-      <nav class="meta">
+
+      <nav class="nav" aria-label="Primary navigation">
         <a href="/">Home</a>
-        <a href="/blog/">Blog</a>
+        <a href="/food/">Food</a>
+        <a href="/projects/">Projects</a>
+        <a href="/photos/">Photos</a>
+        <a href="https://github.com/swinternitz">GitHub</a>
+        <button class="pill mode" id="theme-toggle" type="button" aria-label="Toggle theme" onclick="window.__toggleTheme && window.__toggleTheme()">Mode</button>
       </nav>
-    </header>
-
-    <hr />
-
-    <div class="card">
-      <h2 style="margin:0 0 10px 0;">Posts</h2>
-      <ul>
-        <li>
-          <a href="/blog/brisket-basics.html">The Brisket Basics</a>
-          <div class="meta">A simple, repeatable brisket workflow: selection, rub, stall, wrap, rest.</div>
-        </li>
-        <li style="margin-top:10px;">
-          <a href="/blog/blackened-grilled-salmon.html">Blackened Grilled Salmon Feast</a>
-          <div class="meta">Salmon with creamy dill sauce, rice pilaf, and grilled asparagus.</div>
-        </li>
-      </ul>
     </div>
 
-    <footer style="margin-top:44px;color:#666;font-size:14px;">
-      <div>Tip: I’ll add real photos as I re-cook these and refine the writeups.</div>
-    </footer>
+    <section class="hero">
+      <div class="img" style="background-image:url('/assets/images/food-main.jpeg');"></div>
+      <div class="cap">Longer writeups live here: the “why,” the mistakes, and the tweaks that make a recipe repeatable.</div>
+    </section>
+
+    <div class="grid">
+      <a class="card" href="/blog/brisket-basics.html">
+        <div class="thumb" style="background-image:url('/assets/images/brisket-closeup.jpeg');"></div>
+        <div class="body">
+          <div class="kicker">Smoker</div>
+          <h2>The Brisket Basics</h2>
+          <p>A repeatable brisket workflow: selecting the cut, Solomon’s special rub, the stall, wrap timing, and resting.</p>
+          <div class="meta">Click for the full post →</div>
+        </div>
+      </a>
+
+      <a class="card" href="/blog/blackened-grilled-salmon.html">
+        <div class="thumb" style="background-image:url('/assets/images/salmon.jpeg');"></div>
+        <div class="body">
+          <div class="kicker">Grill</div>
+          <h2>Blackened Grilled Salmon Feast</h2>
+          <p>Bold seasoning, crisp edges, and a cold creamy dill sauce that makes the whole plate feel intentional.</p>
+          <div class="meta">Click for the full post →</div>
+        </div>
+      </a>
+
+      <a class="card" href="/blog/italian-chicken-roulade.html">
+        <div class="thumb" style="background-image:url('/assets/images/italian-chicken-roulade.jpeg');"></div>
+        <div class="body">
+          <div class="kicker">Oven</div>
+          <h2>Italian Chicken Roulade</h2>
+          <p>Flatten, fill, roll, and roast. Crispy breadcrumb crust, melty center, and a roasted tomato yogurt sauce.</p>
+          <div class="meta">Click for the full post →</div>
+        </div>
+      </a>
+    </div>
+
+    <div class="small" style="margin-top:16px;">
+      Tip: I’m replacing placeholders with my own photos as I re-cook these and tighten the recipes.
+    </div>
   </div>
 </body>
 </html>
