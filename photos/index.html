@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Photos | Solomon Winternitz</title>
+  <meta name="description" content="Photo galleries and notes." />
+
+  <style>
+    :root{
+      --max: 1020px;
+      --radius: 18px;
+
+      --bg: #fafafa;
+      --card: #ffffff;
+      --text: #111111;
+      --muted: #5a5a5a;
+      --line: #e7e7e7;
+
+      --shadow: 0 12px 28px rgba(0,0,0,.06);
+      --shadow2: 0 10px 22px rgba(0,0,0,.05);
+
+      --navbg: rgba(255,255,255,.72);
+      --navhover: rgba(0,0,0,.05);
+
+      --grad1: rgba(240,247,255,.9);
+      --grad2: rgba(255,243,240,.9);
+    }
+
+    @media (prefers-color-scheme: dark){
+      :root{
+        --bg: #0b0d10;
+        --card: #11141a;
+        --text: #eef2f7;
+        --muted: #a9b3bf;
+        --line: rgba(255,255,255,.10);
+
+        --shadow: 0 14px 34px rgba(0,0,0,.40);
+        --shadow2: 0 10px 26px rgba(0,0,0,.35);
+
+        --navbg: rgba(17,20,26,.72);
+        --navhover: rgba(255,255,255,.08);
+
+        --grad1: rgba(42,108,255,.22);
+        --grad2: rgba(255,94,77,.16);
+      }
+    }
+
+    *{ box-sizing:border-box; }
+    body{
+      margin:0;
+      font-family: system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(1200px 600px at 18% -12%, var(--grad1) 0%, rgba(0,0,0,0) 60%),
+        radial-gradient(900px 520px at 92% 0%, var(--grad2) 0%, rgba(0,0,0,0) 55%),
+        var(--bg);
+      line-height:1.6;
+    }
+
+    a{ color:inherit; }
+    a:hover{ opacity:.92; }
+
+    .wrap{ max-width:var(--max); margin:56px auto; padding:0 18px; }
+
+    .top{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      gap:18px;
+      flex-wrap:wrap;
+      margin-bottom: 18px;
+    }
+
+    .brand h1{
+      margin:0;
+      font-size: 44px;
+      letter-spacing: -0.7px;
+      line-height: 1.05;
+    }
+
+    .brand .tag{
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 16px;
+      max-width: 72ch;
+    }
+
+    .nav{
+      display:flex;
+      gap: 10px;
+      flex-wrap:wrap;
+      align-items:center;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--navbg);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      box-shadow: var(--shadow2);
+    }
+
+    .nav a{
+      text-decoration:none;
+      font-size: 14px;
+      padding: 7px 10px;
+      border-radius: 999px;
+      color: var(--text);
+    }
+    .nav a:hover{ background: var(--navhover); opacity: 1; }
+    .nav a[aria-current="page"]{ background: var(--navhover); }
+
+    .card{
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--card);
+      padding: 16px;
+      box-shadow: var(--shadow);
+      margin-top: 14px;
+    }
+
+    h2{
+      margin:0 0 10px 0;
+      font-size: 18px;
+      letter-spacing: -0.2px;
+    }
+
+    ul{ margin:0; padding-left: 18px; }
+    li{ margin: 10px 0; }
+    .muted{ color: var(--muted); font-size: 14px; }
+
+    .pill{
+      display:inline-block;
+      font-size: 12px;
+      padding: 3px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.65);
+      color: var(--text);
+      margin-right: 8px;
+      margin-top: 8px;
+    }
+    @media (prefers-color-scheme: dark){
+      .pill{ background: rgba(255,255,255,.06); }
+    }
+
+    footer{
+      margin-top: 22px;
+      color: var(--muted);
+      font-size: 14px;
+      padding: 18px 2px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="top">
+      <div class="brand">
+        <h1>Photos</h1>
+        <div class="tag">
+          Galleries and photo projects. Some links may require authentication or only be online when a home service is running.
+        </div>
+      </div>
+
+      <nav class="nav" aria-label="Primary navigation">
+        <a href="/">Home</a>
+        <a href="/food/">Food</a>
+        <a href="/projects/">Projects</a>
+        <a href="/photos/" aria-current="page">Photos</a>
+        <a href="https://github.com/swinternitz">GitHub</a>
+      </nav>
+    </div>
+
+    <section class="card">
+      <h2>Galleries</h2>
+      <div class="muted">This page is intentionally simple for now. We’ll link a few stable galleries, and optionally a private “home-hosted” gallery later.</div>
+
+      <div style="margin-top:12px;">
+        <span class="pill">Coming soon</span>
+        <span class="pill">Private galleries</span>
+        <span class="pill">Europe trip picks</span>
+      </div>
+
+      <ul style="margin-top:14px;">
+        <li><strong>Europe Trip (Dad)</strong> — curated picks for the calendar (link TBD)</li>
+        <li><strong>Food</strong> — cooking photos that match recipe posts (link TBD)</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>Plan</h2>
+      <ul>
+        <li><strong>Option A (easy):</strong> link to Google Photos shared albums (public or unlisted)</li>
+        <li><strong>Option B (controlled):</strong> host a private gallery behind Cloudflare Access (password/SSO)</li>
+        <li><strong>Option C (hybrid):</strong> best-of albums on Google Photos + originals at home</li>
+      </ul>
+      <div class="muted">Next housekeeping step: align the Projects index navigation and styling to match Home/Food/Photos.</div>
+    </section>
+
+    <footer>
+      © <span id="y"></span> solomonwinternitz.com
+    </footer>
+  </div>
+
+  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+</body>
+</html>
