@@ -5,22 +5,127 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Blackened Grilled Salmon | Solomon Winternitz</title>
   <meta name="description" content="Blackened grilled salmon with creamy dill yogurt sauce, rice pilaf, and grilled asparagus." />
+
   <style>
-    :root{ --max:980px; --muted:#555; --line:#e7e7e7; --radius:16px; }
+    :root{
+      --max: 1020px;
+      --radius: 18px;
+
+      --bg: #fafafa;
+      --card: #ffffff;
+      --text: #111111;
+      --muted: #5a5a5a;
+      --line: #e7e7e7;
+
+      --shadow: 0 12px 28px rgba(0,0,0,.06);
+      --shadow2: 0 10px 22px rgba(0,0,0,.05);
+
+      --navbg: rgba(255,255,255,.72);
+      --navhover: rgba(0,0,0,.05);
+
+      --grad1: rgba(240,247,255,.9);
+      --grad2: rgba(255,243,240,.9);
+    }
+
+    @media (prefers-color-scheme: dark){
+      :root{
+        --bg: #0b0d10;
+        --card: #11141a;
+        --text: #eef2f7;
+        --muted: #a9b3bf;
+        --line: rgba(255,255,255,.10);
+
+        --shadow: 0 14px 34px rgba(0,0,0,.40);
+        --shadow2: 0 10px 26px rgba(0,0,0,.35);
+
+        --navbg: rgba(17,20,26,.72);
+        --navhover: rgba(255,255,255,.08);
+
+        --grad1: rgba(42,108,255,.22);
+        --grad2: rgba(255,94,77,.16);
+      }
+    }
+
     *{ box-sizing:border-box; }
     html{ scroll-behavior:smooth; }
-    body{ margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif; line-height:1.7; color:#111; background:#fafafa; }
-    a{ color:inherit; }
-    .wrap{ max-width:var(--max); margin:52px auto; padding:0 18px; }
 
-    header{ display:flex; justify-content:space-between; align-items:flex-start; gap:16px; flex-wrap:wrap; margin-bottom:14px; }
-    h1{ margin:0; font-size:38px; letter-spacing:-.4px; line-height:1.1; }
-    .sub{ color:var(--muted); margin-top:10px; max-width:76ch; }
-    nav a{ text-decoration:none; margin-right:12px; color:#222; font-size:14px; }
-    nav a:hover{ opacity:.85; }
+    body{
+      margin:0;
+      font-family: system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(1200px 600px at 18% -12%, var(--grad1) 0%, rgba(0,0,0,0) 60%),
+        radial-gradient(900px 520px at 92% 0%, var(--grad2) 0%, rgba(0,0,0,0) 55%),
+        var(--bg);
+      line-height:1.7;
+    }
+
+    a{ color:inherit; }
+    a:hover{ opacity:.92; }
+
+    .wrap{ max-width:var(--max); margin:56px auto; padding:0 18px; }
+
+    .top{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      gap:18px;
+      flex-wrap:wrap;
+      margin-bottom: 14px;
+    }
+
+    h1{
+      margin:0;
+      font-size:42px;
+      letter-spacing:-.7px;
+      line-height:1.05;
+    }
+
+    .sub{
+      margin-top:10px;
+      color:var(--muted);
+      max-width: 78ch;
+      font-size: 16px;
+    }
+
+    .nav{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+      padding:10px 12px;
+      border:1px solid var(--line);
+      border-radius:999px;
+      background: var(--navbg);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      box-shadow: var(--shadow2);
+    }
+
+    .nav a{
+      text-decoration:none;
+      font-size:14px;
+      padding:7px 10px;
+      border-radius:999px;
+      color: var(--text);
+    }
+    .nav a:hover{ background: var(--navhover); opacity: 1; }
+    .nav a[aria-current="page"]{ background: var(--navhover); }
 
     .meta-row{ display:flex; gap:8px; flex-wrap:wrap; margin-top:10px; }
-    .pill{ display:inline-block; font-size:12px; padding:3px 10px; border-radius:999px; border:1px solid var(--line); background:#fff; color:#333; }
+
+    .pill{
+      display:inline-block;
+      font-size:12px;
+      padding:3px 10px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.65);
+      color: var(--text);
+    }
+    @media (prefers-color-scheme: dark){
+      .pill{ background: rgba(255,255,255,.06); }
+    }
 
     .jump{
       display:inline-flex; align-items:center; gap:8px;
@@ -28,33 +133,39 @@
       padding:8px 12px;
       border:1px solid var(--line);
       border-radius:999px;
-      background:#fff;
+      background: rgba(255,255,255,.72);
       text-decoration:none;
       font-size:14px;
+      box-shadow: var(--shadow2);
     }
-    .jump:hover{ background:#f3f3f3; }
-
-    .anchor{ position:relative; top:-14px; height:0; }
-    #recipe{ scroll-margin-top: 24px; }
+    .jump:hover{ background: var(--navhover); opacity: 1; }
+    @media (prefers-color-scheme: dark){
+      .jump{ background: rgba(17,20,26,.72); }
+    }
 
     .hero{
       border:1px solid var(--line);
-      border-radius:var(--radius);
-      background:#fff;
+      border-radius: var(--radius);
+      background: var(--card);
       overflow:hidden;
-      box-shadow:0 10px 25px rgba(0,0,0,.04);
-      margin:16px 0 18px;
+      box-shadow: var(--shadow);
+      margin: 16px 0 18px;
     }
     .hero img{ width:100%; height:auto; display:block; }
-    .hero .cap{ padding:12px 14px; color:var(--muted); font-size:13px; border-top:1px solid var(--line); }
+    .hero .cap{
+      padding:12px 14px;
+      color: var(--muted);
+      font-size: 13px;
+      border-top:1px solid var(--line);
+    }
 
     .card{
       border:1px solid var(--line);
-      border-radius:var(--radius);
-      background:#fff;
+      border-radius: var(--radius);
+      background: var(--card);
       padding:16px;
-      box-shadow:0 8px 20px rgba(0,0,0,.03);
-      margin-top:14px;
+      box-shadow: var(--shadow2);
+      margin-top: 14px;
     }
 
     .two-col{ display:grid; grid-template-columns:1fr; gap:14px; }
@@ -62,33 +173,42 @@
 
     h2{ margin:0 0 10px; font-size:18px; letter-spacing:-.2px; }
     h3{ margin:18px 0 8px; font-size:16px; letter-spacing:-.1px; }
-    p{ margin:10px 0; color:#222; }
+    p{ margin:10px 0; color: var(--text); opacity: .92; }
     ul{ margin:0; padding-left:18px; }
     li{ margin:8px 0; }
+
     .note{ color:var(--muted); font-size:13px; margin-top:10px; }
-    .small{ font-size:14px; color:#333; }
+    .small{ font-size:14px; color: var(--text); opacity: .9; }
     .steps ol{ margin:0; padding-left:18px; }
     .steps li{ margin:10px 0; }
 
     .callout{
-      border:1px dashed #d9d9d9;
+      border:1px dashed rgba(127,127,127,.35);
       border-radius:12px;
       padding:12px 12px;
-      background:#fcfcfc;
+      background: rgba(255,255,255,.55);
       margin-top:12px;
     }
+    @media (prefers-color-scheme: dark){
+      .callout{ background: rgba(255,255,255,.04); }
+    }
 
-    footer{ margin-top:30px; color:#666; font-size:14px; }
+    /* Jump-to anchor behavior */
+    #recipe{ scroll-margin-top: 26px; }
+
+    footer{ margin-top:22px; color:var(--muted); font-size:14px; padding: 18px 2px; }
   </style>
 </head>
+
 <body>
   <div class="wrap">
-    <header>
+    <div class="top">
       <div>
         <h1>Blackened Grilled Salmon Feast</h1>
         <div class="sub">
-          This is my “looks impressive, cooks fast” salmon: bold seasoning, crisp edges, and a cold creamy dill sauce that makes the whole plate feel intentional.
+          This is my “looks impressive, cooks fast” salmon: bold seasoning, crisp edges, and a cold, creamy dill sauce that makes the whole plate feel intentional.
         </div>
+
         <div class="meta-row">
           <span class="pill">Grill</span>
           <span class="pill">Weeknight</span>
@@ -98,12 +218,14 @@
         <a class="jump" href="#recipe" aria-label="Jump to recipe">Jump to recipe →</a>
       </div>
 
-      <nav aria-label="Primary navigation">
+      <nav class="nav" aria-label="Primary navigation">
         <a href="/">Home</a>
-        <a href="/food/">Food</a>
+        <a href="/food/" aria-current="page">Food</a>
         <a href="/projects/">Projects</a>
+        <a href="/photos/">Photos</a>
+        <a href="https://github.com/swinternitz">GitHub</a>
       </nav>
-    </header>
+    </div>
 
     <section class="hero">
       <img src="/assets/images/salmon.jpeg" alt="Blackened grilled salmon." />
@@ -117,27 +239,20 @@
         It’s the culinary equivalent of wearing a blazer over a t-shirt: minimal effort, maximum effect.
       </p>
       <p>
-        The “blackened” technique is closely associated with Louisiana cooking and was popularized by chef Paul Prudhomme—high heat,
-        a heavy spice coat, and that signature dark crust that’s more toasted than burnt. :contentReference[oaicite:1]{index=1}
+        “Blackened” is really just a high-heat sear paired with a spice-heavy coating. The goal isn’t bitterness or actual burning;
+        it’s a toasted crust that tastes like confidence.
       </p>
 
       <h3>Buying salmon (my practical take)</h3>
       <p class="small">
-        If you want salmon that’s harder to overcook and stays lush on the grill, look for a fattier species like king/chinook.
-        If you want a deeper color and firmer, leaner texture, sockeye is great, but it has less fat so you need a little more precision.
-        Coho tends to sit nicely in the middle. :contentReference[oaicite:2]{index=2}
+        If you want salmon that’s harder to overcook and stays lush on the grill, pick something fattier (king/chinook is the gold standard).
+        Sockeye is gorgeous and bold, but leaner—so cook it like you mean it. Coho is a solid middle-ground for “easy but still great.”
       </p>
 
-      <h3>Best “cut” for grilling</h3>
+      <h3>Best cut for grilling</h3>
       <p class="small">
-        I prefer a <strong>center-cut portion</strong> when I can get it—more even thickness, more predictable cook, fewer sad thin edges.
-        Tail pieces are fine, but they cook faster and can dry out sooner. :contentReference[oaicite:3]{index=3}
-      </p>
-
-      <h3>Optional: sustainability shortcut</h3>
-      <p class="small">
-        If you care about labels: the <strong>MSC blue label</strong> is used for certified sustainable <em>wild-caught</em> seafood, and the
-        <strong>ASC label</strong> is for certified responsible <em>farmed</em> seafood. :contentReference[oaicite:4]{index=4}
+        I like a <strong>center-cut portion</strong> if I can get it—more even thickness, more predictable cook, fewer sad thin edges.
+        Tail pieces are fine, they just need a little more attention.
       </p>
 
       <h3>Why this recipe works</h3>
@@ -159,10 +274,9 @@
       </div>
     </section>
 
-    <div id="recipe" class="anchor"></div>
-
-    <section class="card">
+    <section class="card" id="recipe">
       <h2>Recipe</h2>
+
       <div class="two-col">
         <aside>
           <h3 style="margin-top:0;">Ingredients</h3>
@@ -204,6 +318,7 @@
 
     <footer>© <span id="y"></span> solomonwinternitz.com</footer>
   </div>
+
   <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
 </body>
 </html>
