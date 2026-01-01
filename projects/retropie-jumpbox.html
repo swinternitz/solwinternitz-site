@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>RetroPie / Jumpbox | Solomon Winternitz</title>
+  <meta name="description" content="RetroPie Jumpbox build log: fan control, networking, ROM library hygiene, and a PS1 CHD + M3U workflow." />
+  <link rel="stylesheet" href="/assets/site.css" />
+  <script src="/assets/theme.js" defer></script>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="top">
+      <div class="brand">
+        <h1>RetroPie / Jumpbox</h1>
+        <div class="sub">
+          A compact RetroPie build with sane fan control, reliable networking, and a clean PS1 library pipeline (CHD + M3U).
+          This page is the public-friendly version of my handoff notes—written so I can share it with r/RetroPie when it’s photo-complete.
+        </div>
+
+        <div class="meta-row">
+          <span class="pill">Raspberry Pi</span>
+          <span class="pill">RetroPie</span>
+          <span class="pill">Build log</span>
+          <span class="pill">Updated 2026-01-01</span>
+        </div>
+      </div>
+
+      <nav class="nav" aria-label="Primary navigation">
+        <a href="/">Home</a>
+        <a href="/food/">Food</a>
+        <a href="/projects/" aria-current="page">Projects</a>
+        <a href="/photos/">Photos</a>
+        <a href="https://github.com/swinternitz">GitHub</a>
+        <button class="pill mode" id="theme-toggle" type="button" onclick="window.__toggleTheme && window.__toggleTheme()">Mode</button>
+      </nav>
+    </div>
+
+    <section class="hero">
+      <img src="/assets/images/food-main.jpeg" alt="RetroPie Jumpbox placeholder image" />
+      <div class="cap">Photo set coming: case exterior, wiring, fan controller close-up, and EmulationStation screenshots.</div>
+    </section>
+
+    <section class="card" id="overview">
+      <h2>Why I built it</h2>
+      <p>
+        I wanted a living-room friendly box that’s quiet, stable on the network, and doesn’t become a mess the moment you add a few hundred titles.
+        The goal is “works every time” more than “tweak forever.”
+      </p>
+
+      <h3>Current status</h3>
+      <ul>
+        <li><strong>Networking:</strong> wired Ethernet for bulk transfers; Wi‑Fi configured for stable remote access.</li>
+        <li><strong>Fan control:</strong> MOSFET-driven GPIO fan with temperature thresholds (no constant fan chatter).</li>
+        <li><strong>PS1:</strong> standardized to CHD; multi-disc handled via M3U with disc files hidden to keep the UI clean.</li>
+      </ul>
+    </section>
+
+    <section class="card" id="network">
+      <h2>Networking &amp; SSH (what was fixed)</h2>
+      <p class="small">
+        Verified in the handoff notes (2025-12-27): wired Ethernet is preferred for bulk SCP transfers; Wi‑Fi IP stability is managed Pi-side.
+        If Windows SSH warns that the host identification changed, clear the old known_hosts entry and re-accept.
+      </p>
+
+      <div class="note">
+        <strong>Transfer workflow:</strong> use wired when moving lots of ROMs/CHDs; use Wi‑Fi for convenience once stable.
+      </div>
+    </section>
+
+    <section class="card" id="fan">
+      <h2>Fan control</h2>
+      <p>
+        The fan is controlled by GPIO through a MOSFET rather than directly off a header. The practical win is simple:
+        the fan only ramps when it needs to, and it doesn’t oscillate on/off around a single threshold.
+      </p>
+
+      <h3>What I’m aiming for</h3>
+      <ul>
+        <li>Quiet at idle</li>
+        <li>No rapid on/off cycling</li>
+        <li>Predictable temperature bands</li>
+      </ul>
+    </section>
+
+    <section class="card" id="ps1">
+      <h2>PS1 library hygiene: CHD + M3U</h2>
+      <p>
+        I’m standardizing PS1 to CHD. For multi-disc games, I use an M3U file as the visible entry,
+        while disc CHDs are stored in a hidden folder so EmulationStation stays clean.
+      </p>
+
+      <h3>Folder pattern</h3>
+      <pre class="code small">psx/
+  Game Title (Region).m3u
+  .multidisc/
+    Game Title (Disc 1).chd
+    Game Title (Disc 2).chd</pre>
+
+      <div class="note">
+        <strong>Why this matters:</strong> you get one visible game entry, correct disc switching, and no duplicate clutter.
+      </div>
+    </section>
+
+    <section class="card" id="next">
+      <h2>Next steps</h2>
+      <ul>
+        <li>Add photos + wiring diagram snapshots (for the Reddit post)</li>
+        <li>Write a “known issues” section: what broke, how I fixed it</li>
+        <li>Publish a small script/snippet collection once cleaned up</li>
+      </ul>
+    </section>
+
+    <footer>
+      © <span id="y"></span> solwinternitz.com
+    </footer>
+    <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+  </div>
+</body>
+</html>

@@ -403,3 +403,22 @@ a.card .thumb{
   .card, .hero, .tile{ box-shadow:none; }
   a{ color: #111; }
 }
+/* --- Photo grids (process shots, homepage strip) --- */
+.photo-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(210px, 1fr));
+  gap:12px;
+  margin-top:12px;
+}
+.photo-grid figure{ margin:0; }
+.photo-grid img{
+  width:100%;
+  height:auto;
+  display:block;
+  border-radius:16px;
+}
+.photo-grid figcaption{
+  font-size:0.9rem;
+  color:var(--muted);
+  margin-top:8px;
+}

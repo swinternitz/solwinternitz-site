@@ -30,26 +30,40 @@
     </div>
 
     <section class="card">
-      <h2>Galleries</h2>
-      <div class="muted">This page is intentionally simple for now. We’ll link a few stable galleries, and optionally a private “home-hosted” gallery later.</div>
-
-      <div style="margin-top:12px;">
-        <span class="pill">Coming soon</span>
-        <span class="pill">Private galleries</span>
-        <span class="pill">Europe trip picks</span>
+      <h2>Photos (work in progress)</h2>
+      <div class="muted">
+        This tab is intentionally minimal for now. The long-term plan is a locally hosted folder on my PC that’s exposed through a Cloudflare Tunnel
+        (with authentication) when my machine is awake—so it’s not a permanently open endpoint.
       </div>
 
-      <ul style="margin-top:14px;">
-        <li><strong>Europe Trip (Dad)</strong> — curated picks for the calendar (link TBD)</li>
-        <li><strong>Food</strong> — cooking photos that match recipe posts (link TBD)</li>
-      </ul>
+      <div style="margin-top:12px;">
+        <span class="pill">Local vault (planned)</span>
+        <span class="pill">Food process shots</span>
+        <span class="pill">Family</span>
+      </div>
+
+      <div class="photo-grid" style="margin-top:14px;">
+        <figure>
+          <img src="/assets/images/cyrus.jpg" alt="Cyrus the dog" />
+          <figcaption>Cyrus</figcaption>
+        </figure>
+        <figure>
+          <img src="/assets/images/cyrus-belly.jpg" alt="Cyrus belly rub" />
+          <figcaption>Prime belly-rub posture</figcaption>
+        </figure>
+        <figure>
+          <img src="/assets/images/s0l-and-alex-russian-mob.jpg" alt="Sol and Alex dressed up" />
+          <figcaption>Sol + Alex</figcaption>
+        </figure>
+      </div>
     </section>
 
     <section class="card">
       <h2>Plan</h2>
+      <div class="muted">Current approach: Cloudflare Tunnel + a small local file server bound to localhost, gated by Cloudflare Access. The public-facing site stays static on GitHub Pages.</div>
       <ul>
         <li><strong>Option A (easy):</strong> link to Google Photos shared albums (public or unlisted)</li>
-        <li><strong>Option B (controlled):</strong> host a private gallery behind Cloudflare Access (password/SSO)</li>
+        <li><strong>Option B (controlled):</strong> serve a local folder via Cloudflare Tunnel + Cloudflare Access (authenticated), with the origin bound to localhost</li>
         <li><strong>Option C (hybrid):</strong> best-of albums on Google Photos + originals at home</li>
       </ul>
       <div class="muted">Next housekeeping step: align the Projects index navigation and styling to match Home/Food/Photos.</div>
