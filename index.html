@@ -4,113 +4,255 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Solomon Winternitz</title>
-  <meta name="description" content="Projects, notes, and links." />
+  <meta name="description" content="Projects, notes, and a growing recipe journal." />
+
   <style>
     :root{
-      --bg:#fafafa;
-      --card:#ffffff;
-      --text:#111;
-      --muted:#555;
-      --line:#e7e7e7;
-      --max:980px;
-      --radius:16px;
+      --max: 1020px;
+      --radius: 18px;
+
+      --bg: #fafafa;
+      --card: #ffffff;
+      --text: #111111;
+      --muted: #5a5a5a;
+      --line: #e7e7e7;
+
+      --shadow: 0 12px 28px rgba(0,0,0,.06);
+      --shadow2: 0 10px 22px rgba(0,0,0,.05);
+
+      --navbg: rgba(255,255,255,.72);
+      --navhover: rgba(0,0,0,.05);
+
+      --grad1: rgba(240,247,255,.9);
+      --grad2: rgba(255,243,240,.9);
     }
+
+    @media (prefers-color-scheme: dark){
+      :root{
+        --bg: #0b0d10;
+        --card: #11141a;
+        --text: #eef2f7;
+        --muted: #a9b3bf;
+        --line: rgba(255,255,255,.10);
+
+        --shadow: 0 14px 34px rgba(0,0,0,.40);
+        --shadow2: 0 10px 26px rgba(0,0,0,.35);
+
+        --navbg: rgba(17,20,26,.72);
+        --navhover: rgba(255,255,255,.08);
+
+        --grad1: rgba(42,108,255,.22);
+        --grad2: rgba(255,94,77,.16);
+      }
+    }
+
     *{ box-sizing:border-box; }
+    html{ scroll-behavior:smooth; }
     body{
       margin:0;
-      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      font-family: system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
       color:var(--text);
       background:
-        radial-gradient(1200px 600px at 20% -10%, #f0f7ff 0%, rgba(240,247,255,0) 60%),
-        radial-gradient(900px 500px at 90% 0%, #fff3f0 0%, rgba(255,243,240,0) 55%),
+        radial-gradient(1200px 600px at 18% -12%, var(--grad1) 0%, rgba(0,0,0,0) 60%),
+        radial-gradient(900px 520px at 92% 0%, var(--grad2) 0%, rgba(0,0,0,0) 55%),
         var(--bg);
-      line-height:1.55;
+      line-height:1.6;
     }
+
     a{ color:inherit; }
-    a:hover{ opacity:.86; }
-    .wrap{ max-width:var(--max); margin:52px auto; padding:0 18px; }
+    a:hover{ opacity:.9; }
+
+    .wrap{
+      max-width: var(--max);
+      margin: 56px auto;
+      padding: 0 18px;
+    }
 
     .top{
-      display:flex; justify-content:space-between; align-items:center;
-      gap:18px; flex-wrap:wrap; margin-bottom:18px;
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      gap:18px;
+      flex-wrap:wrap;
+      margin-bottom: 18px;
     }
-    .brand h1{ margin:0; font-size:44px; letter-spacing:-.7px; line-height:1.05; }
-    .brand .tag{ margin-top:10px; color:var(--muted); font-size:16px; max-width:58ch; }
+
+    .brand h1{
+      margin:0;
+      font-size: 46px;
+      letter-spacing: -0.8px;
+      line-height: 1.05;
+    }
+
+    .brand .tag{
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 16px;
+      max-width: 70ch;
+    }
 
     .nav{
-      display:flex; gap:14px; flex-wrap:wrap; align-items:center;
-      padding:10px 12px; border:1px solid var(--line); border-radius:999px;
-      background:rgba(255,255,255,.7); backdrop-filter:blur(6px);
+      display:flex;
+      gap: 10px;
+      flex-wrap:wrap;
+      align-items:center;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--navbg);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      box-shadow: var(--shadow2);
     }
+
     .nav a{
-      text-decoration:none; font-size:14px; color:#222;
-      padding:6px 10px; border-radius:999px;
+      text-decoration:none;
+      font-size: 14px;
+      padding: 7px 10px;
+      border-radius: 999px;
+      color: var(--text);
     }
-    .nav a:hover{ background:#f3f3f3; }
+
+    .nav a:hover{
+      background: var(--navhover);
+      opacity: 1;
+    }
 
     .hero{
-      border:1px solid var(--line);
-      border-radius:var(--radius);
-      background:linear-gradient(180deg, rgba(255,255,255,.92), #fff);
-      padding:18px;
-      box-shadow:0 10px 25px rgba(0,0,0,.04);
-      margin:18px 0 16px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, rgba(255,255,255,.92), rgba(255,255,255,.84));
+      box-shadow: var(--shadow);
+      padding: 18px;
+      margin: 18px 0 16px;
     }
-    .hero .lead{ font-size:16px; }
-    .hero .meta{ color:var(--muted); font-size:14px; margin-top:10px; }
+
+    @media (prefers-color-scheme: dark){
+      .hero{
+        background: linear-gradient(180deg, rgba(17,20,26,.88), rgba(17,20,26,.70));
+      }
+    }
+
+    .hero .lead{ font-size: 16px; }
+    .hero .meta{
+      color: var(--muted);
+      font-size: 14px;
+      margin-top: 10px;
+    }
 
     .pill{
       display:inline-block;
-      font-size:12px;
-      padding:3px 10px;
-      border-radius:999px;
-      border:1px solid var(--line);
-      color:#333;
-      background:#fff;
-      margin-left:8px;
-      vertical-align:middle;
+      font-size: 12px;
+      padding: 3px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.65);
+      color: var(--text);
+      margin-left: 8px;
+      vertical-align: middle;
     }
 
-    .grid{ display:grid; grid-template-columns:1fr; gap:14px; }
-    @media (min-width: 900px){ .grid{ grid-template-columns: 1.15fr .85fr; } }
+    @media (prefers-color-scheme: dark){
+      .pill{ background: rgba(255,255,255,.06); }
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+
+    @media (min-width: 920px){
+      .grid{ grid-template-columns: 1.18fr .82fr; }
+    }
 
     .card{
-      border:1px solid var(--line);
-      border-radius:var(--radius);
-      background:var(--card);
-      padding:16px;
-      box-shadow:0 8px 20px rgba(0,0,0,.03);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--card);
+      padding: 16px;
+      box-shadow: var(--shadow2);
     }
-    .card h2{ margin:0 0 10px 0; font-size:18px; letter-spacing:-.2px; }
-    ul{ margin:0; padding-left:18px; }
-    li{ margin:8px 0; }
-    .note{ color:var(--muted); font-size:13px; margin-top:10px; }
 
-    .tiles{ display:grid; grid-template-columns:1fr; gap:12px; margin-top:12px; }
-    @media (min-width: 900px){ .tiles{ grid-template-columns:1fr 1fr; } }
+    .card h2{
+      margin: 0 0 10px 0;
+      font-size: 18px;
+      letter-spacing: -0.2px;
+    }
+
+    ul{ margin:0; padding-left: 18px; }
+    li{ margin: 8px 0; }
+
+    .note{
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 10px;
+    }
+
+    .tiles{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    @media (min-width: 920px){
+      .tiles{ grid-template-columns: 1fr 1fr; }
+      .tiles .tile:nth-child(3){ grid-column: 1 / span 2; }
+    }
 
     .tile{
       display:block;
-      border:1px solid var(--line);
-      border-radius:14px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
       overflow:hidden;
       text-decoration:none;
-      background:#fff;
-      box-shadow:0 8px 20px rgba(0,0,0,.03);
+      background: var(--card);
+      box-shadow: var(--shadow2);
+      transition: transform .12s ease, box-shadow .12s ease, border-color .12s ease;
     }
-    .thumb{
-      height:132px;
-      background-size:cover;
-      background-position:center;
-      border-bottom:1px solid var(--line);
-    }
-    .tile .body{ padding:12px 14px 14px; }
-    .kicker{ font-size:12px; color:var(--muted); text-transform:uppercase; letter-spacing:.08em; }
-    .tile h3{ margin:6px 0 6px; font-size:18px; letter-spacing:-.2px; }
-    .tile p{ margin:0; color:#333; }
-    .tile .meta{ margin-top:10px; color:var(--muted); font-size:13px; }
 
-    footer{ margin-top:22px; color:#666; font-size:14px; padding:18px 2px; }
+    .tile:hover{
+      transform: translateY(-2px);
+      box-shadow: var(--shadow);
+      border-color: rgba(127,127,127,.25);
+      opacity: 1;
+    }
+
+    .thumb{
+      height: 170px;
+      background-size: cover;
+      background-position: center;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .tile .body{ padding: 12px 14px 14px; }
+    .kicker{
+      font-size: 12px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+
+    .tile h3{
+      margin: 6px 0 6px;
+      font-size: 18px;
+      letter-spacing: -0.2px;
+    }
+
+    .tile p{ margin:0; color: var(--text); opacity: .92; }
+    .tile .meta{
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    footer{
+      margin-top: 22px;
+      color: var(--muted);
+      font-size: 14px;
+      padding: 18px 2px;
+    }
   </style>
 </head>
 
@@ -126,37 +268,37 @@
         <a href="/">Home</a>
         <a href="/food/">Food</a>
         <a href="/projects/">Projects</a>
-        <a href="#">Photos</a>
+        <a href="/photos/">Photos</a>
         <a href="https://github.com/swinternitz">GitHub</a>
       </nav>
     </div>
 
     <div class="hero">
       <div class="lead">
-        Current focus: getting the core site structure right (clean navigation, consistent styling), then migrating the older recipe drafts into a better format.
+        Current focus: tightening site structure (clean navigation, consistent styling), then expanding the recipe journal and projects log.
       </div>
       <div class="meta">
-        Primary domains (we’ll flip later): <span class="pill">solomonwinternitz.com</span> <span class="pill">solwinternitz.com</span>
+        Domains in play: <span class="pill">solomonwinternitz.com</span> <span class="pill">solwinternitz.com</span>
       </div>
     </div>
 
     <div class="grid">
       <section class="card">
-        <h2>Featured</h2>
+        <h2>Featured recipes</h2>
 
         <div class="tiles">
           <a class="tile" href="/blog/brisket-basics.html">
-            <div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1553163147-622ab57be1c7?auto=format&fit=crop&w=1600&q=70');"></div>
+            <div class="thumb" style="background-image:url('/assets/images/brisket-closeup.jpeg');"></div>
             <div class="body">
               <div class="kicker">Smoker</div>
               <h3>The Brisket Basics</h3>
-              <p>Selection, trimming, Sol’s special rub, the stall, wrap timing, and resting.</p>
+              <p>Selection, trimming, Solomon’s special rub, the stall, wrap timing, and resting.</p>
               <div class="meta">Read the full recipe →</div>
             </div>
           </a>
 
           <a class="tile" href="/blog/blackened-grilled-salmon.html">
-            <div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&w=1600&q=70');"></div>
+            <div class="thumb" style="background-image:url('/assets/images/salmon.jpeg');"></div>
             <div class="body">
               <div class="kicker">Grill</div>
               <h3>Blackened Grilled Salmon Feast</h3>
@@ -164,29 +306,37 @@
               <div class="meta">Read the full recipe →</div>
             </div>
           </a>
+
+          <a class="tile" href="/blog/italian-chicken-roulade.html">
+            <div class="thumb" style="background-image:url('/assets/images/italian-chicken-roulade.jpeg');"></div>
+            <div class="body">
+              <div class="kicker">Italian</div>
+              <h3>Italian Chicken Roulade</h3>
+              <p>Soppressata, capicola, provolone—finished with a roasted tomato yogurt sauce.</p>
+              <div class="meta">Read the full recipe →</div>
+            </div>
+          </a>
         </div>
 
-        <div class="note">These are stock photos for now. You’ll swap them with your own as you cook.</div>
+        <div class="note">All thumbnails are local assets now (no more stock placeholders on the homepage).</div>
       </section>
 
       <section class="card">
         <h2>What I’m working on</h2>
         <ul>
-          <li><strong>Food</strong> — upgrading older drafts into a consistent “recipe card + notes” format</li>
-          <li><strong>Photos</strong> — safe hosting from your home server (22TB drive), restricted access</li>
+          <li><strong>Food</strong> — consistent “story + recipe card” format for every post</li>
+          <li><strong>Photos</strong> — safe hosting from my home machine with restricted access</li>
           <li><strong>Projects</strong> — RetroPie / Jumpbox notes and build log</li>
         </ul>
-        <div class="note">Next: make the recipe pages match the Food landing page styling.</div>
+        <div class="note">Next: align navigation + styling across Food and Projects index pages.</div>
       </section>
     </div>
 
     <footer>
       © <span id="y"></span> solomonwinternitz.com
-      <!-- branch: main -->
     </footer>
   </div>
 
   <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
 </body>
 </html>
-
