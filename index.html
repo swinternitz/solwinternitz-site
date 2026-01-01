@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Sol Winternitz</title>
+  <title>Solomon Winternitz</title>
   <meta name="description" content="Projects, notes, and links." />
   <style>
     :root{
@@ -27,14 +27,15 @@
       line-height:1.55;
     }
     a{ color:inherit; }
-    a:hover{ opacity:.85; }
+    a:hover{ opacity:.86; }
     .wrap{ max-width:var(--max); margin:52px auto; padding:0 18px; }
+
     .top{
       display:flex; justify-content:space-between; align-items:center;
       gap:18px; flex-wrap:wrap; margin-bottom:18px;
     }
-    .brand h1{ margin:0; font-size:42px; letter-spacing:-.6px; line-height:1.1; }
-    .brand .tag{ margin-top:8px; color:var(--muted); font-size:16px; }
+    .brand h1{ margin:0; font-size:44px; letter-spacing:-.7px; line-height:1.05; }
+    .brand .tag{ margin-top:10px; color:var(--muted); font-size:16px; max-width:58ch; }
 
     .nav{
       display:flex; gap:14px; flex-wrap:wrap; align-items:center;
@@ -50,15 +51,28 @@
     .hero{
       border:1px solid var(--line);
       border-radius:var(--radius);
-      background:linear-gradient(180deg, rgba(255,255,255,.9), #fff);
+      background:linear-gradient(180deg, rgba(255,255,255,.92), #fff);
       padding:18px;
       box-shadow:0 10px 25px rgba(0,0,0,.04);
-      margin:18px 0 22px;
+      margin:18px 0 16px;
     }
-    .hero .meta{ color:var(--muted); font-size:14px; margin-top:8px; }
+    .hero .lead{ font-size:16px; }
+    .hero .meta{ color:var(--muted); font-size:14px; margin-top:10px; }
+
+    .pill{
+      display:inline-block;
+      font-size:12px;
+      padding:3px 10px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      color:#333;
+      background:#fff;
+      margin-left:8px;
+      vertical-align:middle;
+    }
 
     .grid{ display:grid; grid-template-columns:1fr; gap:14px; }
-    @media (min-width:880px){ .grid{ grid-template-columns:1fr 1fr; } }
+    @media (min-width: 900px){ .grid{ grid-template-columns: 1.15fr .85fr; } }
 
     .card{
       border:1px solid var(--line);
@@ -72,20 +86,31 @@
     li{ margin:8px 0; }
     .note{ color:var(--muted); font-size:13px; margin-top:10px; }
 
-    .pill{
-      display:inline-block;
-      font-size:12px;
-      padding:3px 10px;
-      border-radius:999px;
+    .tiles{ display:grid; grid-template-columns:1fr; gap:12px; margin-top:12px; }
+    @media (min-width: 900px){ .tiles{ grid-template-columns:1fr 1fr; } }
+
+    .tile{
+      display:block;
       border:1px solid var(--line);
-      color:#333;
+      border-radius:14px;
+      overflow:hidden;
+      text-decoration:none;
       background:#fff;
-      margin-left:8px;
-      vertical-align:middle;
+      box-shadow:0 8px 20px rgba(0,0,0,.03);
     }
-    footer{ margin-top:26px; color:#666; font-size:14px; padding:18px 2px; }
-    .small-links a{ text-decoration:none; border-bottom:1px solid #ddd; }
-    .small-links a:hover{ border-bottom-color:#aaa; }
+    .thumb{
+      height:132px;
+      background-size:cover;
+      background-position:center;
+      border-bottom:1px solid var(--line);
+    }
+    .tile .body{ padding:12px 14px 14px; }
+    .kicker{ font-size:12px; color:var(--muted); text-transform:uppercase; letter-spacing:.08em; }
+    .tile h3{ margin:6px 0 6px; font-size:18px; letter-spacing:-.2px; }
+    .tile p{ margin:0; color:#333; }
+    .tile .meta{ margin-top:10px; color:var(--muted); font-size:13px; }
+
+    footer{ margin-top:22px; color:#666; font-size:14px; padding:18px 2px; }
   </style>
 </head>
 
@@ -93,60 +118,70 @@
   <div class="wrap">
     <div class="top">
       <div class="brand">
-        <h1>Sol Winternitz</h1>
-        <div class="tag">Projects, notes, and links.</div>
+        <h1>Solomon Winternitz</h1>
+        <div class="tag">A small personal hub for projects, notes, and a growing recipe journal—real cooks and photos as I iterate.</div>
       </div>
 
       <nav class="nav" aria-label="Primary navigation">
         <a href="/">Home</a>
-        <a href="/blog/">Blog</a>
-        <a href="/projects/">Projects</a>
         <a href="/food/">Food</a>
+        <a href="/projects/">Projects</a>
+        <a href="#">Photos</a>
         <a href="https://github.com/swinternitz">GitHub</a>
       </nav>
     </div>
 
     <div class="hero">
-      <div style="font-size:16px;">
-        Building a small personal hub that ties together projects (home lab, retro builds, automation) and a growing recipe journal.
+      <div class="lead">
+        Current focus: getting the core site structure right (clean navigation, consistent styling), then migrating the older recipe drafts into a better format.
       </div>
       <div class="meta">
-        Canonical: <span class="pill">solwinternitz.com</span>
-        &nbsp;|&nbsp;
-        Alias: <span class="pill">solomonwinternitz.com → redirects</span>
+        Primary domains (we’ll flip later): <span class="pill">solomonwinternitz.com</span> <span class="pill">solwinternitz.com</span>
       </div>
     </div>
 
     <div class="grid">
       <section class="card">
-        <h2>Quick links</h2>
-        <ul>
-          <li class="small-links">
-            <a href="https://europepics.solwinternitz.com/">Europe pics</a>
-            <span class="pill">when online</span>
-          </li>
-          <li class="small-links">
-            <a href="/blog/">Blog</a>
-            <span class="pill">2 posts</span>
-          </li>
-        </ul>
-        <div class="note">
-          Some links (like Europe pics) may be offline when I’m not running the local service.
+        <h2>Featured</h2>
+
+        <div class="tiles">
+          <a class="tile" href="/blog/brisket-basics.html">
+            <div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1553163147-622ab57be1c7?auto=format&fit=crop&w=1600&q=70');"></div>
+            <div class="body">
+              <div class="kicker">Smoker</div>
+              <h3>The Brisket Basics</h3>
+              <p>Selection, trimming, Sol’s special rub, the stall, wrap timing, and resting.</p>
+              <div class="meta">Read the full recipe →</div>
+            </div>
+          </a>
+
+          <a class="tile" href="/blog/blackened-grilled-salmon.html">
+            <div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&w=1600&q=70');"></div>
+            <div class="body">
+              <div class="kicker">Grill</div>
+              <h3>Blackened Grilled Salmon Feast</h3>
+              <p>Salmon with creamy dill sauce, rice pilaf, and grilled asparagus.</p>
+              <div class="meta">Read the full recipe →</div>
+            </div>
+          </a>
         </div>
+
+        <div class="note">These are stock photos for now. You’ll swap them with your own as you cook.</div>
       </section>
 
       <section class="card">
         <h2>What I’m working on</h2>
         <ul>
-          <li><strong>Photo calendar</strong> — Europe trip curation workflow</li>
-          <li><strong>RetroPie / Jumpbox</strong> — build notes and configuration</li>
-          <li><strong>Food / recipes</strong> — migrating older posts and adding real cooks/photos</li>
+          <li><strong>Food</strong> — upgrading older drafts into a consistent “recipe card + notes” format</li>
+          <li><strong>Photos</strong> — safe hosting from your home server (22TB drive), restricted access</li>
+          <li><strong>Projects</strong> — RetroPie / Jumpbox notes and build log</li>
         </ul>
+        <div class="note">Next: make the recipe pages match the Food landing page styling.</div>
       </section>
     </div>
 
     <footer>
-      © <span id="y"></span> solwinternitz.com
+      © <span id="y"></span> solomonwinternitz.com
       <!-- branch: main -->
     </footer>
   </div>
