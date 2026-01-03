@@ -30,30 +30,16 @@
     <section class="card">
       <h2>Welcome</h2>
       <p>
-        This site is my personal “hub”: a growing recipe journal (real cooks, real photos) plus the occasional deep‑dive project write‑up.
-        I’m building it in public and keeping it intentionally lightweight—fast pages, clean navigation, no gimmicks.
+        This is my personal hub: recipes I actually cook (with real photos, notes, and repeatable steps) plus the occasional deep‑dive project write‑up.
       </p>
       <p class="muted">
-        If you’re here for food: start with the featured recipes below. If you’re here for builds: the RetroPie Jumpbox write‑up is the current flagship.
+        Start with <a href="/food/">Food</a> for recipes, or jump straight to the <a href="/projects/retropie-jumpbox.html">RetroPie Jumpbox</a> build.
       </p>
+      <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap;">
+        <a class="pill" href="/food/">Browse recipes</a>
+        <a class="pill" href="/projects/retropie-jumpbox.html">RetroPie Jumpbox</a>
+      </div>
 
-      <a class="photo-collage" href="/photos/" aria-label="Open Photos">
-        <span class="snap" style="--x:10%;--y:18%;--rot:-6deg;">
-          <img src="/assets/images/cyrus.jpg" alt="Cyrus lounging" />
-        </span>
-        <span class="snap" style="--x:58%;--y:14%;--rot:7deg;">
-          <img src="/assets/images/sol-and-alex-russian-mob.jpg" alt="Sol and Alex dressed up" />
-        </span>
-        <span class="snap" style="--x:34%;--y:52%;--rot:-3deg;">
-          <img src="/assets/images/tamales-with-pazole.jpg" alt="Jerk chicken tamales with pozole" />
-        </span>
-        <span class="snap" style="--x:74%;--y:52%;--rot:4deg;">
-          <img src="/assets/images/swordfish-grilling.jpg" alt="Swordfish on the grill" />
-        </span>
-        <span class="snap" style="--x:18%;--y:64%;--rot:6deg;">
-          <img src="/assets/images/crispy-skin-salmon-with-tabouleh.jpg" alt="Crispy-skin salmon with tabouleh" />
-        </span>
-      </a>
     </section>
 
     <section class="card">
@@ -109,19 +95,16 @@
       </p>
       <div class="tiles" style="margin-top:12px;">
         <a class="tile" href="/projects/retropie-jumpbox.html">
-          <div class="thumb" style="background-image:url('/assets/images/cyrus-belly.jpg');"></div>
+          <div class="thumb" style="background-image:url('/assets/images/rpi-case.jpeg');"></div>
           <div class="body">
-            <div class="kicker">Homelab</div>
+            <div class="kicker">Retro build</div>
             <h3>RetroPie Jumpbox</h3>
-            <p>A full build article: stable cooling, SSH/networking, library discipline, and a PS1 CHD + M3U pipeline that keeps things clean.</p>
+            <p>A detailed build log: GPIO‑controlled fan (MOSFET), sane networking for transfers, and a PS1 CHD + M3U workflow that keeps EmulationStation clean.</p>
             <div class="meta">Read the build →</div>
           </div>
         </a>
       </div>
 
-      <div class="note" style="margin-top:14px;">
-        If you want the “photo vault” idea: the plan is private hosting from my home machine behind Cloudflare access controls. Public galleries will be curated.
-      </div>
     </section>
 
     <footer>
