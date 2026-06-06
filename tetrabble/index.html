@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TETRABBLE</title>
+<style>
+  :root { --accent:#ffd700; --red:#cc2233; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; background:#03030a; font-family:'Trebuchet MS','Segoe UI',sans-serif; color:#fff; overflow:hidden; user-select:none; }
+  #bgCanvas { position:fixed; inset:0; z-index:0; }
+  #skyline { position:fixed; left:0; right:0; bottom:0; z-index:0; width:100%; opacity:0.5; pointer-events:none; }
+  #stage { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; z-index:1; }
+  #game { position:relative; display:flex; gap:24px; align-items:flex-start; padding:18px; }
+  #boardWrap {
+    position:relative; border:3px solid var(--red); border-radius:4px;
+    box-shadow: 0 0 0 6px #14142c, 0 0 0 9px #444, 0 0 50px rgba(200,40,60,0.5), 0 0 90px rgba(60,80,255,0.25);
+    background:#07070f;
+  }
+  canvas { display:block; }
+  #side { display:flex; flex-direction:column; gap:12px; width:210px; }
+  .box { background:linear-gradient(160deg,#16163233,#1a1a3add); border:1px solid #2a2a55; border-radius:8px; padding:11px 13px; }
+  .label { font-size:11px; letter-spacing:3px; color:#7788cc; font-weight:bold; margin-bottom:3px; text-transform:uppercase; }
+  .value { font-size:30px; font-weight:bold; line-height:1; text-shadow:0 0 12px currentColor; }
+  #scoreV{color:#fff;} #levelV{color:#00e5ff;} #linesV{color:#00ff88;} #wordsV{color:#ff66cc;} #bestV{color:var(--accent);}
+  .mini { display:flex; gap:10px; } .mini>div{ flex:1; }
+  #previewCanvas,#holdCanvas { display:block; margin:0 auto; background:#07070f; border-radius:4px; }
+  /* words-spelled list — left panel, multi-column, fixed height */
+  #leftPanel { width:300px; align-self:stretch; display:flex; flex-direction:column;
+    background:linear-gradient(160deg,#16163233,#1a1a3add); border:1px solid #2a2a55; border-radius:8px; padding:11px 13px; }
+  #wordCount { font-size:12px; color:#ff66cc; font-weight:bold; margin-bottom:6px; }
+  #wordList { flex:1; overflow:hidden; column-width:84px; column-gap:8px; }
+  #wordList::-webkit-scrollbar{ width:6px; } #wordList::-webkit-scrollbar-thumb{ background:#33336a; border-radius:3px; }
+  .wrow { display:flex; justify-content:space-between; align-items:center; background:#0d0d22; border:1px solid #23234a; border-radius:5px; padding:3px 7px; font-size:13px; margin-bottom:5px; break-inside:avoid; animation:fadeIn .3s; }
+  .wrow .w { font-weight:bold; letter-spacing:1px; color:#cfe; }
+  .wrow .pts { font-size:11px; color:#ffd24a; font-weight:bold; margin-left:auto; }
+  .wrow .c { font-size:10px; color:#889; background:#1a1a3a; border-radius:8px; padding:1px 6px; margin-left:4px; }
+  @keyframes fadeIn { from{opacity:0; transform:translateX(10px);} to{opacity:1;transform:none;} }
+  /* title / overlays */
+  #title { position:absolute; inset:0; z-index:50; display:flex; flex-direction:column; align-items:center; justify-content:center;
+           background:radial-gradient(ellipse at 50% 40%, #14143ad0 0%, #05050cf0 70%); }
+  #title h1 { font-size:84px; letter-spacing:14px; font-weight:900;
+    background:linear-gradient(180deg,#fff 0%,var(--accent) 45%,#ff6a00 100%);
+    -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;
+    filter:drop-shadow(0 0 26px rgba(255,180,0,.55)) drop-shadow(3px 4px 0 #7a2a00); }
+  #title .tag { color:#99aadd; letter-spacing:6px; font-size:14px; margin:4px 0 26px; text-transform:uppercase; }
+  .row { display:flex; gap:34px; align-items:flex-start; }
+  .modes { display:flex; flex-direction:column; gap:12px; }
+  .mode { width:180px; padding:14px; border-radius:12px; border:2px solid #33336a; background:#10102a; cursor:pointer; text-align:center; transition:all .15s; }
+  .mode:hover,.mode.sel { border-color:var(--accent); background:#1a1a44; box-shadow:0 0 24px rgba(255,215,0,.3); transform:translateY(-2px); }
+  .mode .mname{ font-size:19px; font-weight:bold; margin-bottom:4px; } .mode .mdesc{ font-size:11px; color:#8899cc; line-height:1.5; }
+  #easy .mname{color:#00ff88;} #medium .mname{color:#00e5ff;} #hard .mname{color:#ff4466;}
+  .panelTitle{ font-size:13px; letter-spacing:4px; color:#7788cc; text-transform:uppercase; margin-bottom:10px; text-align:center; }
+  #hiscoreTable { width:300px; background:#0c0c1e; border:1px solid #2a2a55; border-radius:12px; padding:16px 18px; }
+  .hs { display:flex; justify-content:space-between; font-size:15px; padding:5px 2px; border-bottom:1px solid #1a1a36; }
+  .hs .rank{ color:#556; width:26px; } .hs .nm{ flex:1; font-weight:bold; letter-spacing:2px; color:#cfe; } .hs .sc{ color:var(--accent); font-weight:bold; }
+  .hs.me { background:#1a1a44; border-radius:5px; }
+  .trackSel { display:flex; gap:8px; margin:6px 0 22px; align-items:center; }
+  .trackSel .tbtn { padding:6px 14px; border-radius:18px; border:1px solid #33336a; background:#10102a; color:#99aadd; font-size:12px; cursor:pointer; }
+  .trackSel .tbtn.sel { border-color:var(--accent); color:var(--accent); background:#1a1a3a; }
+  .startBtn { padding:15px 48px; font-size:20px; font-weight:bold; letter-spacing:4px; color:var(--accent);
+    background:linear-gradient(135deg,#8b0000,#cc2233); border:none; border-radius:8px; cursor:pointer;
+    box-shadow:0 0 28px rgba(200,40,60,.6), 3px 3px 0 #440008; text-transform:uppercase; margin-top:8px; }
+  .startBtn:hover{ filter:brightness(1.15); }
+  .hint { margin-top:22px; color:#667; font-size:12px; text-align:center; line-height:1.8; } .hint b{ color:#99a; }
+  #overlay { position:absolute; inset:0; z-index:40; display:none; flex-direction:column; align-items:center; justify-content:center;
+             background:rgba(5,5,15,.9); border-radius:4px; padding:20px; }
+  #overlay h2 { font-size:44px; letter-spacing:6px; color:var(--accent); text-shadow:0 0 22px rgba(255,215,0,.7),2px 2px 0 #aa4400; margin-bottom:8px; }
+  #overlay p { color:#ff8899; font-weight:bold; margin-bottom:18px; }
+  #nameEntry { display:none; flex-direction:column; align-items:center; gap:10px; margin-bottom:18px; }
+  #initials { display:flex; gap:14px; }
+  .slot { width:64px; height:84px; display:flex; align-items:center; justify-content:center;
+    font-size:52px; font-weight:900; color:#fff; background:#0c0c1e; border:3px solid #33336a;
+    border-radius:10px; text-transform:uppercase; }
+  .slot.active { border-color:var(--accent); color:var(--accent); box-shadow:0 0 22px rgba(255,215,0,0.5);
+    animation:slotPulse 0.8s infinite alternate; }
+  @keyframes slotPulse { from{ box-shadow:0 0 12px rgba(255,215,0,0.3);} to{ box-shadow:0 0 26px rgba(255,215,0,0.7);} }
+  .ne-hint { color:#7788cc; font-size:12px; letter-spacing:1px; }
+  /* touch controls (shown on touch devices via body.touch) */
+  #touchBar { display:none; position:fixed; left:0; right:0; bottom:0; z-index:55;
+    justify-content:center; gap:10px; padding:10px 8px; background:linear-gradient(0deg,#05050ccc,#05050c00); }
+  body.touch #touchBar { display:flex; }
+  .tbtn2 { flex:0 0 auto; width:74px; height:64px; border-radius:12px; border:2px solid #3344aa;
+    background:#15153a; color:#aef; font-size:24px; font-weight:bold; display:flex; align-items:center; justify-content:center;
+    user-select:none; -webkit-user-select:none; touch-action:none; }
+  .tbtn2:active { background:#2a2a66; border-color:var(--accent); }
+  .tbtn2.drop { color:#ffd700; border-color:#bb6600; background:#1e0e00; }
+  body.touch #leftPanel { display:none; }   /* reclaim width on phones */
+  body.touch #side { width:120px; }
+  #ovTable { width:300px; margin-bottom:16px; }
+  .topctrl { position:absolute; top:12px; z-index:60; display:flex; gap:8px; }
+  #topRight { right:14px; } #topLeft { left:14px; }
+  .ctlbtn { background:#16163a; border:1px solid #33336a; color:#99aadd; border-radius:18px; padding:7px 14px; font-size:12px; cursor:pointer; }
+  #padStatus { font-size:12px; color:#556; letter-spacing:1px; align-self:center; } #padStatus.on{ color:#00ff88; }
+  .wordPop { position:absolute; font-weight:900; font-size:26px; color:#fff; text-shadow:0 0 16px #ff66cc,0 0 4px #fff; pointer-events:none; z-index:30; animation:pop 1s ease-out forwards; }
+  @keyframes pop { 0%{transform:translate(-50%,-50%) scale(.4);opacity:0;} 20%{transform:translate(-50%,-50%) scale(1.2);opacity:1;} 100%{transform:translate(-50%,-120px) scale(1);opacity:0;} }
+</style>
+</head>
+<body>
+<canvas id="bgCanvas"></canvas>
+<svg id="skyline" viewBox="0 0 1200 200" preserveAspectRatio="xMidYMax meet" xmlns="http://www.w3.org/2000/svg">
+  <!-- Moscow-ish skyline silhouette: onion domes + towers (classic Tetris nod) -->
+  <g fill="#0a0a1e">
+    <rect x="0" y="150" width="1200" height="50"/>
+    <rect x="40" y="90" width="50" height="110"/>
+    <rect x="100" y="60" width="36" height="140"/><circle cx="118" cy="58" r="10"/>
+    <path d="M150 110 q24 -70 48 0 z"/><rect x="150" y="110" width="48" height="90"/>
+    <rect x="230" y="80" width="60" height="120"/><path d="M230 80 l30 -34 l30 34 z"/>
+    <!-- St Basil onion domes -->
+    <rect x="330" y="100" width="40" height="100"/><path d="M350 60 q-26 26 0 44 q26 -18 0 -44z"/>
+    <rect x="390" y="70" width="50" height="130"/><path d="M415 24 q-34 34 0 52 q34 -18 0 -52z"/><rect x="412" y="14" width="6" height="14"/>
+    <rect x="460" y="100" width="40" height="100"/><path d="M480 62 q-24 24 0 40 q24 -16 0 -40z"/>
+    <rect x="540" y="86" width="46" height="114"/><path d="M563 44 q-30 30 0 48 q30 -18 0 -48z"/>
+    <rect x="620" y="110" width="60" height="90"/><path d="M620 110 l30 -40 l30 40 z"/>
+    <rect x="710" y="64" width="40" height="136"/><circle cx="730" cy="60" r="11"/>
+    <rect x="770" y="96" width="54" height="104"/><path d="M797 52 q-28 28 0 46 q28 -18 0 -46z"/>
+    <rect x="850" y="80" width="46" height="120"/><path d="M850 80 l23 -30 l23 30 z"/>
+    <rect x="920" y="104" width="44" height="96"/><path d="M942 66 q-26 26 0 42 q26 -16 0 -42z"/>
+    <rect x="990" y="70" width="56" height="130"/><path d="M990 70 l28 -36 l28 36 z"/>
+    <rect x="1070" y="92" width="40" height="108"/><circle cx="1090" cy="88" r="9"/>
+    <rect x="1130" y="110" width="50" height="90"/>
+  </g>
+</svg>
+
+<div id="stage">
+  <div id="topLeft" class="topctrl"><span id="padStatus">⚇ no controller</span></div>
+  <div id="topRight" class="topctrl">
+    <button class="ctlbtn" id="testBtn">🔊 Test Sound</button>
+    <button class="ctlbtn" id="trackBtn">♪ Sugar Plum Fairy</button>
+    <button class="ctlbtn" id="musicBtn">Music: ON</button>
+  </div>
+
+  <div id="game">
+    <div id="leftPanel">
+      <div class="label">Words Spelled</div>
+      <div id="wordCount">0 words · 0 unique</div>
+      <div id="wordList"></div>
+    </div>
+    <div id="boardWrap">
+      <canvas id="board"></canvas>
+      <div id="overlay">
+        <h2 id="ovTitle">PAUSED</h2>
+        <p id="ovMsg"></p>
+        <div id="nameEntry">
+          <div style="color:#9ad;font-size:13px;letter-spacing:2px;">ENTER YOUR INITIALS</div>
+          <div id="initials">
+            <span class="slot active">A</span><span class="slot">A</span><span class="slot">A</span>
+          </div>
+          <div class="ne-hint">↑↓ change letter · ←→ move · A / Enter to confirm</div>
+        </div>
+        <div id="ovTable"></div>
+        <button class="startBtn" id="resumeBtn">RESUME</button>
+      </div>
+    </div>
+
+    <div id="side">
+      <div class="box"><div class="label">Next</div><canvas id="previewCanvas" width="186" height="150"></canvas></div>
+      <div class="mini">
+        <div class="box"><div class="label">Hold</div><canvas id="holdCanvas" width="84" height="84"></canvas></div>
+        <div class="box" style="display:flex;flex-direction:column;justify-content:center;"><div class="label">Words</div><div class="value" id="wordsV">0</div></div>
+      </div>
+      <div class="box"><div class="label">Score</div><div class="value" id="scoreV">0</div></div>
+      <div class="mini">
+        <div class="box"><div class="label">Level</div><div class="value" id="levelV">1</div></div>
+        <div class="box"><div class="label">Lines</div><div class="value" id="linesV">0</div></div>
+      </div>
+      <div class="box"><div class="label">Best</div><div class="value" id="bestV">0</div></div>
+    </div>
+  </div>
+
+  <div id="touchBar">
+    <div class="tbtn2" id="tLeft">◀</div>
+    <div class="tbtn2" id="tRotate">⟳</div>
+    <div class="tbtn2" id="tRight">▶</div>
+    <div class="tbtn2" id="tDown">▼</div>
+    <div class="tbtn2 drop" id="tDrop">⤓</div>
+    <div class="tbtn2" id="tHold">H</div>
+  </div>
+
+  <div id="title">
+    <h1>TETRABBLE</h1>
+    <div class="tag">Tetris × Scrabble</div>
+    <div class="trackSel" id="trackSel"></div>
+    <div class="row">
+      <div class="modes">
+        <div class="mode" id="easy" data-mode="easy"><div class="mname">EASY</div><div class="mdesc">Vowel-rich · Gentle speed · 3-letter words</div></div>
+        <div class="mode sel" id="medium" data-mode="medium"><div class="mname">MEDIUM</div><div class="mdesc">Scrabble bag · Classic speed · 3-letter words</div></div>
+        <div class="mode" id="hard" data-mode="hard"><div class="mname">HARD</div><div class="mdesc">Tough letters · Fast · 4-letter words</div></div>
+      </div>
+      <div id="hiscoreTable"><div class="panelTitle">High Scores</div><div id="hsRows"></div></div>
+    </div>
+    <button class="startBtn" id="playBtn">PLAY</button>
+    <div class="hint">
+      <b>Keyboard:</b> ← → move · ↑/X rotate · Z ccw · ↓ soft-drop · SPACE hard-drop · C hold · ESC pause<br>
+      <b>Controller:</b> D-pad · A rotate · B ccw · Y/↑ hard-drop · LB/RB hold · Start pause<br>
+      <span style="color:#778;">Clear rows (Tetris) <b>or</b> spell words across a line (Scrabble). Do both for huge bonuses!</span>
+    </div>
+  </div>
+</div>
+
+<script src="dictionary.js?v=11"></script>
+<script src="tetrabble.js?v=11"></script>
+</body>
+</html>
