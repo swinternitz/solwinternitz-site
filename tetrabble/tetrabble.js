@@ -558,15 +558,16 @@ function fitToScreen(){
   const gw=g.offsetWidth, gh=g.offsetHeight; if(!gw||!gh) return;
   const touch=document.body.classList.contains('touch');
   const tb=document.getElementById('touchBar');
-  const reserveTop = touch ? 58 : 0;                          // mobile HUD bar
-  const reserveBottom = (touch && tb) ? tb.offsetHeight + 10 : 0;  // touch buttons
-  const availW = window.innerWidth;
+  const sidePad = touch ? 10 : 0;                             // breathing room at edges
+  const reserveTop = touch ? 60 : 0;                          // mobile HUD bar
+  const reserveBottom = (touch && tb) ? tb.offsetHeight + 12 : 0;  // touch buttons (incl. safe area)
+  const availW = window.innerWidth - sidePad*2;
   const availH = window.innerHeight - reserveTop - reserveBottom;
   const s = Math.min(availW/gw, availH/gh) * 0.98;
   // #game is anchored top-left in #stage; position it deterministically with
   // an explicit translate (origin top-left) so it always fits and centers.
   g.style.transformOrigin = 'top left';
-  const tx = Math.max(0, (availW - gw*s) / 2);
+  const tx = Math.max(sidePad, (window.innerWidth - gw*s) / 2);
   const ty = reserveTop + Math.max(0, (availH - gh*s) / 2);
   g.style.transform = 'translate('+tx.toFixed(1)+'px,'+ty.toFixed(1)+'px) scale('+s.toFixed(4)+')';
 }

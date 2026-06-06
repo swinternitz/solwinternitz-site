@@ -77,15 +77,15 @@
   @keyframes slotPulse { from{ box-shadow:0 0 12px rgba(255,215,0,0.3);} to{ box-shadow:0 0 26px rgba(255,215,0,0.7);} }
   .ne-hint { color:#7788cc; font-size:12px; letter-spacing:1px; }
   /* touch controls (shown on touch devices via body.touch) */
-  #touchBar { display:none; position:fixed; left:0; right:0; bottom:0; z-index:55;
-    justify-content:center; gap:10px; padding:10px 8px; background:linear-gradient(0deg,#05050ccc,#05050c00); }
+  #touchBar { display:none; position:fixed; left:0; right:0; bottom:0; z-index:55; box-sizing:border-box;
+    justify-content:center; gap:6px; padding:8px 10px calc(8px + env(safe-area-inset-bottom,0px)); background:linear-gradient(0deg,#05050cee,#05050c00); }
   body.touch #touchBar { display:flex; }
   .tbtn2 { flex:0 0 auto; width:74px; height:64px; border-radius:12px; border:2px solid #3344aa;
     background:#15153a; color:#aef; font-size:24px; font-weight:bold; display:flex; align-items:center; justify-content:center;
     user-select:none; -webkit-user-select:none; touch-action:none; }
   .tbtn2:active { background:#2a2a66; border-color:var(--accent); }
   .tbtn2.drop { color:#ffd700; border-color:#bb6600; background:#1e0e00; }
-  body.touch .tbtn2 { width:15vw; max-width:84px; height:58px; }
+  body.touch .tbtn2 { flex:1 1 0; min-width:0; width:auto; max-width:64px; height:56px; font-size:22px; }
   /* phone layout: hide desktop side panels, show slim top HUD, board goes full width */
   #mobileHud { display:none; }
   body.touch #mobileHud {
@@ -236,7 +236,7 @@
   </div>
 </div>
 
-<script src="dictionary.js?v=15"></script>
-<script src="tetrabble.js?v=15"></script>
+<script src="dictionary.js?v=16"></script>
+<script src="tetrabble.js?v=16"></script>
 </body>
 </html>
