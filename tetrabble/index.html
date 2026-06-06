@@ -85,9 +85,23 @@
     user-select:none; -webkit-user-select:none; touch-action:none; }
   .tbtn2:active { background:#2a2a66; border-color:var(--accent); }
   .tbtn2.drop { color:#ffd700; border-color:#bb6600; background:#1e0e00; }
-  body.touch #leftPanel { display:none; }   /* reclaim width on phones */
-  body.touch #side { width:120px; }
   body.touch .tbtn2 { width:15vw; max-width:84px; height:58px; }
+  /* phone layout: hide desktop side panels, show slim top HUD, board goes full width */
+  #mobileHud { display:none; }
+  body.touch #mobileHud {
+    display:flex; position:fixed; top:0; left:0; right:0; height:56px; z-index:60;
+    align-items:center; gap:12px; padding:4px 10px;
+    background:linear-gradient(180deg,#0b0b1eee,#0b0b1eaa); border-bottom:1px solid #2a2a55;
+  }
+  body.touch #topLeft, body.touch #topRight { display:none; }
+  body.touch #leftPanel, body.touch #side { display:none; }
+  body.touch #game { padding:4px; }
+  #mobileHud .ms { display:flex; flex-direction:column; line-height:1.1; }
+  #mobileHud .ms span { font-size:9px; letter-spacing:1px; color:#7788cc; font-weight:bold; }
+  #mobileHud .ms b { font-size:17px; }
+  #mScore{color:#fff;} #mLevel{color:#00e5ff;} #mLines{color:#00ff88;} #mWords{color:#ff66cc;}
+  #mNext { background:#07070f; border:1px solid #2a2a55; border-radius:4px; }
+  #mMusic { margin-left:auto; background:#16163a; border:1px solid #33336a; color:#9ad; border-radius:14px; padding:6px 12px; font-size:12px; }
   #ovTable { width:300px; margin-bottom:16px; }
   .topctrl { position:absolute; top:12px; z-index:60; display:flex; gap:8px; }
   #topRight { right:14px; } #topLeft { left:14px; }
@@ -169,6 +183,15 @@
     </div>
   </div>
 
+  <div id="mobileHud">
+    <canvas id="mNext" width="60" height="44"></canvas>
+    <div class="ms"><span>SCORE</span><b id="mScore">0</b></div>
+    <div class="ms"><span>LV</span><b id="mLevel">1</b></div>
+    <div class="ms"><span>LINES</span><b id="mLines">0</b></div>
+    <div class="ms"><span>WORDS</span><b id="mWords">0</b></div>
+    <button id="mMusic">♪ ON</button>
+  </div>
+
   <div id="touchBar">
     <div class="tbtn2" id="tLeft">◀</div>
     <div class="tbtn2" id="tRotate">⟳</div>
@@ -199,7 +222,7 @@
   </div>
 </div>
 
-<script src="dictionary.js?v=13"></script>
-<script src="tetrabble.js?v=13"></script>
+<script src="dictionary.js?v=14"></script>
+<script src="tetrabble.js?v=14"></script>
 </body>
 </html>

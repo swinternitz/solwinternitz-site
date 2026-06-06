@@ -259,7 +259,8 @@ function drawMini(c,canvas,k,letters,cs){
   const ox=(canvas.width-w*cs)/2-Math.min(...xs)*cs, oy=(canvas.height-h*cs)/2-Math.min(...ys)*cs;
   cells.forEach(([dx,dy],i)=>drawBlock(c,ox+dx*cs,oy+dy*cs,cs,pieceHSL(k,level),letters?letters[i]:''));
 }
-function drawPreview(){ drawMini(pCtx,pCanvas,nextQueue[0],nextLetters,36); }
+function drawPreview(){ drawMini(pCtx,pCanvas,nextQueue[0],nextLetters,36);
+  const mn=document.getElementById('mNext'); if(mn){ drawMini(mn.getContext('2d'),mn,nextQueue[0],null,10); } }
 function drawHold(){ drawMini(hCtx,hCanvas,holdKey,null,18); }
 function queueWordPop(w, pts){
   const wrap=document.getElementById('boardWrap'); const mid=w.coords[Math.floor(w.coords.length/2)];
@@ -273,6 +274,8 @@ function updateHUD(){
   document.getElementById('linesV').textContent=lines;
   document.getElementById('wordsV').textContent=wordsCleared;
   document.getElementById('bestV').textContent=best;
+  const set=(id,v)=>{ const e=document.getElementById(id); if(e) e.textContent=v; };
+  set('mScore',score); set('mLevel',level); set('mLines',lines); set('mWords',wordsCleared);
 }
 
 // ---- Start / end -----------------------------------------------------------
@@ -444,6 +447,32 @@ function quitKiosk(){ if(quitting) return; quitting=true; fetch('/__quit').catch
   hold(document.getElementById('tHold'), ()=>doHold());
   // tap initials slots to cycle (touch high-score entry)
   document.querySelectorAll('#initials .slot').forEach((s,i)=>{ s.addEventListener('click',()=>{ if(!enteringInitials) return; initSlot=i; initChange(1); }); });
+
+  // mobile HUD music toggle (mirrors the desktop button)
+  const mm=document.getElementById('mMusic');
+  if(mm) mm.addEventListener('click',()=>{ musicOn=!musicOn; mm.textContent='♪ '+(musicOn?'ON':'OFF'); const mb=document.getElementById('musicBtn'); if(mb) mb.textContent='Music: '+(musicOn?'ON':'OFF'); if(musicOn){ if(gameState==='playing') resumeMusic(); } else pauseMusic(); });
+
+  // ---- Gesture controls on the board (tap=rotate, swipe=move, drag/flick down=drop) ----
+  function softStep(){ if(canAct()){ if(!collides(cur,cur.x,cur.y+1,cur.rot)){ cur.y++; score++; updateHUD(); } else lockPiece(); } }
+  let gs=null;
+  function cellPx(){ const r=document.getElementById('boardWrap').getBoundingClientRect(); return Math.max(14, r.width/COLS); }
+  board.addEventListener('touchstart',(e)=>{ const t=e.touches[0]; gs={x:t.clientX,y:t.clientY,t:performance.now(),moved:false}; e.preventDefault(); },{passive:false});
+  board.addEventListener('touchmove',(e)=>{
+    if(!gs) return; const t=e.touches[0]; const step=cellPx();
+    let dx=t.clientX-gs.x, dy=t.clientY-gs.y;
+    while(dx>=step){ move(1); gs.x+=step; gs.moved=true; dx-=step; }
+    while(dx<=-step){ move(-1); gs.x-=step; gs.moved=true; dx+=step; }
+    if(dy>=step){ const n=Math.floor(dy/step); for(let i=0;i<n;i++) softStep(); gs.y+=n*step; gs.moved=true; }
+    e.preventDefault();
+  },{passive:false});
+  board.addEventListener('touchend',(e)=>{
+    if(!gs) return; const dt=performance.now()-gs.t;
+    const ch=e.changedTouches[0]; const totalDy=ch?ch.clientY-gs.y:0;
+    if(!gs.moved && dt<260){ rotate(1); }                         // quick tap = rotate
+    else if(totalDy>cellPx()*2 && dt<220){ hardDrop(); }          // fast downward flick = hard drop
+    gs=null; e.preventDefault();
+  },{passive:false});
+  board.addEventListener('touchcancel',()=>{ gs=null; });
 })();
 
 // ===========================================================================
@@ -528,7 +557,7 @@ function fitToScreen(){
   const gw=g.offsetWidth, gh=g.offsetHeight; if(!gw||!gh) return;
   const touch=document.body.classList.contains('touch');
   const tb=document.getElementById('touchBar');
-  const reserveTop = touch ? 44 : 0;                          // top control bar
+  const reserveTop = touch ? 58 : 0;                          // mobile HUD bar
   const reserveBottom = (touch && tb) ? tb.offsetHeight + 10 : 0;  // touch buttons
   const availW = window.innerWidth;
   const availH = window.innerHeight - reserveTop - reserveBottom;
