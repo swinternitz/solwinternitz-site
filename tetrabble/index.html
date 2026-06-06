@@ -10,7 +10,7 @@
   html, body { height: 100%; background:#03030a; font-family:'Trebuchet MS','Segoe UI',sans-serif; color:#fff; overflow:hidden; user-select:none; }
   #bgCanvas { position:fixed; inset:0; z-index:0; }
   #skyline { position:fixed; left:0; right:0; bottom:0; z-index:0; width:100%; opacity:0.5; pointer-events:none; }
-  #stage { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; z-index:1; }
+  #stage { position:absolute; inset:0; display:flex; align-items:flex-start; justify-content:flex-start; z-index:1; overflow:hidden; }
   #game { position:relative; display:flex; gap:24px; align-items:flex-start; padding:18px; }
   #boardWrap {
     position:relative; border:3px solid var(--red); border-radius:4px;
@@ -87,7 +87,6 @@
   .tbtn2.drop { color:#ffd700; border-color:#bb6600; background:#1e0e00; }
   body.touch #leftPanel { display:none; }   /* reclaim width on phones */
   body.touch #side { width:120px; }
-  body.touch #stage { align-items:flex-start; padding-top:46px; }
   body.touch .tbtn2 { width:15vw; max-width:84px; height:58px; }
   #ovTable { width:300px; margin-bottom:16px; }
   .topctrl { position:absolute; top:12px; z-index:60; display:flex; gap:8px; }
@@ -200,7 +199,7 @@
   </div>
 </div>
 
-<script src="dictionary.js?v=12"></script>
-<script src="tetrabble.js?v=12"></script>
+<script src="dictionary.js?v=13"></script>
+<script src="tetrabble.js?v=13"></script>
 </body>
 </html>

@@ -527,15 +527,18 @@ function fitToScreen(){
   g.style.transform='none';
   const gw=g.offsetWidth, gh=g.offsetHeight; if(!gw||!gh) return;
   const touch=document.body.classList.contains('touch');
-  let availH=window.innerHeight;
-  if(touch){
-    const tb=document.getElementById('touchBar'); const tbh=tb?tb.offsetHeight:90;
-    availH=window.innerHeight - tbh - 54;      // leave room for touch bar + top bar
-    g.style.transformOrigin='center top';
-  } else { g.style.transformOrigin='center center'; }
-  const m=touch?0.98:0.96;
-  const s=Math.min(window.innerWidth/gw, availH/gh)*m;
-  g.style.transform='scale('+s.toFixed(4)+')';
+  const tb=document.getElementById('touchBar');
+  const reserveTop = touch ? 44 : 0;                          // top control bar
+  const reserveBottom = (touch && tb) ? tb.offsetHeight + 10 : 0;  // touch buttons
+  const availW = window.innerWidth;
+  const availH = window.innerHeight - reserveTop - reserveBottom;
+  const s = Math.min(availW/gw, availH/gh) * 0.98;
+  // #game is anchored top-left in #stage; position it deterministically with
+  // an explicit translate (origin top-left) so it always fits and centers.
+  g.style.transformOrigin = 'top left';
+  const tx = Math.max(0, (availW - gw*s) / 2);
+  const ty = reserveTop + Math.max(0, (availH - gh*s) / 2);
+  g.style.transform = 'translate('+tx.toFixed(1)+'px,'+ty.toFixed(1)+'px) scale('+s.toFixed(4)+')';
 }
 window.addEventListener('resize',fitToScreen); window.addEventListener('load',()=>{ fitToScreen(); setTimeout(fitToScreen,300); });
 setTimeout(fitToScreen,100); setTimeout(fitToScreen,800);
