@@ -377,7 +377,9 @@ function pollGamepad(){
   const pads=navigator.getGamepads?navigator.getGamepads():[]; let pad=null;
   for(const p of pads) if(p){ pad=p; break; }
   const st=document.getElementById('padStatus');
-  if(!pad){ if(st){ st.textContent='⚇ no controller'; st.classList.remove('on'); } padPrev={}; leftHeld=rightHeld=downHeld=false; return; }
+  // No gamepad: do NOT clear held flags here — keyboard/touch own them. (Clearing
+  // every frame was wiping touch/keyboard left/right/down on no-controller devices.)
+  if(!pad){ if(st){ st.textContent='⚇ no controller'; st.classList.remove('on'); } padPrev={}; return; }
   const down=[]; pad.buttons.forEach((b,i)=>{ if(b.pressed) down.push(i); });
   if(st){ st.classList.add('on'); const axA=pad.axes.some(a=>Math.abs(a)>0.4);
     st.textContent='🎮 '+((down.length||axA)?'btn['+down.join(',')+'] ax['+pad.axes.map(a=>a.toFixed(1)).join(',')+']':((pad.mapping||'?')+' · '+pad.id.slice(0,20))); }
@@ -520,7 +522,21 @@ document.getElementById('resumeBtn').addEventListener('click',()=>{
 });
 
 // ---- Fit to screen ---------------------------------------------------------
-function fitToScreen(){ const g=document.getElementById('game'); if(!g) return; g.style.transform='none'; const gw=g.offsetWidth, gh=g.offsetHeight; if(!gw||!gh) return; const m=document.body.classList.contains('touch')?0.99:0.96; const s=Math.min(window.innerWidth/gw,window.innerHeight/gh)*m; g.style.transformOrigin='center center'; g.style.transform='scale('+s.toFixed(4)+')'; }
+function fitToScreen(){
+  const g=document.getElementById('game'); if(!g) return;
+  g.style.transform='none';
+  const gw=g.offsetWidth, gh=g.offsetHeight; if(!gw||!gh) return;
+  const touch=document.body.classList.contains('touch');
+  let availH=window.innerHeight;
+  if(touch){
+    const tb=document.getElementById('touchBar'); const tbh=tb?tb.offsetHeight:90;
+    availH=window.innerHeight - tbh - 54;      // leave room for touch bar + top bar
+    g.style.transformOrigin='center top';
+  } else { g.style.transformOrigin='center center'; }
+  const m=touch?0.98:0.96;
+  const s=Math.min(window.innerWidth/gw, availH/gh)*m;
+  g.style.transform='scale('+s.toFixed(4)+')';
+}
 window.addEventListener('resize',fitToScreen); window.addEventListener('load',()=>{ fitToScreen(); setTimeout(fitToScreen,300); });
 setTimeout(fitToScreen,100); setTimeout(fitToScreen,800);
 
