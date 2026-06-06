@@ -102,6 +102,20 @@
   #mScore{color:#fff;} #mLevel{color:#00e5ff;} #mLines{color:#00ff88;} #mWords{color:#ff66cc;}
   #mNext { background:#07070f; border:1px solid #2a2a55; border-radius:4px; }
   #mMusic { margin-left:auto; background:#16163a; border:1px solid #33336a; color:#9ad; border-radius:14px; padding:6px 12px; font-size:12px; }
+  /* on touch, the HUD + buttons only appear in-game, not on the title/menu */
+  body.touch:not(.ingame) #mobileHud, body.touch:not(.ingame) #touchBar { display:none !important; }
+  /* responsive title/menu for narrow screens */
+  @media (max-width:640px){
+    #title { overflow-y:auto; justify-content:flex-start; padding:20px 12px 28px; gap:8px; }
+    #title h1 { font-size:clamp(38px,12vw,60px); letter-spacing:4px; }
+    #title .tag { margin:2px 0 14px; font-size:12px; letter-spacing:4px; }
+    .row { flex-direction:column; gap:14px; width:100%; align-items:center; }
+    .modes { flex-direction:column; gap:10px; width:100%; max-width:340px; }
+    .mode { width:100%; }
+    #hiscoreTable { width:100%; max-width:340px; }
+    .startBtn { padding:14px 40px; }
+    .hint { font-size:11px; line-height:1.7; }
+  }
   #ovTable { width:300px; margin-bottom:16px; }
   .topctrl { position:absolute; top:12px; z-index:60; display:flex; gap:8px; }
   #topRight { right:14px; } #topLeft { left:14px; }
@@ -222,7 +236,7 @@
   </div>
 </div>
 
-<script src="dictionary.js?v=14"></script>
-<script src="tetrabble.js?v=14"></script>
+<script src="dictionary.js?v=15"></script>
+<script src="tetrabble.js?v=15"></script>
 </body>
 </html>

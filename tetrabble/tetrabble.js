@@ -289,6 +289,7 @@ function startGame(){
   spawnPiece(); drawHold(); updateHUD();
   document.getElementById('title').style.display='none';
   document.getElementById('overlay').style.display='none';
+  document.body.classList.add('ingame');
   gameState='playing'; acc=0; lastT=performance.now(); startMusic(); requestAnimationFrame(loop);
   fitToScreen();
 }
@@ -547,7 +548,7 @@ document.getElementById('resumeBtn').addEventListener('click',()=>{
   const act=document.getElementById('resumeBtn').dataset.action;
   if(act==='save'){ commitInitials(); }
   else if(act==='resume'){ togglePause(); }
-  else { document.getElementById('title').style.display='flex'; document.getElementById('overlay').style.display='none'; gameState='idle'; renderHiScores(); fitToScreen(); }
+  else { document.getElementById('title').style.display='flex'; document.getElementById('overlay').style.display='none'; document.body.classList.remove('ingame'); gameState='idle'; renderHiScores(); fitToScreen(); }
 });
 
 // ---- Fit to screen ---------------------------------------------------------
